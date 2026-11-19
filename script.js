@@ -328,3 +328,57 @@ if ("IntersectionObserver" in window) {
 
 console.log("ZEHRII — Beyond Words is ready ♡");
 
+// ===== ZEHRII INTRO SCREEN =====
+const introScreen = document.getElementById("introScreen");
+
+if (introScreen) {
+  document.body.style.overflow = "hidden";
+
+  setTimeout(() => {
+    introScreen.classList.add("hide");
+    document.body.style.overflow = "";
+  }, 2500);
+}
+
+// ===== SCROLL PROGRESS =====
+const progressBar = document.getElementById("scrollProgress");
+
+function updateScrollProgress() {
+  const maxScroll =
+    document.documentElement.scrollHeight - window.innerHeight;
+
+  const percentage =
+    maxScroll > 0 ? (window.scrollY / maxScroll) * 100 : 0;
+
+  if (progressBar) {
+    progressBar.style.width = percentage + "%";
+  }
+}
+
+window.addEventListener("scroll", updateScrollProgress, {
+  passive: true
+});
+
+updateScrollProgress();
+
+// ===== CUSTOM CURSOR =====
+const cursor = document.getElementById("customCursor");
+
+if (cursor && window.matchMedia("(pointer: fine)").matches) {
+  window.addEventListener("mousemove", (e) => {
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+  });
+
+  document.querySelectorAll("a, button").forEach((element) => {
+    element.addEventListener("mouseenter", () => {
+      cursor.style.width = "18px";
+      cursor.style.height = "18px";
+    });
+
+    element.addEventListener("mouseleave", () => {
+      cursor.style.width = "10px";
+      cursor.style.height = "10px";
+    });
+  });
+}
