@@ -4,236 +4,228 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ZEHRII — Beyond Words</title>
+  <meta name="theme-color" content="#08070b">
+  <title>ZEHRII — A Little World of Riya</title>
+  <meta name="description" content="A little emotional, a little crazy, and a whole lot of friendship.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<!-- NAVIGATION -->
-<nav class="navbar">
-  <a href="#home" class="logo">Z <span>♡</span></a>
-  <span class="nav-label">A LITTLE WORLD FOR ZEHRII</span>
-  <a href="#letter" class="nav-link">A LETTER ↗</a>
-</nav>
+<div class="loader" id="loader">
+  <div class="loader-heart">♡</div>
+  <p>MADE WITH LOVE</p>
+</div>
 
-<!-- HERO -->
-<header class="hero" id="home">
-  <div class="hero-content">
-    <span class="eyebrow">MADE WITH LOVE · RIYA</span>
-    <h1>Beyond<br><em>Words.</em></h1>
-    <p>A little corner of the universe,<br>made only for you.</p>
-    <a href="#journal" class="hero-btn">ENTER YOUR LITTLE WORLD ↓</a>
-  </div>
-  <div class="hero-bottom">RIYA <span>×</span> ZEHRII</div>
+<div class="intro" id="intro">
+  <div class="intro-stars">✦ &nbsp; ✧ &nbsp; ✦</div>
+  <p class="intro-small">A LITTLE WORLD MADE FOR</p>
+  <h1>ZEHRII<span>♡</span></h1>
+  <p class="intro-by">BY RIYA, WITH LOVE</p>
+  <button class="enter-btn" id="enterBtn">OPEN YOUR LITTLE WORLD ↗</button>
+  <div class="intro-bottom">WARNING: EMOTIONS & NONSENSE AHEAD</div>
+</div>
+
+<div class="cursor-glow" id="cursorGlow"></div>
+<div class="progress" id="progress"></div>
+<div class="particles" id="particles"></div>
+
+<header class="topbar">
+  <a class="brand" href="#home">Z<span>.</span></a>
+  <span class="top-label">A WEBSITE FOR MY PERSON</span>
+  <button class="music-btn" id="musicBtn">♫ <span>Music</span></button>
 </header>
 
-<!-- MUSIC -->
-<section class="music-section">
-  <div class="music-card">
-    <div class="music-icon">♫</div>
-    <div class="music-info">
-      <strong>A song for your little world</strong>
-      <span>Listen while you explore</span>
-    </div>
-    <audio id="music" src="music.mp3" loop></audio>
-    <button id="musicBtn" class="music-btn">PLAY ♫</button>
+<main>
+
+<!-- HERO -->
+<section class="hero section" id="home">
+  <div class="hero-tag reveal">THE MOST UNHINGED FRIENDSHIP EVER</div>
+  <h1 class="hero-title reveal">
+    Some people are<br>
+    <span>home in human form.</span>
+  </h1>
+  <p class="hero-text reveal">
+    Aur meri bad luck... ya good luck... tu hai. 😂♡
+  </p>
+  <div class="hero-buttons reveal">
+    <a href="#story" class="primary-btn">LET'S BEGIN ↓</a>
+    <a href="#letter" class="secondary-btn">READ MY HEART</a>
+  </div>
+  <div class="hero-bottom">
+    <span>RIYA × ZEHRII</span>
+    <span>FRIENDSHIP WITHOUT A FILTER</span>
   </div>
 </section>
 
-<!-- SOUL JOURNAL -->
-<section class="soul-section" id="journal">
-  <div class="section-heading">
-    <span class="eyebrow">BEYOND THE SURFACE</span>
-    <h2>A little closer<br><em>to your soul.</em></h2>
-    <p>Seven questions. No right answers. Just you.</p>
+<!-- STORY -->
+<section class="section story" id="story">
+  <div class="section-label reveal">01 — THE STORY</div>
+  <h2 class="section-heading reveal">Tu dost hai ya<br><em>meri headache?</em></h2>
+
+  <div class="story-card reveal">
+    <div class="story-number">01</div>
+    <p class="story-english">"Some friendships are peaceful. Ours is a full-time circus."</p>
+    <p class="story-hindi">Sach bolun toh tu kabhi kabhi itni irritating hai ki mann karta hai tujhe block kar doon... phir yaad aata hai, block karke apna entertainment kaun band karega? 😂</p>
   </div>
 
-  <div class="journal-card" id="journalCard">
-    <div class="journal-top">
-      <span id="questionNumber">QUESTION 01 / 07</span>
-      <span>✦</span>
-    </div>
-    <div class="progress-track"><div id="progressFill"></div></div>
-    <span class="question-category" id="questionCategory"></span>
-    <h3 id="questionText"></h3>
-    <p class="question-hint">Take your time. There is no rush.</p>
-    <textarea id="journalAnswer" maxlength="1500" placeholder="Write whatever your heart feels..."></textarea>
-    <div class="journal-actions">
-      <button id="prevQuestion" class="secondary-btn">← BACK</button>
-      <button id="nextQuestion" class="primary-btn">NEXT QUESTION ↗</button>
-    </div>
-    <p class="privacy-note">Your answers are saved in this browser only.</p>
+  <div class="story-card reveal">
+    <div class="story-number">02</div>
+    <p class="story-english">"You are the plot twist I never asked for, but somehow needed."</p>
+    <p class="story-hindi">Tere saath normal baat bhi 5 minute mein drama, hasi, ladai aur emotional speech ban jaati hai. Tera dimaag alag hi company mein chalta hai. 🤦🏻‍♀️❤️</p>
   </div>
 
-  <div class="journal-complete hidden" id="journalComplete">
-    <span>✦</span>
-    <h3>Thank you for being you.</h3>
-    <p>Every answer is a little piece of your world.<br>Never stop getting to know yourself.</p>
-    <button id="restartJournal" class="secondary-btn">READ AGAIN ↺</button>
+  <div class="story-card reveal">
+    <div class="story-number">03</div>
+    <p class="story-english">"If chaos had a face, it would probably look like you."</p>
+    <p class="story-hindi">Aur phir bhi, duniya mein sabse zyada bakwaas karne ka mann tere saath hi karta hai. Ye dosti hai ya pagalpan, ab research chal rahi hai. 😂</p>
   </div>
 </section>
 
-<!-- BESTIE QUIZ -->
-<section class="quiz-section" id="quiz">
-  <div class="section-heading">
-    <span class="eyebrow">ONLY FOR MY BESTU ♡</span>
-    <h2>A little game<br><em>for us.</em></h2>
-    <p>Let's see how well you know friendship.</p>
-  </div>
+<!-- MOOD -->
+<section class="section mood" id="mood">
+  <div class="section-label reveal">02 — MY HONEST OPINION</div>
+  <h2 class="section-heading reveal">Things I would<br><em>never admit.</em></h2>
+  <p class="section-sub reveal">Okay fine. Aaj thoda sach bol hi deti hoon.</p>
 
-  <div class="quiz-box" id="quizBox">
+  <div class="mood-grid">
+    <div class="mood-card reveal">
+      <span class="mood-emoji">🙄</span>
+      <h3>Annoying</h3>
+      <p>Tu itni annoying hai ki kabhi kabhi phone dekh ke bhi tera naam aaye toh sigh nikal jaati hai.</p>
+    </div>
+    <div class="mood-card reveal">
+      <span class="mood-emoji">😂</span>
+      <h3>Funny</h3>
+      <p>Par tere bina meri bakwaas sunne wala aur meri bakwaas ko top karne wala kaun hai?</p>
+    </div>
+    <div class="mood-card reveal">
+      <span class="mood-emoji">🥹</span>
+      <h3>Important</h3>
+      <p>Jab sach mein mood kharab ho, tab teri presence ka matlab alag hi hota hai.</p>
+    </div>
+    <div class="mood-card reveal">
+      <span class="mood-emoji">🫶</span>
+      <h3>My Person</h3>
+      <p>Chahe kitni bhi ladai ho, tu un logon mein hai jinko main khona nahi chahti.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INTERACTIVE BUTTON -->
+<section class="section surprise" id="surprise">
+  <div class="section-label reveal">03 — A SMALL EXPERIMENT</div>
+  <h2 class="section-heading reveal">Dekh, kitni<br><em>important hai tu.</em></h2>
+  <p class="section-sub reveal">Button dabana. Haan, tu hi. Zyada soch mat.</p>
+  <button class="chaos-btn reveal" id="chaosBtn">TAP FOR TRUTH ✦</button>
+  <div class="chaos-message" id="chaosMessage">Tujhe tolerate karna meri hidden talent hai. 😂♡</div>
+</section>
+
+<!-- QUIZ -->
+<section class="section quiz" id="quiz">
+  <div class="section-label reveal">04 — FRIENDSHIP TEST</div>
+  <h2 class="section-heading reveal">How well do you<br><em>know your Riya?</em></h2>
+  <p class="section-sub reveal">No cheating. Waise bhi tujhe kaun check kar raha hai? 👀</p>
+
+  <div class="quiz-box reveal">
     <div class="quiz-top">
-      <span id="quizCount">QUESTION 01 / 07</span>
-      <span>RIYA × ZEHRII</span>
+      <span id="quizCount">QUESTION 01 / 05</span>
+      <div class="quiz-bar"><span id="quizProgress"></span></div>
     </div>
-    <div class="progress-track"><div id="quizProgress"></div></div>
-    <h3 id="quizQuestion"></h3>
+    <h3 id="quizQuestion">Loading question...</h3>
     <div class="quiz-options" id="quizOptions"></div>
-    <button id="quizNext" class="primary-btn" disabled>NEXT QUESTION →</button>
+    <p class="quiz-feedback" id="quizFeedback"></p>
+    <button class="quiz-next" id="quizNext" disabled>NEXT QUESTION →</button>
+    <div class="quiz-result" id="quizResult"></div>
   </div>
+</section>
 
-  <div class="quiz-result hidden" id="quizResult">
-    <span>✦</span>
-    <h2 id="resultTitle"></h2>
-    <p id="resultScore"></p>
-    <p id="resultMessage"></p>
-    <button id="quizRestart" class="secondary-btn">PLAY AGAIN ↺</button>
+<!-- JOURNAL -->
+<section class="section journal" id="journal">
+  <div class="section-label reveal">05 — YOUR LITTLE CORNER</div>
+  <h2 class="section-heading reveal">Okay, now it's<br><em>your turn.</em></h2>
+  <p class="section-sub reveal">Kuch bhi likh. Main judge nahi karungi... shayad thoda. 😂</p>
+
+  <div class="journal-box reveal">
+    <label for="journalInput">A MESSAGE FOR RIYA</label>
+    <textarea id="journalInput" placeholder="Jo mann mein hai, likh de..."></textarea>
+    <button id="saveJournal" class="primary-btn">SAVE THIS LITTLE MEMORY ♡</button>
+    <p class="saved-msg" id="savedMsg"></p>
   </div>
 </section>
 
 <!-- LETTER -->
-<section class="letter-section" id="letter">
-  <div class="section-heading">
-    <span class="eyebrow">A LITTLE PIECE OF MY HEART</span>
-    <h2>For my <em>Bestu.</em></h2>
-    <p>Some words are meant only for you.</p>
-  </div>
+<section class="section letter" id="letter">
+  <div class="section-label reveal">06 — FROM MY HEART</div>
+  <h2 class="section-heading reveal">A letter I would<br><em>never say out loud.</em></h2>
 
-  <button class="letter-open" id="openLetter">
-    <span>✉</span> OPEN YOUR LETTER ↗
+  <button class="letter-open reveal" id="letterOpen">
+    <div class="letter-icon">✉</div>
+    <span>OPEN RIYA'S LETTER</span>
+    <small>Handle with care. Emotional damage possible.</small>
   </button>
+</section>
 
-  <div class="letter-overlay hidden" id="letterOverlay">
-    <div class="letter-paper">
-      <button class="letter-close" id="closeLetter">×</button>
-      <span class="letter-small">A LETTER FROM RIYA</span>
-      <h2>Dear Zehrii,</h2>
-      <div class="letter-body">
-        <p>I don't know if I say it enough, but having you in my life is something I truly cherish.</p>
-        <p>Through random talks, silly moments, laughter and even quiet days, you have become someone very special to me.</p>
-        <p>You never have to pretend to be okay around me. You can be yourself — messy, happy, sad, quiet or crazy. I will always wish to see you smile and do well in life.</p>
-        <p>I hope life gives you all the beautiful things your heart has been wishing for. Never forget how precious you are.</p>
-        <p>No matter how busy life gets, I hope we always keep a little corner for our friendship.</p>
-      </div>
-      <div class="letter-sign">Forever your Besti,<br><span>Riya ♡</span></div>
-    </div>
+<!-- PROMISE -->
+<section class="section promise" id="promise">
+  <div class="section-label reveal">07 — A PROMISE</div>
+  <div class="promise-heart reveal">♡</div>
+  <h2 class="section-heading reveal">No matter what,<br><em>you're my people.</em></h2>
+  <p class="promise-text reveal">
+    Aaj baat ho ya na ho. Mood achha ho ya kharab.
+    Hasi aaye ya gussa. Tu meri life ki un friendships mein hai
+    jinki value main kabhi kam nahi hone dungi.
+  </p>
+  <div class="promise-sign reveal">— RIYA</div>
+</section>
+
+<!-- FINAL -->
+<section class="section final" id="final">
+  <div class="section-label reveal">08 — BEFORE YOU GO</div>
+  <h2 class="final-title reveal">Don't ever think<br>you're <em>replaceable.</em></h2>
+  <p class="final-text reveal">
+    Tere jaisi doosri mil bhi gayi na...<br>
+    toh bhi woh TU thodi hogi. Pagli. ❤️
+  </p>
+  <button class="final-btn reveal" id="finalBtn">ONE LAST THING ↗</button>
+  <div class="final-message" id="finalMessage">
+    <span>HEY ZEHRII...</span>
+    <p>Apna khayal rakha kar, samjhi? Sabko hasana zaroori nahi. Kabhi khud bhi khush rehna. Aur haan, zyada attitude dikhaya toh Riya ka lecture ready hai. 😂</p>
+    <strong>Love you, idiot. ♡</strong>
   </div>
 </section>
 
-<!-- MEMORY WALL WITHOUT PHOTOS -->
-<section class="memory-wall" id="memories">
-  <div class="section-heading">
-    <span class="eyebrow">OUR LITTLE UNIVERSE</span>
-    <h2>Memories that<br><em>stay forever.</em></h2>
-    <p>Some moments deserve to be kept a little closer.</p>
-  </div>
+</main>
 
-  <div class="memory-list">
-    <article class="memory-card">
-      <span class="memory-number">MEMORY 01</span>
-      <span class="memory-symbol">✦</span>
-      <h3>Our kind of madness.</h3>
-      <p>Some friendships make even ordinary days feel special.</p>
-    </article>
-
-    <article class="memory-card">
-      <span class="memory-number">MEMORY 02</span>
-      <span class="memory-symbol">♡</span>
-      <h3>Little things. Big feelings.</h3>
-      <p>It's never about the moment, it's about who was there.</p>
-    </article>
-
-    <article class="memory-card">
-      <span class="memory-number">MEMORY 03</span>
-      <span class="memory-symbol">∞</span>
-      <h3>Always my person.</h3>
-      <p>Different days, different stories, the same friendship.</p>
-    </article>
-  </div>
-
-  <div class="memory-ending">
-    ♡
-    <p>A thousand memories still waiting to be made.</p>
-    <small>RIYA × ZEHRII</small>
-  </div>
-</section>
-
-<!-- OUR PROMISE -->
-<section class="promise-section" id="ourPromise">
-  <div class="section-heading">
-    <span class="eyebrow">A PROMISE FROM MY HEART</span>
-    <h2>Some things I will<br><em>always promise.</em></h2>
-    <p>Not just words. Things I mean.</p>
-  </div>
-
-  <div class="promise-list">
-    <div class="promise-item"><span>01</span><p>I will always listen to you, even when you don't know what to say.</p></div>
-    <div class="promise-item"><span>02</span><p>You never have to pretend to be okay around me.</p></div>
-    <div class="promise-item"><span>03</span><p>On your worst days, I will remind you of your worth.</p></div>
-    <div class="promise-item"><span>04</span><p>No distance, silence or busy day can erase what you mean to me.</p></div>
-    <div class="promise-item"><span>05</span><p>I will always wish for your happiness, even in the smallest things.</p></div>
-  </div>
-
-  <div class="promise-footer">
-    <span>MADE WITH LOVE, ONLY FOR YOU</span>
-    <p>Riya <span>♡</span> Zehrii</p>
-  </div>
-</section>
-
-<!-- FINAL GOODBYE -->
-<section class="final-goodbye" id="goodbye">
-  <div class="goodbye-content">
-    <span class="eyebrow">ONE LAST THING, BESTU</span>
-    <div class="goodbye-heart">♡</div>
-    <h2>Some people are<br><em>simply unforgettable.</em></h2>
-    <p>And somehow, in this big world,<br>I got lucky enough to have you.</p>
-    <div class="goodbye-line"></div>
-    <h3>Thank you for being <span>you.</span></h3>
-    <div class="goodbye-names">RIYA <span>×</span> ZEHRII</div>
-    <small>THIS LITTLE CORNER OF THE INTERNET IS YOURS.</small>
-  </div>
-</section>
-
-<footer class="footer">
-  <span>MADE WITH LOVE BY RIYA ♡</span>
-  <a href="#home">BACK TO TOP ↑</a>
+<footer>
+  <div class="footer-heart">♡</div>
+  <p>THIS LITTLE WORLD WAS MADE FOR ZEHRII</p>
+  <span>WITH LOVE, RIYA · ALWAYS</span>
 </footer>
 
-<script src="script.js"></script>
-<div class="particles" id="particles"></div>
-<script>
-window.addEventListener("load", function () {
-  const intro = document.getElementById("introScreen");
-
-  if (intro) {
-    setTimeout(function () {
-      intro.classList.add("hide");
-      document.body.style.overflow = "auto";
-    }, 3000);
-  }
-});
-</script>
-</body>
-
-  <div class="intro-screen" id="introScreen">
-  <div class="intro-content">
-    <span>THIS LITTLE WORLD BELONGS TO</span>
-    <h1>ZEHRII <em>♡</em></h1>
-    <p>MADE WITH LOVE BY RIYA</p>
+<!-- LETTER MODAL -->
+<div class="modal" id="letterModal">
+  <div class="modal-card">
+    <button class="modal-close" id="modalClose">×</button>
+    <div class="modal-flower">♡</div>
+    <p class="modal-label">A LETTER FROM RIYA</p>
+    <h2>Dear Zehrii,</h2>
+    <div class="modal-body">
+      <p>Sun pagli, mazaak apni jagah hai. Main tujhe chidhati hoon, pareshan karti hoon, kabhi faltu mein gussa bhi kar leti hoon. 😂</p>
+      <p>Par sach mein, tu meri life ke un logon mein se hai jinke hone se din thoda better lagta hai. Tere saath hasi bhi real hoti hai aur kabhi kabhi chup rehna bhi comfortable lagta hai.</p>
+      <p>Har din perfect nahi hota, har friendship mein misunderstandings aati hain. Par meri taraf se ek baat yaad rakhna—tu important hai. Sirf tab nahi jab tu funny ho, khush ho ya sabke liye strong ban rahi ho. Tu apne normal, messy, tired version mein bhi important hai.</p>
+      <p>Aur haan, itni emotional baat padh ke overacting mat karna. 😂</p>
+      <p>Khush reh. Apna khayal rakh. Aur mujhe tang karna band mat karna, warna website ka sequel bana dungi.</p>
+    </div>
+    <div class="modal-sign">Always your Riya ♡</div>
   </div>
 </div>
 
-<div class="scroll-progress" id="scrollProgress"></div>
-<div class="custom-cursor" id="customCursor"></div>
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
 </html>
