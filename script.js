@@ -1,10 +1,14 @@
 
-// =====================================
-// ZEHRII × RIYA - INTERACTIVE WORLD
-// Made with love by Riya ❤️
-// =====================================
+/* =====================================
+   RIYA × ZEHRII
+   COMPLETE WORKING JAVASCRIPT
+   ===================================== */
 
+"use strict";
+
+// SHORTCUTS
 const $ = (selector) => document.querySelector(selector);
+const $$ = (selector) => document.querySelectorAll(selector);
 
 // ---------- STAR BACKGROUND ----------
 
@@ -14,11 +18,9 @@ if (stars) {
   for (let i = 0; i < 65; i++) {
     const star = document.createElement("span");
     star.className = "star";
-
     star.style.left = Math.random() * 100 + "%";
     star.style.top = Math.random() * 100 + "%";
     star.style.animationDelay = Math.random() * 4 + "s";
-
     stars.appendChild(star);
   }
 }
@@ -36,31 +38,37 @@ function createHeart() {
 
   heart.style.left = Math.random() * 100 + "%";
   heart.style.animationDuration = (5 + Math.random() * 5) + "s";
-  heart.style.fontSize = (12 + Math.random() * 18) + "px";
+  heart.style.fontSize = (12 + Math.random() * 16) + "px";
 
   hearts.appendChild(heart);
 
-  setTimeout(() => heart.remove(), 10000);
+  setTimeout(() => heart.remove(), 11000);
 }
 
-setInterval(createHeart, 900);
+setInterval(createHeart, 1200);
 
-// ---------- REVEAL ANIMATIONS ----------
+// ---------- SCROLL ANIMATIONS ----------
 
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12 });
+const revealElements = $$(".reveal");
 
-document.querySelectorAll(".reveal").forEach(element => {
-  revealObserver.observe(element);
-});
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
 
-// ---------- TOAST MESSAGE ----------
+  revealElements.forEach(element => observer.observe(element));
+} else {
+  revealElements.forEach(element => element.classList.add("visible"));
+}
+
+// ---------- TOAST ----------
+
+let toastTimer;
 
 function showToast(message) {
   const toast = $("#toast");
@@ -69,56 +77,76 @@ function showToast(message) {
   toast.textContent = message;
   toast.classList.add("show");
 
-  clearTimeout(window.toastTimer);
+  clearTimeout(toastTimer);
 
-  window.toastTimer = setTimeout(() => {
+  toastTimer = setTimeout(() => {
     toast.classList.remove("show");
   }, 2800);
 }
 
+// ---------- MOBILE MENU ----------
+
+const menuButton = $("#menuButton");
+const navigation = $(".navbar nav");
+
+menuButton?.addEventListener("click", () => {
+  const opened = navigation.classList.toggle("open");
+  menuButton.textContent = opened ? "✕" : "☰";
+});
+
+navigation?.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    navigation.classList.remove("open");
+    menuButton.textContent = "☰";
+  });
+});
+
 // ---------- RIYA MOOD CONTROL ----------
 
-const moods = {
+const moodMessages = {
   angry: [
     "Zehrii abhi mujhse baat mat karna! 😒",
     "Mujhe manana padega, samjhe? 😤",
-    "Tumhari toh aaj khair nahi hai! 😂"
+    "Tumhari toh aaj khair nahi hai! 😂",
+    "Itna attitude? Main bhi kam nahi! 😭"
   ],
 
   cute: [
     "Oyee bestu, ek hug toh banta hai! 🥺❤️",
     "Tu na bohot achha hai yaar!",
-    "Chal ab thoda sweet ban ja! 💗"
+    "Chal ab thoda sweet ban ja! 💗",
+    "Aaj Riya ko extra attention chahiye!"
   ],
 
   funny: [
     "HAHAHA Zehrii tera dimag kahan hai? 🤣",
     "Pagal hai tu, ek number wala!",
-    "Riya ki comedy ka koi jawab nahi! 😂"
+    "Riya ki comedy ka koi jawab nahi! 😂",
+    "Teri harkatein dekh kar hasi aa gayi!"
   ],
 
   sad: [
     "Aaj bas thoda sa pyaar aur care chahiye. 🥹",
     "Ek virtual hug bhej na bestu. ❤️",
-    "Sab theek ho jayega, smile kar! 🫂"
+    "Sab theek ho jayega, smile kar! 🫂",
+    "Kabhi kabhi bas kisi apne ki zarurat hoti hai."
   ]
 };
 
-document.querySelectorAll(".mood-card").forEach(button => {
+$$(".mood-card").forEach(button => {
   button.addEventListener("click", () => {
     const mood = button.dataset.mood;
-    const responses = moods[mood];
+    const messages = moodMessages[mood];
 
-    if (!responses) return;
+    if (!messages) return;
 
-    const response = $("#moodResponse");
+    const message = messages[
+      Math.floor(Math.random() * messages.length)
+    ];
 
-    response.innerHTML = `
-      <p>${responses[Math.floor(Math.random() * responses.length)]}</p>
-      <small>— Riya's mood report ❤️</small>
-    `;
+    $("#moodResponse").textContent = message;
 
-    document.querySelectorAll(".mood-card").forEach(card => {
+    $$(".mood-card").forEach(card => {
       card.classList.remove("selected");
     });
 
@@ -128,14 +156,16 @@ document.querySelectorAll(".mood-card").forEach(button => {
   });
 });
 
-// ---------- CHAOS BUTTON ----------
+// ---------- ZEHRII CHAOS BUTTON ----------
 
 const chaosMessages = [
   "RIYA: Oye Zehrii! Mujhe ignore kar raha hai? 😭",
   "RIYA: Achha ji, ab attitude aane laga? 😒",
   "RIYA: Main jaa rahi hoon... 2 minute mein wapas aaungi! 😂",
   "RIYA: Teri khair nahi bestu! 🤣",
-  "RIYA: Abhi toh trailer tha, picture baaki hai! 😈"
+  "RIYA: Abhi toh trailer tha, picture baaki hai! 😈",
+  "RIYA: Sun raha hai na meri baat? 😭❤️",
+  "RIYA: Itna innocent mat ban, sab pata hai mujhe! 😂"
 ];
 
 let chaosCount = 0;
@@ -146,9 +176,13 @@ $("#chaosBtn")?.addEventListener("click", () => {
   response.textContent =
     chaosMessages[chaosCount % chaosMessages.length];
 
-  response.classList.remove("chaos-pop");
-  void response.offsetWidth;
-  response.classList.add("chaos-pop");
+  response.animate(
+    [
+      { opacity: 0, transform: "scale(.85)" },
+      { opacity: 1, transform: "scale(1)" }
+    ],
+    { duration: 350, easing: "ease-out" }
+  );
 
   chaosCount++;
 
@@ -167,9 +201,7 @@ const questions = [
       "Sorry bolke manana 🥺",
       "Ulta ladna 😭"
     ],
-    correct: 1,
-    success: "Wahhh! Bestu ko samajh aa gaya! ❤️",
-    fail: "Galat jawab! Ab Riya naraz ho jayegi! 😭"
+    correct: 1
   },
   {
     question: "Riya ka favourite kaam kya hai?",
@@ -178,9 +210,7 @@ const questions = [
       "Sirf sona 😴",
       "Zehrii ko ignore karna 😒"
     ],
-    correct: 0,
-    success: "Bilkul sahi! Riya ki asli identity! 😂",
-    fail: "Itna bhi nahi jaanta apni Besti ko? 😭"
+    correct: 0
   },
   {
     question: "Zehrii ko Riya se kya kehna chahiye?",
@@ -189,9 +219,7 @@ const questions = [
       "Tu meri besti hai ❤️",
       "Mujhe nahi pata!"
     ],
-    correct: 1,
-    success: "Awww! Riya blush kar rahi hai! 🥹",
-    fail: "Zehrii! Dobara soch ke jawab de! 😤"
+    correct: 1
   },
   {
     question: "Riya aur Zehrii ki jodi kaisi hai?",
@@ -200,39 +228,43 @@ const questions = [
       "Unlimited drama 😂",
       "Dono hi sahi hain! ❤️"
     ],
-    correct: 2,
-    success: "Perfect answer! You passed the Bestu test! 🏆",
-    fail: "Dono hi sahi hain bhai! 😂"
+    correct: 2
   }
 ];
 
 let currentQuestion = 0;
 let score = 0;
+let quizFinished = false;
 let answered = false;
 
 function loadQuestion() {
   const q = questions[currentQuestion];
 
-  $("#question").textContent = q.question;
   $("#quizCount").textContent =
     `QUESTION ${String(currentQuestion + 1).padStart(2, "0")} / 04`;
 
+  $("#quizScore").textContent = `SCORE: ${score}`;
   $("#progressBar").style.width =
     ((currentQuestion + 1) / questions.length * 100) + "%";
 
+  $("#question").textContent = q.question;
   $("#quizFeedback").textContent = "";
   $("#nextQuestion").hidden = true;
-  $("#answers").innerHTML = "";
+
+  const answersContainer = $("#answers");
+  answersContainer.innerHTML = "";
 
   answered = false;
+  quizFinished = false;
 
   q.answers.forEach((answer, index) => {
     const button = document.createElement("button");
+
     button.className = "answer";
     button.textContent = answer;
 
     button.addEventListener("click", () => {
-      if (answered) return;
+      if (answered || quizFinished) return;
 
       answered = true;
 
@@ -241,13 +273,19 @@ function loadQuestion() {
       if (correct) {
         score++;
         button.classList.add("correct");
-        $("#quizFeedback").textContent = q.success;
+
+        $("#quizFeedback").textContent =
+          "Wahhhh! Bestu ko sab pata hai! ❤️";
       } else {
         button.classList.add("wrong");
-        $("#quizFeedback").textContent = q.fail;
+
+        $("#quizFeedback").textContent =
+          "Galat jawab! Ab Riya naraz ho jayegi! 😭";
       }
 
-      $("#answers").querySelectorAll("button").forEach((item, i) => {
+      $("#quizScore").textContent = `SCORE: ${score}`;
+
+      answersContainer.querySelectorAll("button").forEach((item, i) => {
         item.disabled = true;
 
         if (i === q.correct) {
@@ -256,64 +294,79 @@ function loadQuestion() {
       });
 
       $("#nextQuestion").hidden = false;
+
       $("#nextQuestion").textContent =
         currentQuestion === questions.length - 1
           ? "See My Result ❤️"
           : "Next Question →";
     });
 
-    $("#answers").appendChild(button);
+    answersContainer.appendChild(button);
   });
 }
 
+function showQuizResult() {
+  quizFinished = true;
+
+  $("#quizCount").textContent = "TEST COMPLETED";
+  $("#progressBar").style.width = "100%";
+
+  $("#question").textContent = "Your Bestu Result! 🏆";
+
+  $("#answers").innerHTML = "";
+
+  let resultMessage;
+
+  if (score === 4) {
+    resultMessage = "Perfect! Riya is super proud of you! 🥹❤️";
+  } else if (score >= 2) {
+    resultMessage = "Not bad bestu! Thodi aur practice karo. 😂";
+  } else {
+    resultMessage = "Zehrii! Riya ko ab tumhe training deni padegi! 😭";
+  }
+
+  $("#quizFeedback").textContent =
+    `Your score: ${score}/4. ${resultMessage}`;
+
+  $("#nextQuestion").textContent = "Play Again ↻";
+  $("#nextQuestion").hidden = false;
+}
+
 $("#nextQuestion")?.addEventListener("click", () => {
+  if (quizFinished) {
+    currentQuestion = 0;
+    score = 0;
+    loadQuestion();
+    return;
+  }
+
+  if (!answered) return;
+
   if (currentQuestion < questions.length - 1) {
     currentQuestion++;
     loadQuestion();
   } else {
-    $("#question").textContent = "Your Bestu Score! 🏆";
-    $("#answers").innerHTML = "";
-    $("#quizFeedback").textContent =
-      `${score}/4 correct! ${score === 4
-        ? "Riya is proud of you! ❤️"
-        : "Abhi aur practice karni padegi Zehrii! 😂"}`;
-
-    $("#nextQuestion").textContent = "Play Again ↻";
-    $("#nextQuestion").hidden = false;
-
-    currentQuestion = -1;
-    $("#progressBar").style.width = "100%";
-  }
-
-  if (currentQuestion === -1) {
-    return;
-  }
-});
-
-$("#nextQuestion")?.addEventListener("click", () => {
-  if (currentQuestion === -1) {
-    currentQuestion = 0;
-    score = 0;
-    loadQuestion();
+    showQuizResult();
   }
 });
 
 loadQuestion();
 
-// ---------- LOVE LETTER ----------
+// ---------- LOVE LETTER POPUP ----------
 
 const modal = $("#letterModal");
 
-$("#openLetter")?.addEventListener("click", () => {
+function openLetter() {
   modal?.classList.add("active");
   document.body.style.overflow = "hidden";
-});
+}
 
 function closeLetter() {
   modal?.classList.remove("active");
   document.body.style.overflow = "";
 }
 
+$("#openLetter")?.addEventListener("click", openLetter);
 $("#closeLetter")?.addEventListener("click", closeLetter);
 
 modal?.addEventListener("click", event => {
@@ -326,13 +379,20 @@ document.addEventListener("keydown", event => {
 
 // ---------- FINAL SURPRISE ----------
 
-$("#finalBtn")?.addEventListener("click", () => {
-  const message = $("#finalMessage");
+let surpriseOpened = false;
 
-  message.innerHTML = `
+$("#finalBtn")?.addEventListener("click", () => {
+  if (surpriseOpened) {
+    showToast("Surprise toh pehle hi mil gaya bestu! 😂❤️");
+    return;
+  }
+
+  surpriseOpened = true;
+
+  $("#finalMessage").innerHTML = `
     <div class="final-surprise">
       <div class="surprise-heart">❤️</div>
-      <h3>Oye Zehriii!</h3>
+      <h2>Oye Zehriii!</h2>
       <p>
         Tu chahe jitna bhi pareshan kare,
         Riya ki list mein tu special hi rahega! 😂
@@ -351,27 +411,25 @@ $("#finalBtn")?.addEventListener("click", () => {
   }
 });
 
-// ---------- MUSIC BUTTON ----------
-
-$("#musicBtn")?.addEventListener("click", () => {
-  showToast("Music feature ke liye audio file add karni hogi! 🎵");
-});
-
 // ---------- SMOOTH SCROLL ----------
 
-document.querySelectorAll('a[href^="#"]').forEach(link => {
+$$('a[href^="#"]').forEach(link => {
   link.addEventListener("click", event => {
-    const target = document.querySelector(link.getAttribute("href"));
+    const target = $(link.getAttribute("href"));
 
-    if (target) {
-      event.preventDefault();
+    if (!target) return;
 
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-    }
+    event.preventDefault();
+
+    target.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
   });
 });
 
-console.log("❤️ Riya × Zehrii world loaded successfully!");
+// ---------- WEBSITE READY ----------
+
+console.log("RIYA × ZEHRII: Website loaded successfully! ❤️");
+
+showToast("Welcome to Riya's little world! 💗");
