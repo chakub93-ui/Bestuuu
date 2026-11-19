@@ -1,1 +1,215 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZEHRII — Beyond Words</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="navbar">
+  <a href="#home" class="logo">Z <span>♡</span></a>
+  <span class="nav-label">A LITTLE WORLD FOR ZEHRII</span>
+  <a href="#letter" class="nav-link">A LETTER ↗</a>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="home">
+  <div class="hero-content">
+    <span class="eyebrow">MADE WITH LOVE · RIYA</span>
+    <h1>Beyond<br><em>Words.</em></h1>
+    <p>A little corner of the universe,<br>made only for you.</p>
+    <a href="#journal" class="hero-btn">ENTER YOUR LITTLE WORLD ↓</a>
+  </div>
+  <div class="hero-bottom">RIYA <span>×</span> ZEHRII</div>
+</header>
+
+<!-- MUSIC -->
+<section class="music-section">
+  <div class="music-card">
+    <div class="music-icon">♫</div>
+    <div class="music-info">
+      <strong>A song for your little world</strong>
+      <span>Listen while you explore</span>
+    </div>
+    <audio id="music" src="music.mp3" loop></audio>
+    <button id="musicBtn" class="music-btn">PLAY ♫</button>
+  </div>
+</section>
+
+<!-- SOUL JOURNAL -->
+<section class="soul-section" id="journal">
+  <div class="section-heading">
+    <span class="eyebrow">BEYOND THE SURFACE</span>
+    <h2>A little closer<br><em>to your soul.</em></h2>
+    <p>Seven questions. No right answers. Just you.</p>
+  </div>
+
+  <div class="journal-card" id="journalCard">
+    <div class="journal-top">
+      <span id="questionNumber">QUESTION 01 / 07</span>
+      <span>✦</span>
+    </div>
+    <div class="progress-track"><div id="progressFill"></div></div>
+    <span class="question-category" id="questionCategory"></span>
+    <h3 id="questionText"></h3>
+    <p class="question-hint">Take your time. There is no rush.</p>
+    <textarea id="journalAnswer" maxlength="1500" placeholder="Write whatever your heart feels..."></textarea>
+    <div class="journal-actions">
+      <button id="prevQuestion" class="secondary-btn">← BACK</button>
+      <button id="nextQuestion" class="primary-btn">NEXT QUESTION ↗</button>
+    </div>
+    <p class="privacy-note">Your answers are saved in this browser only.</p>
+  </div>
+
+  <div class="journal-complete hidden" id="journalComplete">
+    <span>✦</span>
+    <h3>Thank you for being you.</h3>
+    <p>Every answer is a little piece of your world.<br>Never stop getting to know yourself.</p>
+    <button id="restartJournal" class="secondary-btn">READ AGAIN ↺</button>
+  </div>
+</section>
+
+<!-- BESTIE QUIZ -->
+<section class="quiz-section" id="quiz">
+  <div class="section-heading">
+    <span class="eyebrow">ONLY FOR MY BESTU ♡</span>
+    <h2>A little game<br><em>for us.</em></h2>
+    <p>Let's see how well you know friendship.</p>
+  </div>
+
+  <div class="quiz-box" id="quizBox">
+    <div class="quiz-top">
+      <span id="quizCount">QUESTION 01 / 07</span>
+      <span>RIYA × ZEHRII</span>
+    </div>
+    <div class="progress-track"><div id="quizProgress"></div></div>
+    <h3 id="quizQuestion"></h3>
+    <div class="quiz-options" id="quizOptions"></div>
+    <button id="quizNext" class="primary-btn" disabled>NEXT QUESTION →</button>
+  </div>
+
+  <div class="quiz-result hidden" id="quizResult">
+    <span>✦</span>
+    <h2 id="resultTitle"></h2>
+    <p id="resultScore"></p>
+    <p id="resultMessage"></p>
+    <button id="quizRestart" class="secondary-btn">PLAY AGAIN ↺</button>
+  </div>
+</section>
+
+<!-- LETTER -->
+<section class="letter-section" id="letter">
+  <div class="section-heading">
+    <span class="eyebrow">A LITTLE PIECE OF MY HEART</span>
+    <h2>For my <em>Bestu.</em></h2>
+    <p>Some words are meant only for you.</p>
+  </div>
+
+  <button class="letter-open" id="openLetter">
+    <span>✉</span> OPEN YOUR LETTER ↗
+  </button>
+
+  <div class="letter-overlay hidden" id="letterOverlay">
+    <div class="letter-paper">
+      <button class="letter-close" id="closeLetter">×</button>
+      <span class="letter-small">A LETTER FROM RIYA</span>
+      <h2>Dear Zehrii,</h2>
+      <div class="letter-body">
+        <p>I don't know if I say it enough, but having you in my life is something I truly cherish.</p>
+        <p>Through random talks, silly moments, laughter and even quiet days, you have become someone very special to me.</p>
+        <p>You never have to pretend to be okay around me. You can be yourself — messy, happy, sad, quiet or crazy. I will always wish to see you smile and do well in life.</p>
+        <p>I hope life gives you all the beautiful things your heart has been wishing for. Never forget how precious you are.</p>
+        <p>No matter how busy life gets, I hope we always keep a little corner for our friendship.</p>
+      </div>
+      <div class="letter-sign">Forever your Besti,<br><span>Riya ♡</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- MEMORY WALL WITHOUT PHOTOS -->
+<section class="memory-wall" id="memories">
+  <div class="section-heading">
+    <span class="eyebrow">OUR LITTLE UNIVERSE</span>
+    <h2>Memories that<br><em>stay forever.</em></h2>
+    <p>Some moments deserve to be kept a little closer.</p>
+  </div>
+
+  <div class="memory-list">
+    <article class="memory-card">
+      <span class="memory-number">MEMORY 01</span>
+      <span class="memory-symbol">✦</span>
+      <h3>Our kind of madness.</h3>
+      <p>Some friendships make even ordinary days feel special.</p>
+    </article>
+
+    <article class="memory-card">
+      <span class="memory-number">MEMORY 02</span>
+      <span class="memory-symbol">♡</span>
+      <h3>Little things. Big feelings.</h3>
+      <p>It's never about the moment, it's about who was there.</p>
+    </article>
+
+    <article class="memory-card">
+      <span class="memory-number">MEMORY 03</span>
+      <span class="memory-symbol">∞</span>
+      <h3>Always my person.</h3>
+      <p>Different days, different stories, the same friendship.</p>
+    </article>
+  </div>
+
+  <div class="memory-ending">
+    ♡
+    <p>A thousand memories still waiting to be made.</p>
+    <small>RIYA × ZEHRII</small>
+  </div>
+</section>
+
+<!-- OUR PROMISE -->
+<section class="promise-section" id="ourPromise">
+  <div class="section-heading">
+    <span class="eyebrow">A PROMISE FROM MY HEART</span>
+    <h2>Some things I will<br><em>always promise.</em></h2>
+    <p>Not just words. Things I mean.</p>
+  </div>
+
+  <div class="promise-list">
+    <div class="promise-item"><span>01</span><p>I will always listen to you, even when you don't know what to say.</p></div>
+    <div class="promise-item"><span>02</span><p>You never have to pretend to be okay around me.</p></div>
+    <div class="promise-item"><span>03</span><p>On your worst days, I will remind you of your worth.</p></div>
+    <div class="promise-item"><span>04</span><p>No distance, silence or busy day can erase what you mean to me.</p></div>
+    <div class="promise-item"><span>05</span><p>I will always wish for your happiness, even in the smallest things.</p></div>
+  </div>
+
+  <div class="promise-footer">
+    <span>MADE WITH LOVE, ONLY FOR YOU</span>
+    <p>Riya <span>♡</span> Zehrii</p>
+  </div>
+</section>
+
+<!-- FINAL GOODBYE -->
+<section class="final-goodbye" id="goodbye">
+  <div class="goodbye-content">
+    <span class="eyebrow">ONE LAST THING, BESTU</span>
+    <div class="goodbye-heart">♡</div>
+    <h2>Some people are<br><em>simply unforgettable.</em></h2>
+    <p>And somehow, in this big world,<br>I got lucky enough to have you.</p>
+    <div class="goodbye-line"></div>
+    <h3>Thank you for being <span>you.</span></h3>
+    <div class="goodbye-names">RIYA <span>×</span> ZEHRII</div>
+    <small>THIS LITTLE CORNER OF THE INTERNET IS YOURS.</small>
+  </div>
+</section>
+
+<footer class="footer">
+  <span>MADE WITH LOVE BY RIYA ♡</span>
+  <a href="#home">BACK TO TOP ↑</a>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
