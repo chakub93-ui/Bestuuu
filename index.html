@@ -212,6 +212,18 @@
 
 <script src="script.js"></script>
 <div class="particles" id="particles"></div>
+<script>
+window.addEventListener("load", function () {
+  const intro = document.getElementById("introScreen");
+
+  if (intro) {
+    setTimeout(function () {
+      intro.classList.add("hide");
+      document.body.style.overflow = "auto";
+    }, 3000);
+  }
+});
+</script>
 </body>
 
   <div class="intro-screen" id="introScreen">
