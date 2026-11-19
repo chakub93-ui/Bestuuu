@@ -779,3 +779,92 @@ button {
     align-items: center;
   }
 }
+/* ===== ZEHRII CINEMATIC INTRO ===== */
+.intro-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #050507;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: opacity 1s ease, visibility 1s ease;
+}
+
+.intro-screen.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.intro-content {
+  animation: introRise 1.2s ease both;
+}
+
+.intro-content > span {
+  font-size: 9px;
+  letter-spacing: 4px;
+  color: #777;
+}
+
+.intro-content h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(40px, 12vw, 90px);
+  font-weight: 400;
+  letter-spacing: 4px;
+  margin: 25px 0;
+}
+
+.intro-content h1 em {
+  font-style: normal;
+  color: #888;
+}
+
+.intro-content p {
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: #666;
+}
+
+@keyframes introRise {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* SCROLL PROGRESS LINE */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  z-index: 9998;
+  background: #c9b8a8;
+}
+
+/* CUSTOM CURSOR */
+.custom-cursor {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #eee;
+  pointer-events: none;
+  z-index: 9997;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  transition: width 0.15s, height 0.15s;
+}
+
+@media (pointer: coarse) {
+  .custom-cursor {
+    display: none;
+  }
+}
