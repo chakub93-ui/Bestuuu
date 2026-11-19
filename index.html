@@ -1,296 +1,86 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#100817">
-  <meta name="description" content="A little universe made by Riya for Zehrii.">
-  <title>Riya × Zehrii | Our Little Universe</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#090708" />
+  <meta name="description" content="RIYA × NOOR — a little chaos, a lot of memories." />
+  <title>RIYA × NOOR | Our Little Universe</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-
-  <div class="ambient ambient-one"></div>
-  <div class="ambient ambient-two"></div>
-  <div class="stars" id="stars"></div>
-  <div class="hearts-layer" id="hearts"></div>
-
-  <header class="navbar">
-    <a href="#home" class="logo">R<span>♥</span>Z</a>
-    <nav>
-      <a href="#story">Story</a>
-      <a href="#mood">Mood</a>
-      <a href="#instagram">Instagram</a>
+  <div class="grain"></div>
+  <header class="topbar">
+    <a class="brand" href="#home">R<span>×</span>N</a>
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <nav class="nav">
+      <a href="#story">Our Story</a>
+      <a href="#moments">Moments</a>
+      <a href="#duo">The Duo</a>
+      <a class="nav-cta" href="#connect">Say Hello</a>
     </nav>
-    <button class="menu-button" id="menuButton" aria-label="Open menu">☰</button>
   </header>
 
   <main>
+    <section class="hero" id="home">
+      <div class="hero-glow"></div>
+      <p class="eyebrow">A LITTLE CHAOS. A LOT OF MEMORIES.</p>
+      <h1>RIYA <span>×</span><br class="mobile-break"> NOOR</h1>
+      <p class="hero-copy">Two different personalities. One unforgettable story.</p>
+      <a class="primary-btn" href="#story">Explore Our World <span>↘</span></a>
+      <div class="hero-bottom"><span>EST. IN A MOMENT</span><span>SCROLL TO EXPLORE ↓</span></div>
+    </section>
 
-    <!-- HERO -->
-    <section class="hero section" id="home">
-      <div class="hero-content reveal">
-        <div class="eyebrow">✦ A WORLD MADE BY RIYA ✦</div>
-        <div class="hero-tag">SPECIAL PERSON ALERT ❤️</div>
-
-        <h1>Hey,<br><span>Zehrii.</span></h1>
-
-        <p class="hero-description">
-          Someone made this little universe just to make you smile,
-          annoy you and remind you how special you are.
-        </p>
-
-        <div class="chat-card">
-          <div class="chat-header">
-            <div class="chat-avatar">R</div>
-            <div>
-              <strong>Riya</strong>
-              <small><span class="online-dot"></span> Probably annoying Zehrii</small>
-            </div>
-          </div>
-
-          <div class="chat-message riya">
-            Oye Zehriii 😂 sun na...
-          </div>
-          <div class="chat-message zehri">
-            Ab kya hua Riya? 😭
-          </div>
-          <div class="chat-message riya">
-            Kuch nahi, bas teri shanti kharab karni thi. 🤣❤️
-          </div>
-          <div class="typing">Riya is typing... <span>•••</span></div>
-        </div>
-
-        <a href="#story" class="primary-btn">Enter Our World <span>↗</span></a>
-        <p class="tiny-note">Warning: Too much Riya energy ahead 😂</p>
-      </div>
-
-      <div class="hero-decoration">
-        <div class="orbit orbit-one"></div>
-        <div class="orbit orbit-two"></div>
-        <div class="hero-heart">♥</div>
-        <div class="floating-label label-one">Made with love</div>
-        <div class="floating-label label-two">Bestu Forever</div>
+    <section class="intro section-pad" id="story">
+      <div class="section-kicker">01 / THE STORY</div>
+      <div class="intro-content">
+        <p class="eyebrow">NOT A PERFECT STORY</p>
+        <h2>Bas ek alag hi<br><em>vibe hai humari.</em></h2>
+        <p class="body-copy">Kabhi hasi-mazaak, kabhi faltu ki behas, aur kabhi bina wajah wali bakbak. Har din same nahi hota, but memories hamesha special ban jaati hain.</p>
+        <p class="signature">— Riya & Noor</p>
       </div>
     </section>
 
-    <!-- STORY -->
-    <section class="section" id="story">
-      <div class="section-heading reveal">
-        <span class="eyebrow">OUR LITTLE STORY</span>
-        <h2>Two souls.<br><span>One crazy bond.</span></h2>
-        <p>Not a perfect story. Just a beautiful collection of moments.</p>
+    <section class="moments section-pad" id="moments">
+      <div class="section-kicker">02 / LITTLE MOMENTS</div>
+      <div class="section-heading">
+        <p class="eyebrow">THE UNFILTERED EDITION</p>
+        <h2>Our kind of <em>madness.</em></h2>
       </div>
-
-      <div class="story-grid">
-        <article class="story-card reveal">
-          <span class="story-number">01</span>
-          <div class="story-emoji">👑</div>
-          <span class="mini-label">THE GIRL</span>
-          <h3>Riya</h3>
-          <p>Ek pagal si ladki jo kabhi cute banti hai, kabhi gussa aur kabhi apne bestu ka dimag kha jati hai. 😂</p>
-        </article>
-
-        <article class="story-card reveal">
-          <span class="story-number">02</span>
-          <div class="story-emoji">🖤</div>
-          <span class="mini-label">THE BOY</span>
-          <h3>Zehrii</h3>
-          <p>Ek bechara ladka jo abhi tak Riya ke moods ka syllabus samajhne ki koshish kar raha hai. 😭</p>
-        </article>
-
-        <article class="story-card reveal">
-          <span class="story-number">03</span>
-          <div class="story-emoji">💞</div>
-          <span class="mini-label">THE BOND</span>
-          <h3>Riya × Zehrii</h3>
-          <p>Thodi nok-jhok, thodi hasi, dher saari baatein aur ek special connection. ❤️</p>
-        </article>
+      <div class="moment-grid">
+        <article class="moment-card card-tall"><span class="card-no">01</span><div><p class="card-tag">THE DRAMA</p><h3>“Main naraz hoon.”</h3><p>Aur 2 minute baad khud hi hasi aa jaati hai. Kya hi karein.</p></div></article>
+        <article class="moment-card card-red"><span class="card-no">02</span><div><p class="card-tag">THE ROAST</p><h3>Zero filter.<br>Full entertainment.</h3><p>Ek dusre ki taang kheenchna toh daily routine hai.</p></div></article>
+        <article class="moment-card card-wide"><span class="card-no">03</span><div><p class="card-tag">THE MEMORIES</p><h3>Chhoti baatein.<br>Badi yaadein.</h3><p>Perfect hone ki zarurat nahi. Apna hona kaafi hai.</p></div></article>
       </div>
     </section>
 
-    <!-- MOOD -->
-    <section class="section" id="mood">
-      <div class="section-heading reveal">
-        <span class="eyebrow">RIYA'S MOOD CONTROL</span>
-        <h2>Guess my <span>mood.</span></h2>
-        <p>Zehrii, choose carefully. Galat jawab ka result dangerous ho sakta hai. 😂</p>
-      </div>
+    <section class="quote-band">
+      <span class="quote-mark">“</span>
+      <p>Humari story mein logic kam,<br><em>entertainment zyada hai.</em></p>
+      <span class="quote-credit">— THE RIYA × NOOR UNIVERSE</span>
+    </section>
 
-      <div class="mood-grid reveal">
-        <button class="mood-card" data-mood="angry">
-          <span>😒</span><strong>Angry Riya</strong><small>Ab baat mat karna!</small>
-        </button>
-        <button class="mood-card" data-mood="cute">
-          <span>🥺</span><strong>Cute Riya</strong><small>Achha sun na...</small>
-        </button>
-        <button class="mood-card" data-mood="funny">
-          <span>🤣</span><strong>Pagal Riya</strong><small>Hasi nahi rukegi!</small>
-        </button>
-        <button class="mood-card" data-mood="sad">
-          <span>🥹</span><strong>Emotional Riya</strong><small>Ek hug chahiye.</small>
-        </button>
-      </div>
-
-      <div class="response-box" id="moodResponse" aria-live="polite">
-        Riya ka mood select karo, bestu! 👀
+    <section class="duo section-pad" id="duo">
+      <div class="section-kicker">03 / THE MAIN CHARACTERS</div>
+      <div class="duo-grid">
+        <article class="person"><div class="person-symbol">R.</div><p class="eyebrow">THE GIRL WITH THE PLOT TWISTS</p><h3>Riya</h3><p>Thodi cute, thodi savage. Mood ka update kabhi bhi aa sakta hai.</p><a href="https://www.instagram.com/riiiiyyya0/" target="_blank" rel="noopener">Instagram ↗</a></article>
+        <article class="person person-noor"><div class="person-symbol">N.</div><p class="eyebrow">THE BOY WHO ADDS TO THE CHAOS</p><h3>Noor</h3><p>Calm rehne ki acting, lekin masti mein full participation.</p><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram — add username ↗</a></article>
       </div>
     </section>
 
-    <!-- CHAOS -->
-    <section class="section">
-      <div class="chaos-card reveal">
-        <span class="eyebrow">⚠ ZEHRII ALERT ⚠</span>
-        <h2>Ready for some <span>chaos?</span></h2>
-        <p>Ek button hai. Dabane ke baad Riya ki baatein sunni padengi. 😂</p>
-        <button class="primary-btn" id="chaosBtn">Don't Press Me 😈</button>
-        <div class="chaos-response" id="chaosResponse" aria-live="polite">
-          Zehrii ki shanti ab khatre mein hai...
-        </div>
-      </div>
+    <section class="connect" id="connect">
+      <p class="eyebrow">ONE CLICK AWAY</p>
+      <h2>Stay in the<br><em>loop.</em></h2>
+      <p>Want to say something? Send a hello.</p>
+      <a class="whatsapp-btn" href="https://wa.me/917029418944" target="_blank" rel="noopener">Chat on WhatsApp <span>↗</span></a>
+      <p class="privacy-note">Opens a WhatsApp chat with Noor. Your number is not displayed on this page.</p>
     </section>
-
-    <!-- QUIZ -->
-    <section class="section" id="quiz">
-      <div class="section-heading reveal">
-        <span class="eyebrow">THE BESTU EXAMINATION</span>
-        <h2>How well do you <span>know Riya?</span></h2>
-        <p>Let's see if Zehrii is really a good bestu. 😂</p>
-      </div>
-
-      <div class="quiz-card reveal">
-        <div class="quiz-top">
-          <span id="quizCount">QUESTION 01 / 04</span>
-          <span id="quizScore">SCORE: 0</span>
-        </div>
-        <div class="progress-track"><div id="progressBar"></div></div>
-        <h3 id="question">Riya gussa ho jaye toh kya karna chahiye?</h3>
-        <div id="answers" class="answers"></div>
-        <p id="quizFeedback" aria-live="polite"></p>
-        <button id="nextQuestion" class="primary-btn" hidden>Next Question →</button>
-      </div>
-    </section>
-
-    <!-- MEMORIES -->
-    <section class="section" id="memories">
-      <div class="section-heading reveal">
-        <span class="eyebrow">LITTLE MEMORIES</span>
-        <h2>Our tiny <span>universe.</span></h2>
-      </div>
-
-      <div class="memory-grid">
-        <article class="memory-card reveal">
-          <div>💌</div>
-          <h3>Random Talks</h3>
-          <p>Jab baat karte karte time ka pata hi nahi chalta.</p>
-        </article>
-        <article class="memory-card reveal">
-          <div>😂</div>
-          <h3>Unlimited Drama</h3>
-          <p>Riya ka drama aur Zehrii ki confusion. Best combination!</p>
-        </article>
-        <article class="memory-card reveal">
-          <div>❤️</div>
-          <h3>Special Bond</h3>
-          <p>Kuch connections ko explain nahi, bas feel kiya jata hai.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- INSTAGRAM -->
-    <section class="section" id="instagram">
-      <div class="section-heading reveal">
-        <span class="eyebrow">FIND US ON INSTAGRAM</span>
-        <h2>Meet the <span>duo.</span></h2>
-        <p>Two different profiles. One special connection. ❤️</p>
-      </div>
-
-      <div class="instagram-grid">
-        <article class="instagram-card riya-insta reveal">
-          <div class="insta-avatar">👑</div>
-          <span class="mini-label">THE GIRL · QUEEN</span>
-          <h3>Riya</h3>
-          <p class="insta-username">@riiiiyyya0</p>
-          <p class="insta-bio">Thodi cute, thodi crazy aur Zehrii ki permanent headache. 😂💕</p>
-          <a href="https://www.instagram.com/riiiiyyya0/" target="_blank" rel="noopener noreferrer" class="insta-button">
-            ◎ Follow Riya
-          </a>
-        </article>
-
-        <article class="instagram-card zehri-insta reveal">
-          <div class="insta-avatar">🖤</div>
-          <span class="mini-label">THE BOY · BESTU</span>
-          <h3>Zehrii</h3>
-          <p class="insta-username">@zehri_vilen</p>
-          <p class="insta-bio">Bechara ladka jo Riya ke drama se kabhi bach nahi sakta. 🤣</p>
-          <a href="https://www.instagram.com/zehri_vilen/" target="_blank" rel="noopener noreferrer" class="insta-button">
-            ◎ Follow Zehrii
-          </a>
-        </article>
-      </div>
-      <p class="insta-footer reveal">✦ Two Profiles · One Beautiful Connection ✦</p>
-    </section>
-
-    <!-- LETTER -->
-    <section class="section">
-      <div class="letter-card reveal">
-        <span class="eyebrow">A SECRET MESSAGE</span>
-        <h2>Something for <span>you.</span></h2>
-        <p>Ek chhota sa message hai tumhare liye, Zehrii...</p>
-        <button class="primary-btn" id="openLetter">Open My Letter 💌</button>
-      </div>
-    </section>
-
-    <!-- PROMISE -->
-    <section class="section promise">
-      <div class="promise-content reveal">
-        <div class="big-heart">♥</div>
-        <h2>Some bonds are<br><span>worth keeping.</span></h2>
-        <p>Chahe kitni bhi nok-jhok ho, hasi ho ya thodi narazgi... apni dosti ki value hamesha special rahegi.</p>
-        <div class="signature">— Your Riya ❤️</div>
-      </div>
-    </section>
-
-    <!-- FINAL -->
-    <section class="section final-section">
-      <div class="final-card reveal">
-        <span class="eyebrow">END OF THIS LITTLE WORLD</span>
-        <h1>Stay silly,<br><span>Zehrii.</span></h1>
-        <p>Aur haan... zyada attitude mat dikhana, warna Riya phir se shuru ho jayegi. 🤣</p>
-        <button class="primary-btn" id="finalBtn">One Last Surprise ❤️</button>
-        <div id="finalMessage"></div>
-      </div>
-    </section>
-
   </main>
 
-  <footer>
-    <div class="footer-logo">R <span>♥</span> Z</div>
-    <p>Made by Riya, for her favorite soul — Zehrii.</p>
-    <small>© 2026 · A little world of friendship.</small>
-    <a href="#home" class="back-top">Back to top ↑</a>
-  </footer>
-
-  <!-- LETTER MODAL -->
-  <div class="modal" id="letterModal" role="dialog" aria-modal="true" aria-labelledby="letterTitle">
-    <div class="modal-content">
-      <button class="close-modal" id="closeLetter" aria-label="Close">×</button>
-      <span class="eyebrow">FROM RIYA WITH LOVE</span>
-      <h2 id="letterTitle">Oye mere Zehrii! 🥹</h2>
-      <p>Pata hai tu kitna pareshan karta hai? 😂 Kabhi kabhi toh tera dimag samajhne mein hi meri puri battery khatam ho jati hai.</p>
-      <p>Lekin sach bolu toh tu meri life ka ek special part hai. Hamesha aise hi rehna, apni pagalpan wali harkatein kabhi mat chhodna.</p>
-      <p>Aur haan, Riya ko bhoolne ki galti mat karna... warna phir dekh lena! 😤❤️</p>
-      <div class="signature">Your Besti, Riya 💗</div>
-    </div>
-  </div>
-
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
+  <footer><a class="brand" href="#home">R<span>×</span>N</a><p>MADE WITH A LITTLE DRAMA & A LOT OF HEART.</p><span>© 2026 RIYA × NOOR</span></footer>
+  <script src="script.js"></script>
 </body>
 </html>
