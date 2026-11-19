@@ -1,371 +1,377 @@
 
-/* ==========================================
-   ZEHRII — A LITTLE WORLD OF RIYA
-   All interactions in one clean script
-========================================== */
+// =====================================
+// ZEHRII × RIYA - INTERACTIVE WORLD
+// Made with love by Riya ❤️
+// =====================================
 
-// Loader
-window.addEventListener("load", () => {
-  const loader = document.getElementById("loader");
-  setTimeout(() => loader?.classList.add("hide"), 500);
-});
+const $ = (selector) => document.querySelector(selector);
 
-// Intro
-const intro = document.getElementById("intro");
-const enterBtn = document.getElementById("enterBtn");
+// ---------- STAR BACKGROUND ----------
 
-function enterWebsite() {
-  intro?.classList.add("hide");
-  document.body.style.overflow = "";
-}
+const stars = $("#stars");
 
-enterBtn?.addEventListener("click", enterWebsite);
+if (stars) {
+  for (let i = 0; i < 65; i++) {
+    const star = document.createElement("span");
+    star.className = "star";
 
-// Auto opening intro
-setTimeout(() => {
-  enterWebsite();
-}, 9000);
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+    star.style.animationDelay = Math.random() * 4 + "s";
 
-// Progress line
-const progress = document.getElementById("progress");
-
-function updateProgress() {
-  const total = document.documentElement.scrollHeight - window.innerHeight;
-  const value = total > 0 ? (window.scrollY / total) * 100 : 0;
-  if (progress) progress.style.width = value + "%";
-}
-
-window.addEventListener("scroll", updateProgress, { passive: true });
-updateProgress();
-
-// Cursor glow
-const glow = document.getElementById("cursorGlow");
-
-window.addEventListener("mousemove", (e) => {
-  if (!glow || window.matchMedia("(pointer: coarse)").matches) return;
-  glow.style.left = e.clientX + "px";
-  glow.style.top = e.clientY + "px";
-});
-
-// Particles
-const particleContainer = document.getElementById("particles");
-
-if (particleContainer) {
-  for (let i = 0; i < 30; i++) {
-    const particle = document.createElement("span");
-    particle.className = "particle";
-    particle.style.left = Math.random() * 100 + "%";
-    particle.style.animationDuration = (9 + Math.random() * 15) + "s";
-    particle.style.animationDelay = (Math.random() * 12) + "s";
-    particleContainer.appendChild(particle);
+    stars.appendChild(star);
   }
 }
 
-// Reveal animations
-const revealItems = document.querySelectorAll(".reveal");
+// ---------- FLOATING HEARTS ----------
 
-if ("IntersectionObserver" in window) {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show");
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
+const hearts = $("#hearts");
 
-  revealItems.forEach(el => observer.observe(el));
-} else {
-  revealItems.forEach(el => el.classList.add("show"));
+function createHeart() {
+  if (!hearts) return;
+
+  const heart = document.createElement("span");
+  heart.className = "floating-particle";
+  heart.textContent = ["♥", "♡", "✦"][Math.floor(Math.random() * 3)];
+
+  heart.style.left = Math.random() * 100 + "%";
+  heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+  heart.style.fontSize = (12 + Math.random() * 18) + "px";
+
+  hearts.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 10000);
 }
 
-// Chaos button — random Riya messages
-const chaosBtn = document.getElementById("chaosBtn");
-const chaosMessage = document.getElementById("chaosMessage");
+setInterval(createHeart, 900);
 
-const chaosLines = [
-  "Tujhe tolerate karna meri hidden talent hai. 😂♡",
-  "Tu irritating hai... par meri favourite irritating hai.",
-  "Tere jaise नमूने ko friendship mein rakhna bravery award deserve karta hai. 🏆",
-  "Jab tu nahi hoti, phone bhi boring lagta hai. Ab khush? 🙄❤️",
-  "Tu meri bestie hai, isliye tera drama lifetime free hai.",
-  "Zyada emotional mat ho, screenshot leke blackmail mat karna. 😂",
-  "Tere liye itna kiya... ab treat toh banti hai madam. 🍟",
-  "Dosti mein sorry kam, bakwaas zyada. That's our policy. 🤝"
+// ---------- REVEAL ANIMATIONS ----------
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll(".reveal").forEach(element => {
+  revealObserver.observe(element);
+});
+
+// ---------- TOAST MESSAGE ----------
+
+function showToast(message) {
+  const toast = $("#toast");
+  if (!toast) return;
+
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  clearTimeout(window.toastTimer);
+
+  window.toastTimer = setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2800);
+}
+
+// ---------- RIYA MOOD CONTROL ----------
+
+const moods = {
+  angry: [
+    "Zehrii abhi mujhse baat mat karna! 😒",
+    "Mujhe manana padega, samjhe? 😤",
+    "Tumhari toh aaj khair nahi hai! 😂"
+  ],
+
+  cute: [
+    "Oyee bestu, ek hug toh banta hai! 🥺❤️",
+    "Tu na bohot achha hai yaar!",
+    "Chal ab thoda sweet ban ja! 💗"
+  ],
+
+  funny: [
+    "HAHAHA Zehrii tera dimag kahan hai? 🤣",
+    "Pagal hai tu, ek number wala!",
+    "Riya ki comedy ka koi jawab nahi! 😂"
+  ],
+
+  sad: [
+    "Aaj bas thoda sa pyaar aur care chahiye. 🥹",
+    "Ek virtual hug bhej na bestu. ❤️",
+    "Sab theek ho jayega, smile kar! 🫂"
+  ]
+};
+
+document.querySelectorAll(".mood-card").forEach(button => {
+  button.addEventListener("click", () => {
+    const mood = button.dataset.mood;
+    const responses = moods[mood];
+
+    if (!responses) return;
+
+    const response = $("#moodResponse");
+
+    response.innerHTML = `
+      <p>${responses[Math.floor(Math.random() * responses.length)]}</p>
+      <small>— Riya's mood report ❤️</small>
+    `;
+
+    document.querySelectorAll(".mood-card").forEach(card => {
+      card.classList.remove("selected");
+    });
+
+    button.classList.add("selected");
+
+    showToast("Riya ka mood update ho gaya! 😂");
+  });
+});
+
+// ---------- CHAOS BUTTON ----------
+
+const chaosMessages = [
+  "RIYA: Oye Zehrii! Mujhe ignore kar raha hai? 😭",
+  "RIYA: Achha ji, ab attitude aane laga? 😒",
+  "RIYA: Main jaa rahi hoon... 2 minute mein wapas aaungi! 😂",
+  "RIYA: Teri khair nahi bestu! 🤣",
+  "RIYA: Abhi toh trailer tha, picture baaki hai! 😈"
 ];
 
-chaosBtn?.addEventListener("click", () => {
-  const line = chaosLines[Math.floor(Math.random() * chaosLines.length)];
-  chaosMessage.textContent = line;
-  chaosMessage.classList.add("show");
-  spawnHearts(8);
+let chaosCount = 0;
+
+$("#chaosBtn")?.addEventListener("click", () => {
+  const response = $("#chaosResponse");
+
+  response.textContent =
+    chaosMessages[chaosCount % chaosMessages.length];
+
+  response.classList.remove("chaos-pop");
+  void response.offsetWidth;
+  response.classList.add("chaos-pop");
+
+  chaosCount++;
+
+  if (chaosCount % 3 === 0) {
+    showToast("Zehrii is officially in trouble! 😂");
+  }
 });
 
-// Hearts animation
-function spawnHearts(amount = 6) {
-  const symbols = ["♡", "♥", "✦", "✧"];
-  for (let i = 0; i < amount; i++) {
-    const heart = document.createElement("span");
-    heart.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-    heart.style.cssText = `
-      position:fixed;
-      left:${25 + Math.random() * 50}%;
-      bottom:15%;
-      z-index:999;
-      color:#dba9c4;
-      pointer-events:none;
-      font-size:${14 + Math.random() * 24}px;
-      animation:heartFly ${2 + Math.random() * 2}s ease-out forwards;
-    `;
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 4000);
-  }
-}
+// ---------- BESTU QUIZ ----------
 
-const heartStyle = document.createElement("style");
-heartStyle.textContent = `
-@keyframes heartFly {
-  0% { opacity:0; transform:translateY(0) rotate(0deg) scale(.6); }
-  20% { opacity:1; }
-  100% { opacity:0; transform:translateY(-75vh) rotate(25deg) scale(1.4); }
-}`;
-document.head.appendChild(heartStyle);
-
-// Quiz
 const questions = [
   {
-    question: "Who is the most dramatic person in this friendship?",
-    options: ["Riya", "Zehrii", "Both of us", "The phone witnessing our chats"],
-    answer: 2,
-    feedback: "Correct. Dono milke ek Netflix series ho. 😂"
+    question: "Riya gussa ho jaye toh kya karna chahiye?",
+    answers: [
+      "Ignore kar dena 😂",
+      "Sorry bolke manana 🥺",
+      "Ulta ladna 😭"
+    ],
+    correct: 1,
+    success: "Wahhh! Bestu ko samajh aa gaya! ❤️",
+    fail: "Galat jawab! Ab Riya naraz ho jayegi! 😭"
   },
   {
-    question: "What is our friendship's official language?",
-    options: ["English", "Silent treatment", "Bakwaas & laughter", "Formal emails"],
-    answer: 2,
-    feedback: "Bakwaas is our love language. ❤️"
+    question: "Riya ka favourite kaam kya hai?",
+    answers: [
+      "Zehrii ko pareshan karna 🤣",
+      "Sirf sona 😴",
+      "Zehrii ko ignore karna 😒"
+    ],
+    correct: 0,
+    success: "Bilkul sahi! Riya ki asli identity! 😂",
+    fail: "Itna bhi nahi jaanta apni Besti ko? 😭"
   },
   {
-    question: "After a fight, what usually happens?",
-    options: ["We disappear forever", "We eventually talk again", "We file a legal case", "We become strangers"],
-    answer: 1,
-    feedback: "Gussa apni jagah, friendship apni jagah. 🫶"
+    question: "Zehrii ko Riya se kya kehna chahiye?",
+    answers: [
+      "Jaao yahan se!",
+      "Tu meri besti hai ❤️",
+      "Mujhe nahi pata!"
+    ],
+    correct: 1,
+    success: "Awww! Riya blush kar rahi hai! 🥹",
+    fail: "Zehrii! Dobara soch ke jawab de! 😤"
   },
   {
-    question: "Zehrii is actually...",
-    options: ["An angel 24/7", "A little chaos", "A robot", "A boring person"],
-    answer: 1,
-    feedback: "A little chaos, a lot of love. 😂"
-  },
-  {
-    question: "What's the one thing Riya wants Zehrii to remember?",
-    options: ["Never reply", "Always act cool", "You matter, even on bad days", "Stop eating"],
-    answer: 2,
-    feedback: "Exactly. Tu important hai. Hamesha. ♡"
+    question: "Riya aur Zehrii ki jodi kaisi hai?",
+    answers: [
+      "Full comedy show 🤣",
+      "Unlimited drama 😂",
+      "Dono hi sahi hain! ❤️"
+    ],
+    correct: 2,
+    success: "Perfect answer! You passed the Bestu test! 🏆",
+    fail: "Dono hi sahi hain bhai! 😂"
   }
 ];
 
-let quizIndex = 0;
-let quizScore = 0;
-let quizAnswered = false;
+let currentQuestion = 0;
+let score = 0;
+let answered = false;
 
-const quizCount = document.getElementById("quizCount");
-const quizQuestion = document.getElementById("quizQuestion");
-const quizOptions = document.getElementById("quizOptions");
-const quizFeedback = document.getElementById("quizFeedback");
-const quizNext = document.getElementById("quizNext");
-const quizProgress = document.getElementById("quizProgress");
-const quizResult = document.getElementById("quizResult");
+function loadQuestion() {
+  const q = questions[currentQuestion];
 
-function renderQuiz() {
-  if (quizIndex >= questions.length) {
-    quizQuestion.style.display = "none";
-    quizOptions.style.display = "none";
-    quizFeedback.style.display = "none";
-    quizNext.style.display = "none";
-    quizCount.textContent = "FRIENDSHIP RESULT";
-    quizProgress.style.width = "100%";
-    quizResult.style.display = "block";
+  $("#question").textContent = q.question;
+  $("#quizCount").textContent =
+    `QUESTION ${String(currentQuestion + 1).padStart(2, "0")} / 04`;
 
-    const messages = [
-      "0/5? Zehrii, tu Riya ko jaanti hai ya bas naam suna hai? 😂",
-      "Thoda aur practice kar, bestie syllabus abhi baaki hai.",
-      "Half marks! Friendship ka tuition free mein milega. 😂",
-      "Almost perfect! Teri bestie knowledge strong hai. ❤️",
-      "5/5! Certified Riya expert. Ab attitude kam kar. 😂♡"
-    ];
+  $("#progressBar").style.width =
+    ((currentQuestion + 1) / questions.length * 100) + "%";
 
-    quizResult.innerHTML =
-      `YOU SCORED ${quizScore} / ${questions.length}<br><br>${messages[quizScore] || messages[4]}`;
-    return;
-  }
+  $("#quizFeedback").textContent = "";
+  $("#nextQuestion").hidden = true;
+  $("#answers").innerHTML = "";
 
-  const q = questions[quizIndex];
-  quizAnswered = false;
-  quizCount.textContent = `QUESTION ${String(quizIndex + 1).padStart(2, "0")} / ${questions.length}`;
-  quizQuestion.textContent = q.question;
-  quizOptions.innerHTML = "";
-  quizFeedback.textContent = "";
-  quizNext.disabled = true;
-  quizNext.textContent = quizIndex === questions.length - 1 ? "SEE MY RESULT →" : "NEXT QUESTION →";
-  quizProgress.style.width = ((quizIndex / questions.length) * 100) + "%";
+  answered = false;
 
-  q.options.forEach((option, index) => {
+  q.answers.forEach((answer, index) => {
     const button = document.createElement("button");
-    button.className = "quiz-option";
-    button.textContent = option;
+    button.className = "answer";
+    button.textContent = answer;
 
     button.addEventListener("click", () => {
-      if (quizAnswered) return;
-      quizAnswered = true;
+      if (answered) return;
 
-      const allOptions = quizOptions.querySelectorAll(".quiz-option");
-      allOptions.forEach(b => b.disabled = true);
+      answered = true;
 
-      if (index === q.answer) {
+      const correct = index === q.correct;
+
+      if (correct) {
+        score++;
         button.classList.add("correct");
-        quizScore++;
-        quizFeedback.textContent = "♡ " + q.feedback;
+        $("#quizFeedback").textContent = q.success;
       } else {
         button.classList.add("wrong");
-        allOptions[q.answer].classList.add("correct");
-        quizFeedback.textContent = "Wrong answer, bestie. " + q.feedback;
+        $("#quizFeedback").textContent = q.fail;
       }
 
-      quizNext.disabled = false;
+      $("#answers").querySelectorAll("button").forEach((item, i) => {
+        item.disabled = true;
+
+        if (i === q.correct) {
+          item.classList.add("correct");
+        }
+      });
+
+      $("#nextQuestion").hidden = false;
+      $("#nextQuestion").textContent =
+        currentQuestion === questions.length - 1
+          ? "See My Result ❤️"
+          : "Next Question →";
     });
 
-    quizOptions.appendChild(button);
+    $("#answers").appendChild(button);
   });
 }
 
-quizNext?.addEventListener("click", () => {
-  if (!quizAnswered) return;
-  quizIndex++;
-  renderQuiz();
-});
+$("#nextQuestion")?.addEventListener("click", () => {
+  if (currentQuestion < questions.length - 1) {
+    currentQuestion++;
+    loadQuestion();
+  } else {
+    $("#question").textContent = "Your Bestu Score! 🏆";
+    $("#answers").innerHTML = "";
+    $("#quizFeedback").textContent =
+      `${score}/4 correct! ${score === 4
+        ? "Riya is proud of you! ❤️"
+        : "Abhi aur practice karni padegi Zehrii! 😂"}`;
 
-renderQuiz();
+    $("#nextQuestion").textContent = "Play Again ↻";
+    $("#nextQuestion").hidden = false;
 
-// Journal
-const journalInput = document.getElementById("journalInput");
-const saveJournal = document.getElementById("saveJournal");
-const savedMsg = document.getElementById("savedMsg");
-
-if (journalInput) {
-  journalInput.value = localStorage.getItem("zehriiJournal") || "";
-}
-
-saveJournal?.addEventListener("click", () => {
-  const text = journalInput.value.trim();
-  if (!text) {
-    showToast("Pehle kuch toh likh, madam. 😂");
-    return;
+    currentQuestion = -1;
+    $("#progressBar").style.width = "100%";
   }
 
-  localStorage.setItem("zehriiJournal", text);
-  savedMsg.textContent = "Your little memory is saved on this device. ♡";
-  showToast("Memory saved. Don't delete it, okay? ♡");
+  if (currentQuestion === -1) {
+    return;
+  }
 });
 
-// Letter Modal
-const letterModal = document.getElementById("letterModal");
-const letterOpen = document.getElementById("letterOpen");
-const modalClose = document.getElementById("modalClose");
+$("#nextQuestion")?.addEventListener("click", () => {
+  if (currentQuestion === -1) {
+    currentQuestion = 0;
+    score = 0;
+    loadQuestion();
+  }
+});
 
-letterOpen?.addEventListener("click", () => {
-  letterModal.classList.add("show");
+loadQuestion();
+
+// ---------- LOVE LETTER ----------
+
+const modal = $("#letterModal");
+
+$("#openLetter")?.addEventListener("click", () => {
+  modal?.classList.add("active");
   document.body.style.overflow = "hidden";
 });
 
 function closeLetter() {
-  letterModal.classList.remove("show");
+  modal?.classList.remove("active");
   document.body.style.overflow = "";
 }
 
-modalClose?.addEventListener("click", closeLetter);
+$("#closeLetter")?.addEventListener("click", closeLetter);
 
-letterModal?.addEventListener("click", (e) => {
-  if (e.target === letterModal) closeLetter();
+modal?.addEventListener("click", event => {
+  if (event.target === modal) closeLetter();
 });
 
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") closeLetter();
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") closeLetter();
 });
 
-// Final message
-const finalBtn = document.getElementById("finalBtn");
-const finalMessage = document.getElementById("finalMessage");
+// ---------- FINAL SURPRISE ----------
 
-finalBtn?.addEventListener("click", () => {
-  finalMessage.classList.toggle("show");
-  finalBtn.textContent = finalMessage.classList.contains("show")
-    ? "CLOSE MY MESSAGE ↑"
-    : "ONE LAST THING ↗";
+$("#finalBtn")?.addEventListener("click", () => {
+  const message = $("#finalMessage");
 
-  if (finalMessage.classList.contains("show")) spawnHearts(12);
+  message.innerHTML = `
+    <div class="final-surprise">
+      <div class="surprise-heart">❤️</div>
+      <h3>Oye Zehriii!</h3>
+      <p>
+        Tu chahe jitna bhi pareshan kare,
+        Riya ki list mein tu special hi rahega! 😂
+      </p>
+      <h2>Bestu Forever! 🫶</h2>
+      <p>— From your Riya 💗</p>
+    </div>
+  `;
+
+  $("#finalBtn").textContent = "Surprise Unlocked ❤️";
+
+  showToast("Special surprise unlocked! 🥹");
+
+  for (let i = 0; i < 20; i++) {
+    setTimeout(createHeart, i * 100);
+  }
 });
 
-// Toast
-const toast = document.getElementById("toast");
-let toastTimer;
+// ---------- MUSIC BUTTON ----------
 
-function showToast(message) {
-  toast.textContent = message;
-  toast.classList.add("show");
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => toast.classList.remove("show"), 2600);
-}
+$("#musicBtn")?.addEventListener("click", () => {
+  showToast("Music feature ke liye audio file add karni hogi! 🎵");
+});
 
-// Ambient music — generated sound, no music file required
-let audioContext;
-let musicPlaying = false;
-let oscillators = [];
-let gainNode;
+// ---------- SMOOTH SCROLL ----------
 
-const musicBtn = document.getElementById("musicBtn");
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener("click", event => {
+    const target = document.querySelector(link.getAttribute("href"));
 
-musicBtn?.addEventListener("click", async () => {
-  if (!audioContext) {
-    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-    if (!AudioContextClass) {
-      showToast("Ambient sound is not supported in this browser.");
-      return;
+    if (target) {
+      event.preventDefault();
+
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
     }
-    audioContext = new AudioContext();
-    gainNode = audioContext.createGain();
-    gainNode.gain.value = 0.035;
-    gainNode.connect(audioContext.destination);
-  }
-
-  if (audioContext.state === "suspended") {
-    await audioContext.resume();
-  }
-
-  if (!musicPlaying) {
-    const notes = [196, 246.94, 293.66];
-    notes.forEach((frequency, i) => {
-      const oscillator = audioContext.createOscillator();
-      const volume = audioContext.createGain();
-      oscillator.type = "sine";
-      oscillator.frequency.value = frequency;
-      volume.gain.value = 0.13 / (i + 1);
-      oscillator.connect(volume);
-      volume.connect(gainNode);
-      oscillator.start();
-      oscillators.push({ oscillator, volume });
-    });
-
-    musicPlaying = true;
-    musicBtn.innerHTML = "♫ <span>Sound ON</span>";
-    showToast("Little ambient vibes are on. ♡");
-  } else {
-    oscillators.forEach(({ oscillator }) => oscillator.stop());
-    oscillators = [];
-    musicPlaying = false;
-    musicBtn.innerHTML = "♫ <span>Sound OFF</span>";
-    showToast("Sound off. Silence mode. 😂");
-  }
+  });
 });
 
-console.log("ZEHRII — all systems ready ♡");
+console.log("❤️ Riya × Zehrii world loaded successfully!");
