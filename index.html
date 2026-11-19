@@ -454,6 +454,309 @@
 
       <p class="signature-line">— Always a little Riya × Noor ❤️</p>
     </section>
+    
+<!-- SECRET LETTER EXPERIENCE -->
+<style>
+#secret-letter {
+  padding: 110px 20px 130px;
+  background:
+    radial-gradient(ellipse at center, rgba(111,12,44,.25), transparent 65%),
+    #090708;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.letter-kicker {
+  color: #e18aa7;
+  font-size: 10px;
+  letter-spacing: 4px;
+}
+
+.letter-heading {
+  font: 500 clamp(38px,7vw,70px) 'Playfair Display',serif;
+  margin: 22px 0 15px;
+}
+
+.letter-heading em { color: #bd315d; }
+
+.letter-description {
+  color: #a99a9e;
+  font-size: 12px;
+  line-height: 2;
+}
+
+.envelope-stage {
+  position: relative;
+  width: min(340px, 85vw);
+  height: 235px;
+  margin: 100px auto 25px;
+  perspective: 1000px;
+}
+
+.envelope {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 190px;
+  background: linear-gradient(145deg,#8d173d,#4c0b25);
+  border-radius: 5px;
+  box-shadow: 0 25px 65px rgba(0,0,0,.65);
+  z-index: 2;
+}
+
+.envelope::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg,transparent 49%,#b52a54 50%);
+  clip-path: polygon(0 0,50% 55%,100% 0,100% 100%,0 100%);
+  border-radius: 5px;
+}
+
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 105px;
+  background: #a51d48;
+  clip-path: polygon(0 0,100% 0,50% 100%);
+  transform-origin: top;
+  transition: transform 1s ease;
+  z-index: 5;
+  filter: drop-shadow(0 5px 5px rgba(0,0,0,.2));
+}
+
+.envelope-seal {
+  position: absolute;
+  left: 50%;
+  top: 85px;
+  transform: translateX(-50%);
+  z-index: 7;
+  width: 53px;
+  height: 53px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #ffe4e9;
+  font-size: 22px;
+  background: radial-gradient(circle at 35% 30%,#ef7194,#790e34 75%);
+  box-shadow: 0 0 25px rgba(255,50,110,.55);
+  transition: .5s;
+}
+
+.letter-paper {
+  position: absolute;
+  z-index: 3;
+  left: 5%;
+  bottom: 20px;
+  width: 90%;
+  min-height: 360px;
+  padding: 28px 23px;
+  text-align: left;
+  color: #351b23;
+  background: linear-gradient(135deg,#fff8eb,#f0dfc8);
+  box-shadow: 0 12px 40px rgba(0,0,0,.4);
+  border-radius: 3px;
+  transform: translateY(0) scale(.92);
+  opacity: 0;
+  transition: transform 1.3s cubic-bezier(.2,.8,.2,1),opacity .8s;
+  pointer-events: none;
+}
+
+.letter-paper h3 {
+  font: italic 25px 'Playfair Display',serif;
+  color: #8e173d;
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.letter-paper p {
+  font: 13px/1.9 'DM Sans',sans-serif;
+  white-space: pre-wrap;
+}
+
+.letter-paper .letter-signature {
+  font: italic 20px 'Playfair Display',serif;
+  color: #8e173d;
+  text-align: right;
+  margin-top: 22px;
+}
+
+#secret-letter.opened .envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+#secret-letter.opened .envelope-seal {
+  opacity: 0;
+  transform: translateX(-50%) scale(1.7);
+}
+
+#secret-letter.opened .letter-paper {
+  opacity: 1;
+  transform: translateY(-190px) scale(1);
+  pointer-events: auto;
+  z-index: 8;
+  transition-delay: .5s;
+}
+
+#secret-letter.opened .envelope {
+  transition: 1s;
+}
+
+.letter-action {
+  margin-top: 25px;
+  padding: 15px 28px;
+  border: 1px solid #bd315d;
+  border-radius: 40px;
+  color: white;
+  background: #72132f;
+  font-size: 11px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 0 25px rgba(189,49,93,.2);
+  transition: .3s;
+}
+
+.letter-action:hover {
+  background: #b52250;
+  transform: translateY(-3px);
+  box-shadow: 0 0 35px rgba(189,49,93,.5);
+}
+
+.letter-particle {
+  position: absolute;
+  pointer-events: none;
+  z-index: 20;
+  animation: letterFloat 3.5s ease-out forwards;
+}
+
+@keyframes letterFloat {
+  from { opacity: 1; transform: translateY(0) rotate(0); }
+  to { opacity: 0; transform: translateY(-230px) rotate(40deg); }
+}
+
+@media(max-width:500px) {
+  .letter-paper { padding: 22px 17px; }
+  .letter-paper p { font-size: 11px; }
+  #secret-letter.opened .letter-paper {
+    transform: translateY(-185px) scale(.96);
+  }
+}
+</style>
+
+<section id="secret-letter">
+  <p class="letter-kicker">A MESSAGE FROM RIYA</p>
+
+  <h2 class="letter-heading">
+    One letter.<br><em>Many feelings.</em>
+  </h2>
+
+  <p class="letter-description">
+    Noor, ye letter sirf tumhare liye hai... ❤️<br>
+    Isse kholne se pehle ek baar dil se padhna.
+  </p>
+
+  <div class="envelope-stage">
+    <div class="letter-paper">
+      <h3>Dear Noor... ❤️</h3>
+      <p id="letter-typed-text"></p>
+      <p class="letter-signature" id="letter-signature"></p>
+    </div>
+
+    <div class="envelope">
+      <div class="envelope-flap"></div>
+      <div class="envelope-seal">❤</div>
+    </div>
+  </div>
+
+  <button class="letter-action" id="open-letter">
+    OPEN MY HEART ✉
+  </button>
+
+  <p class="letter-description" style="margin-top:18px">
+    Some feelings are too special to say out loud.
+  </p>
+</section>
+
+<script>
+(() => {
+  const section = document.getElementById("secret-letter");
+  const button = document.getElementById("open-letter");
+  const typed = document.getElementById("letter-typed-text");
+  const signature = document.getElementById("letter-signature");
+
+  const letter = `Pata hai Noor...
+
+Kabhi kabhi sochti hoon ki kuch log itne special kaise ban jaate hain.
+
+Tumse hasi-mazaak karna, tumhe pareshan karna, tumse ladna aur phir khud hi has dena... ye sab chhoti chhoti baatein mere liye bahut special hain.
+
+Main har baar apni feelings words mein nahi bata paati. Kabhi gussa dikhta hai, kabhi attitude, aur kabhi meri faltu ki bakbak...
+
+Lekin us sab ke peeche ek sach hai.
+
+Tum mere liye ek special insaan ho.
+
+Agar kabhi main chup ho jaun, toh ye mat samajhna ki mujhe farq nahi padta.
+
+Kuch rishte perfect nahi hote, par dil ke bahut kareeb hote hain.
+
+Bas itna chahti hoon ki hamari ye hasi, ye masti aur ye yaadein hamesha special rahein.
+
+Aur haan...
+
+Apna khayal rakha karo, pagal. ❤️`;
+
+  let opened = false;
+
+  function createParticles() {
+    const symbols = ["❤️","💕","✨","🌹","💗"];
+
+    for (let i = 0; i < 24; i++) {
+      const particle = document.createElement("span");
+      particle.className = "letter-particle";
+      particle.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+      particle.style.left = Math.random() * 100 + "%";
+      particle.style.top = "55%";
+      particle.style.fontSize = (12 + Math.random() * 17) + "px";
+      particle.style.animationDelay = Math.random() * 1.2 + "s";
+      section.appendChild(particle);
+      setTimeout(() => particle.remove(), 5000);
+    }
+  }
+
+  function typeLetter() {
+    let i = 0;
+    typed.textContent = "";
+    signature.textContent = "";
+
+    const timer = setInterval(() => {
+      typed.textContent += letter.charAt(i);
+      i++;
+
+      if (i >= letter.length) {
+        clearInterval(timer);
+        signature.textContent = "Always, Riya ❤️";
+      }
+    }, 38);
+  }
+
+  button.addEventListener("click", () => {
+    if (!opened) {
+      opened = true;
+      section.classList.add("opened");
+      button.textContent = "THE LETTER IS OPEN ❤️";
+      button.disabled = true;
+      createParticles();
+      setTimeout(typeLetter, 1600);
+    }
+  });
+})();
+</script>
+<!-- END SECRET LETTER -->
+
 
     <!-- CONNECT -->
     <section class="connect" id="connect">
