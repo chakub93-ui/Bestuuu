@@ -1,420 +1,371 @@
 
-/* ==================================
-   ZEHRII — BEYOND WORDS
-   COMPLETE JAVASCRIPT
-================================== */
+/* ==========================================
+   ZEHRII — A LITTLE WORLD OF RIYA
+   All interactions in one clean script
+========================================== */
 
-/* MUSIC PLAYER */
-const music = document.getElementById("music");
-const musicBtn = document.getElementById("musicBtn");
-
-musicBtn.addEventListener("click", async () => {
-  if (music.paused) {
-    try {
-      await music.play();
-      musicBtn.textContent = "PAUSE Ⅱ";
-    } catch {
-      musicBtn.textContent = "ADD MUSIC FILE";
-    }
-  } else {
-    music.pause();
-    musicBtn.textContent = "PLAY ♫";
-  }
+// Loader
+window.addEventListener("load", () => {
+  const loader = document.getElementById("loader");
+  setTimeout(() => loader?.classList.add("hide"), 500);
 });
 
-music.addEventListener("ended", () => {
-  musicBtn.textContent = "PLAY ♫";
+// Intro
+const intro = document.getElementById("intro");
+const enterBtn = document.getElementById("enterBtn");
+
+function enterWebsite() {
+  intro?.classList.add("hide");
+  document.body.style.overflow = "";
+}
+
+enterBtn?.addEventListener("click", enterWebsite);
+
+// Auto opening intro
+setTimeout(() => {
+  enterWebsite();
+}, 9000);
+
+// Progress line
+const progress = document.getElementById("progress");
+
+function updateProgress() {
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  const value = total > 0 ? (window.scrollY / total) * 100 : 0;
+  if (progress) progress.style.width = value + "%";
+}
+
+window.addEventListener("scroll", updateProgress, { passive: true });
+updateProgress();
+
+// Cursor glow
+const glow = document.getElementById("cursorGlow");
+
+window.addEventListener("mousemove", (e) => {
+  if (!glow || window.matchMedia("(pointer: coarse)").matches) return;
+  glow.style.left = e.clientX + "px";
+  glow.style.top = e.clientY + "px";
 });
 
-/* SOUL JOURNAL */
-const journalQuestions = [
-  {
-    category: "YOUR INNER WORLD",
-    question: "What is something you wish people understood about you?"
-  },
-  {
-    category: "YOUR DREAMS",
-    question: "If nothing could stop you, what would your dream life look like?"
-  },
-  {
-    category: "YOUR HEART",
-    question: "What little thing can make you genuinely happy?"
-  },
-  {
-    category: "YOUR MEMORIES",
-    question: "Which memory would you love to relive one more time?"
-  },
-  {
-    category: "YOUR STRENGTH",
-    question: "What is something difficult you survived but rarely talk about?"
-  },
-  {
-    category: "YOUR FUTURE",
-    question: "What do you hope your future self will thank you for?"
-  },
-  {
-    category: "JUST YOU",
-    question: "If you could tell your heart one thing today, what would it be?"
+// Particles
+const particleContainer = document.getElementById("particles");
+
+if (particleContainer) {
+  for (let i = 0; i < 30; i++) {
+    const particle = document.createElement("span");
+    particle.className = "particle";
+    particle.style.left = Math.random() * 100 + "%";
+    particle.style.animationDuration = (9 + Math.random() * 15) + "s";
+    particle.style.animationDelay = (Math.random() * 12) + "s";
+    particleContainer.appendChild(particle);
   }
+}
+
+// Reveal animations
+const revealItems = document.querySelectorAll(".reveal");
+
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  revealItems.forEach(el => observer.observe(el));
+} else {
+  revealItems.forEach(el => el.classList.add("show"));
+}
+
+// Chaos button — random Riya messages
+const chaosBtn = document.getElementById("chaosBtn");
+const chaosMessage = document.getElementById("chaosMessage");
+
+const chaosLines = [
+  "Tujhe tolerate karna meri hidden talent hai. 😂♡",
+  "Tu irritating hai... par meri favourite irritating hai.",
+  "Tere jaise नमूने ko friendship mein rakhna bravery award deserve karta hai. 🏆",
+  "Jab tu nahi hoti, phone bhi boring lagta hai. Ab khush? 🙄❤️",
+  "Tu meri bestie hai, isliye tera drama lifetime free hai.",
+  "Zyada emotional mat ho, screenshot leke blackmail mat karna. 😂",
+  "Tere liye itna kiya... ab treat toh banti hai madam. 🍟",
+  "Dosti mein sorry kam, bakwaas zyada. That's our policy. 🤝"
 ];
 
-const journalKey = "zehrii_soul_journal_v1";
-let journalIndex = 0;
-let journalAnswers = JSON.parse(localStorage.getItem(journalKey) || "{}");
+chaosBtn?.addEventListener("click", () => {
+  const line = chaosLines[Math.floor(Math.random() * chaosLines.length)];
+  chaosMessage.textContent = line;
+  chaosMessage.classList.add("show");
+  spawnHearts(8);
+});
 
-const questionNumber = document.getElementById("questionNumber");
-const questionCategory = document.getElementById("questionCategory");
-const questionText = document.getElementById("questionText");
-const journalAnswer = document.getElementById("journalAnswer");
-const progressFill = document.getElementById("progressFill");
-const journalCard = document.getElementById("journalCard");
-const journalComplete = document.getElementById("journalComplete");
-
-function saveJournalAnswer() {
-  journalAnswers[journalIndex] = journalAnswer.value;
-  localStorage.setItem(journalKey, JSON.stringify(journalAnswers));
+// Hearts animation
+function spawnHearts(amount = 6) {
+  const symbols = ["♡", "♥", "✦", "✧"];
+  for (let i = 0; i < amount; i++) {
+    const heart = document.createElement("span");
+    heart.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+    heart.style.cssText = `
+      position:fixed;
+      left:${25 + Math.random() * 50}%;
+      bottom:15%;
+      z-index:999;
+      color:#dba9c4;
+      pointer-events:none;
+      font-size:${14 + Math.random() * 24}px;
+      animation:heartFly ${2 + Math.random() * 2}s ease-out forwards;
+    `;
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 4000);
+  }
 }
 
-function renderJournal() {
-  const item = journalQuestions[journalIndex];
+const heartStyle = document.createElement("style");
+heartStyle.textContent = `
+@keyframes heartFly {
+  0% { opacity:0; transform:translateY(0) rotate(0deg) scale(.6); }
+  20% { opacity:1; }
+  100% { opacity:0; transform:translateY(-75vh) rotate(25deg) scale(1.4); }
+}`;
+document.head.appendChild(heartStyle);
 
-  questionNumber.textContent =
-    `QUESTION ${String(journalIndex + 1).padStart(2, "0")} / 07`;
-
-  questionCategory.textContent = item.category;
-  questionText.textContent = item.question;
-  journalAnswer.value = journalAnswers[journalIndex] || "";
-
-  progressFill.style.width =
-    `${((journalIndex + 1) / journalQuestions.length) * 100}%`;
-
-  document.getElementById("prevQuestion").disabled = journalIndex === 0;
-  document.getElementById("prevQuestion").style.opacity =
-    journalIndex === 0 ? "0.35" : "1";
-
-  document.getElementById("nextQuestion").textContent =
-    journalIndex === journalQuestions.length - 1
-      ? "FINISH JOURNAL ✦"
-      : "NEXT QUESTION ↗";
-}
-
-journalAnswer.addEventListener("input", saveJournalAnswer);
-
-document.getElementById("nextQuestion").addEventListener("click", () => {
-  saveJournalAnswer();
-
-  if (journalIndex < journalQuestions.length - 1) {
-    journalIndex++;
-    renderJournal();
-  } else {
-    journalCard.classList.add("hidden");
-    journalComplete.classList.remove("hidden");
-  }
-});
-
-document.getElementById("prevQuestion").addEventListener("click", () => {
-  saveJournalAnswer();
-
-  if (journalIndex > 0) {
-    journalIndex--;
-    renderJournal();
-  }
-});
-
-document.getElementById("restartJournal").addEventListener("click", () => {
-  journalIndex = 0;
-  journalCard.classList.remove("hidden");
-  journalComplete.classList.add("hidden");
-  renderJournal();
-});
-
-renderJournal();
-
-/* BESTIE QUIZ */
-const quizQuestions = [
+// Quiz
+const questions = [
   {
-    question: "What matters most in a real friendship?",
-    options: ["Trust", "Fame", "Expensive gifts", "Competition"],
-    answer: 0
+    question: "Who is the most dramatic person in this friendship?",
+    options: ["Riya", "Zehrii", "Both of us", "The phone witnessing our chats"],
+    answer: 2,
+    feedback: "Correct. Dono milke ek Netflix series ho. 😂"
   },
   {
-    question: "When your bestie feels low, what should you do?",
-    options: ["Ignore them", "Listen and support them", "Laugh at them", "Leave them alone forever"],
-    answer: 1
+    question: "What is our friendship's official language?",
+    options: ["English", "Silent treatment", "Bakwaas & laughter", "Formal emails"],
+    answer: 2,
+    feedback: "Bakwaas is our love language. ❤️"
   },
   {
-    question: "The best memories are usually made with...",
-    options: ["Perfect plans", "Lots of money", "Your favourite people", "Strangers"],
-    answer: 2
+    question: "After a fight, what usually happens?",
+    options: ["We disappear forever", "We eventually talk again", "We file a legal case", "We become strangers"],
+    answer: 1,
+    feedback: "Gussa apni jagah, friendship apni jagah. 🫶"
   },
   {
-    question: "A true friendship needs...",
-    options: ["Constant competition", "Honesty and effort", "Secrets and lies", "Only gifts"],
-    answer: 1
+    question: "Zehrii is actually...",
+    options: ["An angel 24/7", "A little chaos", "A robot", "A boring person"],
+    answer: 1,
+    feedback: "A little chaos, a lot of love. 😂"
   },
   {
-    question: "If your bestie makes a mistake...",
-    options: ["Understand and talk", "Never speak again", "Embarrass them", "Spread the story"],
-    answer: 0
-  },
-  {
-    question: "What is a perfect friendship vibe?",
-    options: ["Always serious", "Never talking", "Being yourself", "Pretending"],
-    answer: 2
-  },
-  {
-    question: "One word for a forever friendship?",
-    options: ["Temporary", "Replaceable", "Unforgettable", "Ordinary"],
-    answer: 2
+    question: "What's the one thing Riya wants Zehrii to remember?",
+    options: ["Never reply", "Always act cool", "You matter, even on bad days", "Stop eating"],
+    answer: 2,
+    feedback: "Exactly. Tu important hai. Hamesha. ♡"
   }
 ];
 
 let quizIndex = 0;
 let quizScore = 0;
-let selectedAnswer = null;
+let quizAnswered = false;
 
-const quizBox = document.getElementById("quizBox");
-const quizResult = document.getElementById("quizResult");
+const quizCount = document.getElementById("quizCount");
 const quizQuestion = document.getElementById("quizQuestion");
 const quizOptions = document.getElementById("quizOptions");
+const quizFeedback = document.getElementById("quizFeedback");
 const quizNext = document.getElementById("quizNext");
 const quizProgress = document.getElementById("quizProgress");
+const quizResult = document.getElementById("quizResult");
 
 function renderQuiz() {
-  const q = quizQuestions[quizIndex];
-  selectedAnswer = null;
-  quizNext.disabled = true;
+  if (quizIndex >= questions.length) {
+    quizQuestion.style.display = "none";
+    quizOptions.style.display = "none";
+    quizFeedback.style.display = "none";
+    quizNext.style.display = "none";
+    quizCount.textContent = "FRIENDSHIP RESULT";
+    quizProgress.style.width = "100%";
+    quizResult.style.display = "block";
 
-  document.getElementById("quizCount").textContent =
-    `QUESTION ${String(quizIndex + 1).padStart(2, "0")} / 07`;
+    const messages = [
+      "0/5? Zehrii, tu Riya ko jaanti hai ya bas naam suna hai? 😂",
+      "Thoda aur practice kar, bestie syllabus abhi baaki hai.",
+      "Half marks! Friendship ka tuition free mein milega. 😂",
+      "Almost perfect! Teri bestie knowledge strong hai. ❤️",
+      "5/5! Certified Riya expert. Ab attitude kam kar. 😂♡"
+    ];
 
-  quizProgress.style.width =
-    `${((quizIndex + 1) / quizQuestions.length) * 100}%`;
+    quizResult.innerHTML =
+      `YOU SCORED ${quizScore} / ${questions.length}<br><br>${messages[quizScore] || messages[4]}`;
+    return;
+  }
 
+  const q = questions[quizIndex];
+  quizAnswered = false;
+  quizCount.textContent = `QUESTION ${String(quizIndex + 1).padStart(2, "0")} / ${questions.length}`;
   quizQuestion.textContent = q.question;
   quizOptions.innerHTML = "";
+  quizFeedback.textContent = "";
+  quizNext.disabled = true;
+  quizNext.textContent = quizIndex === questions.length - 1 ? "SEE MY RESULT →" : "NEXT QUESTION →";
+  quizProgress.style.width = ((quizIndex / questions.length) * 100) + "%";
 
-  q.options.forEach((option, i) => {
+  q.options.forEach((option, index) => {
     const button = document.createElement("button");
     button.className = "quiz-option";
     button.textContent = option;
 
     button.addEventListener("click", () => {
-      selectedAnswer = i;
+      if (quizAnswered) return;
+      quizAnswered = true;
 
-      document.querySelectorAll(".quiz-option").forEach(btn => {
-        btn.classList.remove("selected");
-      });
+      const allOptions = quizOptions.querySelectorAll(".quiz-option");
+      allOptions.forEach(b => b.disabled = true);
 
-      button.classList.add("selected");
+      if (index === q.answer) {
+        button.classList.add("correct");
+        quizScore++;
+        quizFeedback.textContent = "♡ " + q.feedback;
+      } else {
+        button.classList.add("wrong");
+        allOptions[q.answer].classList.add("correct");
+        quizFeedback.textContent = "Wrong answer, bestie. " + q.feedback;
+      }
+
       quizNext.disabled = false;
     });
 
     quizOptions.appendChild(button);
   });
-
-  quizNext.textContent =
-    quizIndex === quizQuestions.length - 1
-      ? "SEE MY RESULT ✦"
-      : "NEXT QUESTION →";
 }
 
-quizNext.addEventListener("click", () => {
-  if (selectedAnswer === null) return;
-
-  if (selectedAnswer === quizQuestions[quizIndex].answer) {
-    quizScore++;
-  }
-
-  if (quizIndex < quizQuestions.length - 1) {
-    quizIndex++;
-    renderQuiz();
-  } else {
-    showQuizResult();
-  }
-});
-
-function showQuizResult() {
-  quizBox.classList.add("hidden");
-  quizResult.classList.remove("hidden");
-
-  document.getElementById("resultScore").textContent =
-    `You got ${quizScore} out of ${quizQuestions.length} right!`;
-
-  let title, message;
-
-  if (quizScore >= 6) {
-    title = "A heart full of friendship ♡";
-    message = "You really understand what makes a friendship beautiful.";
-  } else if (quizScore >= 4) {
-    title = "Beautiful bestie energy ✦";
-    message = "You know the little things that make friendship matter.";
-  } else {
-    title = "Friendship is a journey ♡";
-    message = "Every little moment is another chance to know each other.";
-  }
-
-  document.getElementById("resultTitle").textContent = title;
-  document.getElementById("resultMessage").textContent = message;
-}
-
-document.getElementById("quizRestart").addEventListener("click", () => {
-  quizIndex = 0;
-  quizScore = 0;
-  selectedAnswer = null;
-  quizBox.classList.remove("hidden");
-  quizResult.classList.add("hidden");
+quizNext?.addEventListener("click", () => {
+  if (!quizAnswered) return;
+  quizIndex++;
   renderQuiz();
 });
 
 renderQuiz();
 
-/* RIYA'S LETTER */
-const letterOverlay = document.getElementById("letterOverlay");
+// Journal
+const journalInput = document.getElementById("journalInput");
+const saveJournal = document.getElementById("saveJournal");
+const savedMsg = document.getElementById("savedMsg");
 
-document.getElementById("openLetter").addEventListener("click", () => {
-  letterOverlay.classList.remove("hidden");
+if (journalInput) {
+  journalInput.value = localStorage.getItem("zehriiJournal") || "";
+}
+
+saveJournal?.addEventListener("click", () => {
+  const text = journalInput.value.trim();
+  if (!text) {
+    showToast("Pehle kuch toh likh, madam. 😂");
+    return;
+  }
+
+  localStorage.setItem("zehriiJournal", text);
+  savedMsg.textContent = "Your little memory is saved on this device. ♡";
+  showToast("Memory saved. Don't delete it, okay? ♡");
+});
+
+// Letter Modal
+const letterModal = document.getElementById("letterModal");
+const letterOpen = document.getElementById("letterOpen");
+const modalClose = document.getElementById("modalClose");
+
+letterOpen?.addEventListener("click", () => {
+  letterModal.classList.add("show");
   document.body.style.overflow = "hidden";
 });
 
 function closeLetter() {
-  letterOverlay.classList.add("hidden");
+  letterModal.classList.remove("show");
   document.body.style.overflow = "";
 }
 
-document.getElementById("closeLetter").addEventListener("click", closeLetter);
+modalClose?.addEventListener("click", closeLetter);
 
-letterOverlay.addEventListener("click", (event) => {
-  if (event.target === letterOverlay) {
-    closeLetter();
-  }
+letterModal?.addEventListener("click", (e) => {
+  if (e.target === letterModal) closeLetter();
 });
 
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    closeLetter();
-  }
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeLetter();
 });
 
-/* SCROLL REVEAL */
-const revealItems = document.querySelectorAll(
-  ".memory-card, .promise-item, .music-card"
-);
+// Final message
+const finalBtn = document.getElementById("finalBtn");
+const finalMessage = document.getElementById("finalMessage");
 
-revealItems.forEach(item => {
-  item.style.opacity = "0";
-  item.style.transform = "translateY(25px)";
-  item.style.transition = "opacity .7s ease, transform .7s ease";
+finalBtn?.addEventListener("click", () => {
+  finalMessage.classList.toggle("show");
+  finalBtn.textContent = finalMessage.classList.contains("show")
+    ? "CLOSE MY MESSAGE ↑"
+    : "ONE LAST THING ↗";
+
+  if (finalMessage.classList.contains("show")) spawnHearts(12);
 });
 
-if ("IntersectionObserver" in window) {
-  const revealObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = "1";
-        entry.target.style.transform = "translateY(0)";
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
+// Toast
+const toast = document.getElementById("toast");
+let toastTimer;
 
-  revealItems.forEach(item => revealObserver.observe(item));
-} else {
-  revealItems.forEach(item => {
-    item.style.opacity = "1";
-    item.style.transform = "none";
-  });
+function showToast(message) {
+  toast.textContent = message;
+  toast.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove("show"), 2600);
 }
 
-console.log("ZEHRII — Beyond Words is ready ♡");
+// Ambient music — generated sound, no music file required
+let audioContext;
+let musicPlaying = false;
+let oscillators = [];
+let gainNode;
 
-// ===== ZEHRII INTRO SCREEN =====
-const introScreen = document.getElementById("introScreen");
+const musicBtn = document.getElementById("musicBtn");
 
-if (introScreen) {
-  document.body.style.overflow = "hidden";
-
-  setTimeout(() => {
-    introScreen.classList.add("hide");
-    document.body.style.overflow = "";
-  }, 2500);
-}
-
-// ===== SCROLL PROGRESS =====
-const progressBar = document.getElementById("scrollProgress");
-
-function updateScrollProgress() {
-  const maxScroll =
-    document.documentElement.scrollHeight - window.innerHeight;
-
-  const percentage =
-    maxScroll > 0 ? (window.scrollY / maxScroll) * 100 : 0;
-
-  if (progressBar) {
-    progressBar.style.width = percentage + "%";
-  }
-}
-
-window.addEventListener("scroll", updateScrollProgress, {
-  passive: true
-});
-
-updateScrollProgress();
-
-// ===== CUSTOM CURSOR =====
-const cursor = document.getElementById("customCursor");
-
-if (cursor && window.matchMedia("(pointer: fine)").matches) {
-  window.addEventListener("mousemove", (e) => {
-    cursor.style.left = e.clientX + "px";
-    cursor.style.top = e.clientY + "px";
-  });
-
-  document.querySelectorAll("a, button").forEach((element) => {
-    element.addEventListener("mouseenter", () => {
-      cursor.style.width = "18px";
-      cursor.style.height = "18px";
-    });
-
-    element.addEventListener("mouseleave", () => {
-      cursor.style.width = "10px";
-      cursor.style.height = "10px";
-    });
-  });
-}
-
-// ===== FLOATING PARTICLES =====
-const particleContainer = document.getElementById("particles");
-
-if (particleContainer) {
-  for (let i = 0; i < 24; i++) {
-    const particle = document.createElement("span");
-    particle.className = "particle";
-
-    particle.style.left = Math.random() * 100 + "%";
-    particle.style.animationDuration = (8 + Math.random() * 12) + "s";
-    particle.style.animationDelay = (Math.random() * 10) + "s";
-
-    particleContainer.appendChild(particle);
-  }
-}
-
-// ===== AUTO SCROLL REVEAL =====
-const revealElements = document.querySelectorAll(
-  "section, .card, .memory-card, .promise-card"
-);
-
-revealElements.forEach((el) => el.classList.add("reveal"));
-
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("show");
-      revealObserver.unobserve(entry.target);
+musicBtn?.addEventListener("click", async () => {
+  if (!audioContext) {
+    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContextClass) {
+      showToast("Ambient sound is not supported in this browser.");
+      return;
     }
-  });
-}, {
-  threshold: 0.12
+    audioContext = new AudioContext();
+    gainNode = audioContext.createGain();
+    gainNode.gain.value = 0.035;
+    gainNode.connect(audioContext.destination);
+  }
+
+  if (audioContext.state === "suspended") {
+    await audioContext.resume();
+  }
+
+  if (!musicPlaying) {
+    const notes = [196, 246.94, 293.66];
+    notes.forEach((frequency, i) => {
+      const oscillator = audioContext.createOscillator();
+      const volume = audioContext.createGain();
+      oscillator.type = "sine";
+      oscillator.frequency.value = frequency;
+      volume.gain.value = 0.13 / (i + 1);
+      oscillator.connect(volume);
+      volume.connect(gainNode);
+      oscillator.start();
+      oscillators.push({ oscillator, volume });
+    });
+
+    musicPlaying = true;
+    musicBtn.innerHTML = "♫ <span>Sound ON</span>";
+    showToast("Little ambient vibes are on. ♡");
+  } else {
+    oscillators.forEach(({ oscillator }) => oscillator.stop());
+    oscillators = [];
+    musicPlaying = false;
+    musicBtn.innerHTML = "♫ <span>Sound OFF</span>";
+    showToast("Sound off. Silence mode. 😂");
+  }
 });
 
-revealElements.forEach((el) => revealObserver.observe(el));
+console.log("ZEHRII — all systems ready ♡");
