@@ -382,3 +382,39 @@ if (cursor && window.matchMedia("(pointer: fine)").matches) {
     });
   });
 }
+
+// ===== FLOATING PARTICLES =====
+const particleContainer = document.getElementById("particles");
+
+if (particleContainer) {
+  for (let i = 0; i < 24; i++) {
+    const particle = document.createElement("span");
+    particle.className = "particle";
+
+    particle.style.left = Math.random() * 100 + "%";
+    particle.style.animationDuration = (8 + Math.random() * 12) + "s";
+    particle.style.animationDelay = (Math.random() * 10) + "s";
+
+    particleContainer.appendChild(particle);
+  }
+}
+
+// ===== AUTO SCROLL REVEAL =====
+const revealElements = document.querySelectorAll(
+  "section, .card, .memory-card, .promise-card"
+);
+
+revealElements.forEach((el) => el.classList.add("reveal"));
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.12
+});
+
+revealElements.forEach((el) => revealObserver.observe(el));
