@@ -161,6 +161,5162 @@ footer a span{color:var(--olive)}
 </style>
 </head>
 
+<style>
+/* PREMIUM SCROLL PROGRESS */
+#scrollProgress{
+  position:fixed;
+  top:0;
+  left:0;
+  width:0%;
+  height:3px;
+  background:linear-gradient(90deg,#9b9b62,#d5bd83);
+  z-index:99999;
+  box-shadow:0 0 12px rgba(155,155,98,.5);
+}
+
+/* SMOOTH PAGE SCROLL */
+html{
+  scroll-behavior:smooth;
+  scroll-padding-top:90px;
+}
+
+/* PREMIUM SELECTION */
+::selection{
+  background:#9b9b62;
+  color:#fff;
+}
+
+/* IMAGE HOVER POLISH */
+img{
+  transition:transform .6s ease,filter .6s ease;
+}
+
+img:hover{
+  filter:saturate(1.08);
+}
+</style>
+
+<div id="scrollProgress"></div>
+
+<script>
+(() => {
+  const progress = document.getElementById("scrollProgress");
+
+  function updateProgress(){
+    const scrollTop =
+      window.scrollY || document.documentElement.scrollTop;
+
+    const height =
+      document.documentElement.scrollHeight - window.innerHeight;
+
+    const percent = height > 0
+      ? (scrollTop / height) * 100
+      : 0;
+
+    progress.style.width = percent + "%";
+  }
+
+  window.addEventListener("scroll", updateProgress, {
+    passive:true
+  });
+
+  window.addEventListener("resize", updateProgress);
+  updateProgress();
+})();
+</script>
+
+<!-- ================= KIRAN JADHAV PORTFOLIO UPGRADE ================= -->
+
+<style>
+/* GLOBAL */
+:root{
+  --olive:#85875c;
+  --dark:#20221d;
+  --cream:#f5f3eb;
+  --muted:#77786c;
+}
+
+.section-extra{
+  padding:100px 8%;
+  background:var(--cream);
+  color:var(--dark);
+}
+
+.section-heading{
+  max-width:700px;
+  margin-bottom:45px;
+}
+
+.section-heading span{
+  color:var(--olive);
+  text-transform:uppercase;
+  letter-spacing:4px;
+  font-size:11px;
+  font-weight:700;
+}
+
+.section-heading h2{
+  font-size:clamp(34px,5vw,58px);
+  line-height:1.05;
+  margin:15px 0;
+  letter-spacing:-2px;
+}
+
+.section-heading p{
+  color:var(--muted);
+  line-height:1.8;
+}
+
+/* PROJECTS */
+.extra-projects{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:22px;
+}
+
+.project-extra{
+  position:relative;
+  min-height:280px;
+  padding:32px;
+  border:1px solid rgba(32,34,29,.12);
+  border-radius:20px;
+  background:#fff;
+  overflow:hidden;
+  transition:.4s ease;
+}
+
+.project-extra:hover{
+  transform:translateY(-9px);
+  box-shadow:0 25px 60px rgba(0,0,0,.09);
+}
+
+.project-extra .number{
+  color:var(--olive);
+  font-size:12px;
+  letter-spacing:3px;
+}
+
+.project-extra h3{
+  font-size:29px;
+  margin:35px 0 12px;
+  letter-spacing:-1px;
+}
+
+.project-extra p{
+  color:var(--muted);
+  line-height:1.8;
+  max-width:420px;
+}
+
+.project-tags{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:25px;
+}
+
+.project-tags span{
+  border:1px solid #deded4;
+  border-radius:30px;
+  padding:7px 12px;
+  font-size:11px;
+}
+
+.project-symbol{
+  position:absolute;
+  right:25px;
+  top:25px;
+  font-size:35px;
+  color:var(--olive);
+  opacity:.7;
+}
+
+/* SKILLS */
+.skills-extra{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:35px 55px;
+}
+
+.skill-line{
+  margin-bottom:25px;
+}
+
+.skill-label{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:10px;
+  font-size:14px;
+  font-weight:600;
+}
+
+.skill-track{
+  height:5px;
+  background:#e2e0d6;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.skill-fill{
+  height:100%;
+  width:0;
+  background:var(--olive);
+  border-radius:20px;
+  transition:width 1.5s ease;
+}
+
+/* TIMELINE */
+.timeline-extra{
+  max-width:850px;
+  border-left:1px solid #c9c8b9;
+  margin-left:10px;
+}
+
+.timeline-item{
+  position:relative;
+  padding:0 0 45px 35px;
+}
+
+.timeline-item:before{
+  content:"";
+  position:absolute;
+  width:11px;
+  height:11px;
+  border-radius:50%;
+  background:var(--olive);
+  left:-6px;
+  top:5px;
+}
+
+.timeline-item small{
+  color:var(--olive);
+  letter-spacing:2px;
+  font-weight:700;
+}
+
+.timeline-item h3{
+  font-size:24px;
+  margin:12px 0;
+}
+
+.timeline-item p{
+  color:var(--muted);
+  line-height:1.8;
+  max-width:600px;
+}
+
+/* SERVICES */
+.services-extra{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+}
+
+.service-extra{
+  padding:30px;
+  border:1px solid rgba(32,34,29,.13);
+  border-radius:18px;
+  transition:.35s;
+}
+
+.service-extra:hover{
+  background:#25271f;
+  color:#fff;
+  transform:translateY(-6px);
+}
+
+.service-extra .service-icon{
+  font-size:30px;
+}
+
+.service-extra h3{
+  margin:25px 0 12px;
+  font-size:21px;
+}
+
+.service-extra p{
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.8;
+}
+
+.service-extra:hover p{
+  color:#c6c6ba;
+}
+
+/* TESTIMONIAL PLACEHOLDER */
+.quote-extra{
+  padding:55px;
+  border-radius:22px;
+  background:#25271f;
+  color:#fff;
+}
+
+.quote-extra h3{
+  font-size:clamp(25px,4vw,42px);
+  line-height:1.35;
+  font-weight:400;
+  max-width:850px;
+}
+
+.quote-extra p{
+  color:#c5c5b7;
+  margin-top:25px;
+}
+
+/* CONTACT */
+.contact-extra{
+  background:#25271f;
+  color:#fff;
+  padding:90px 8%;
+  border-radius:25px;
+}
+
+.contact-extra h2{
+  font-size:clamp(38px,7vw,75px);
+  letter-spacing:-3px;
+  line-height:1.05;
+  max-width:750px;
+  margin:20px 0;
+}
+
+.contact-extra p{
+  color:#c3c3b8;
+  line-height:1.8;
+  max-width:550px;
+}
+
+.contact-extra a{
+  display:inline-block;
+  margin-top:28px;
+  padding:15px 25px;
+  background:#d8d4bd;
+  color:#24251f;
+  text-decoration:none;
+  border-radius:40px;
+  font-weight:700;
+  transition:.3s;
+}
+
+.contact-extra a:hover{
+  transform:translateY(-4px);
+  background:#fff;
+}
+
+/* BACK TO TOP */
+#backTop{
+  position:fixed;
+  right:22px;
+  bottom:22px;
+  width:48px;
+  height:48px;
+  border:0;
+  border-radius:50%;
+  background:#85875c;
+  color:white;
+  font-size:20px;
+  cursor:pointer;
+  z-index:999;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(15px);
+  transition:.3s;
+  box-shadow:0 8px 25px #0002;
+}
+
+#backTop.show{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+
+/* REVEAL */
+.reveal-extra{
+  opacity:0;
+  transform:translateY(30px);
+  transition:opacity .8s ease,transform .8s ease;
+}
+
+.reveal-extra.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* MOBILE */
+@media(max-width:760px){
+  .section-extra{
+    padding:70px 6%;
+  }
+
+  .extra-projects,
+  .skills-extra{
+    grid-template-columns:1fr;
+  }
+
+  .services-extra{
+    grid-template-columns:1fr;
+  }
+
+  .project-extra{
+    min-height:250px;
+    padding:25px;
+  }
+
+  .quote-extra{
+    padding:30px;
+  }
+
+  .contact-extra{
+    padding:55px 7%;
+  }
+}
+</style>
+
+<!-- PROJECTS -->
+<section class="section-extra" id="featured-work">
+  <div class="section-heading reveal-extra">
+    <span>Selected Work / 01</span>
+    <h2>Ideas turned into digital experiences.</h2>
+    <p>A collection of concepts and digital products focused on design, technology and user experience.</p>
+  </div>
+
+  <div class="extra-projects">
+    <article class="project-extra reveal-extra">
+      <div class="project-symbol">✳</div>
+      <span class="number">01 / AI TECHNOLOGY</span>
+      <h3>AVA AI</h3>
+      <p>An AI assistant concept focused on intelligent conversations, coding assistance and creative workflows.</p>
+      <div class="project-tags">
+        <span>Artificial Intelligence</span>
+        <span>Voice AI</span>
+        <span>Web App</span>
+      </div>
+    </article>
+
+    <article class="project-extra reveal-extra">
+      <div class="project-symbol">◇</div>
+      <span class="number">02 / E-COMMERCE</span>
+      <h3>KIRUU SHOP</h3>
+      <p>A modern shopping platform concept with a focus on product discovery and a clean shopping experience.</p>
+      <div class="project-tags">
+        <span>E-commerce</span>
+        <span>UI Design</span>
+        <span>JavaScript</span>
+      </div>
+    </article>
+
+    <article class="project-extra reveal-extra">
+      <div class="project-symbol">◎</div>
+      <span class="number">03 / FINTECH CONCEPT</span>
+      <h3>KIRUU PAY</h3>
+      <p>A digital payment product concept exploring simple interfaces and accessible financial technology.</p>
+      <div class="project-tags">
+        <span>Fintech</span>
+        <span>Product Concept</span>
+        <span>Mobile</span>
+      </div>
+    </article>
+
+    <article class="project-extra reveal-extra">
+      <div class="project-symbol">✦</div>
+      <span class="number">04 / DIGITAL PLATFORM</span>
+      <h3>AAPS HUB</h3>
+      <p>A digital apps hub concept designed to bring useful applications together in one organized platform.</p>
+      <div class="project-tags">
+        <span>Web Development</span>
+        <span>Dashboard</span>
+        <span>Design</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section-extra" id="technical-skills">
+  <div class="section-heading reveal-extra">
+    <span>Capabilities / 02</span>
+    <h2>Tools I explore and build with.</h2>
+    <p>Technologies and skills I work with while creating digital experiences.</p>
+  </div>
+
+  <div class="skills-extra">
+    <div class="reveal-extra">
+      <div class="skill-line">
+        <div class="skill-label"><span>HTML & CSS</span><span>90%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-level="90%"></div></div>
+      </div>
+      <div class="skill-line">
+        <div class="skill-label"><span>JavaScript</span><span>75%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-level="75%"></div></div>
+      </div>
+      <div class="skill-line">
+        <div class="skill-label"><span>Responsive Design</span><span>85%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-level="85%"></div></div>
+      </div>
+    </div>
+
+    <div class="reveal-extra">
+      <div class="skill-line">
+        <div class="skill-label"><span>UI / UX Design</span><span>80%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-level="80%"></div></div>
+      </div>
+      <div class="skill-line">
+        <div class="skill-label"><span>AI Integration</span><span>70%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-level="70%"></div></div>
+      </div>
+      <div class="skill-line">
+        <div class="skill-label"><span>Product Thinking</span><span>85%</span></div>
+        <div class="skill-track"><div class="skill-fill" data-level="85%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section class="section-extra" id="journey">
+  <div class="section-heading reveal-extra">
+    <span>The Journey / 03</span>
+    <h2>Learning. Building. Improving.</h2>
+    <p>Every project is another opportunity to learn something new and turn an idea into reality.</p>
+  </div>
+
+  <div class="timeline-extra">
+    <div class="timeline-item reveal-extra">
+      <small>01 — THE BEGINNING</small>
+      <h3>Curiosity for Technology</h3>
+      <p>Started exploring websites, digital products and the possibilities of modern technology.</p>
+    </div>
+
+    <div class="timeline-item reveal-extra">
+      <small>02 — EXPERIMENTATION</small>
+      <h3>Building Digital Projects</h3>
+      <p>Experimented with web development, mobile-friendly interfaces and personal product concepts.</p>
+    </div>
+
+    <div class="timeline-item reveal-extra">
+      <small>03 — EXPLORING AI</small>
+      <h3>Exploring Artificial Intelligence</h3>
+      <p>Started exploring AI assistants, voice experiences and ways to integrate intelligent tools into applications.</p>
+    </div>
+
+    <div class="timeline-item reveal-extra">
+      <small>04 — WHAT'S NEXT</small>
+      <h3>Building Bigger Ideas</h3>
+      <p>Continuing to learn, improve existing projects and develop better digital experiences.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section-extra" id="services">
+  <div class="section-heading reveal-extra">
+    <span>What I Explore / 04</span>
+    <h2>From an idea to an experience.</h2>
+    <p>Areas of technology and digital creation that I enjoy exploring.</p>
+  </div>
+
+  <div class="services-extra">
+    <article class="service-extra reveal-extra">
+      <div class="service-icon">⌘</div>
+      <h3>Web Development</h3>
+      <p>Building responsive websites and interactive web experiences.</p>
+    </article>
+
+    <article class="service-extra reveal-extra">
+      <div class="service-icon">✳</div>
+      <h3>AI Experiments</h3>
+      <p>Exploring AI-powered assistants, automation and intelligent interfaces.</p>
+    </article>
+
+    <article class="service-extra reveal-extra">
+      <div class="service-icon">◈</div>
+      <h3>UI / UX Concepts</h3>
+      <p>Designing clean layouts with a focus on usability and visual identity.</p>
+    </article>
+  </div>
+</section>
+
+<!-- PERSONAL PHILOSOPHY -->
+<section class="section-extra">
+  <div class="quote-extra reveal-extra">
+    <h3>“I believe great things begin with curiosity, consistency and the courage to build something from nothing.”</h3>
+    <p>— Kiran Jadhav</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section-extra" id="contact">
+  <div class="contact-extra reveal-extra">
+    <span style="color:#c9c49f;letter-spacing:4px;font-size:11px;">HAVE AN IDEA?</span>
+    <h2>Let's create something meaningful.</h2>
+    <p>Have a project, collaboration idea or simply want to connect? Feel free to reach out.</p>
+    <a href="https://www.instagram.com/kiiiiiruuuuuu/" target="_blank" rel="noopener">Connect on Instagram ↗</a>
+  </div>
+</section>
+
+<button id="backTop" aria-label="Back to top">↑</button>
+
+<script>
+/* SCROLL REVEAL */
+const extraObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("visible");
+      extraObserver.unobserve(entry.target);
+    }
+  });
+},{threshold:.12});
+
+document.querySelectorAll(".reveal-extra").forEach(el=>{
+  extraObserver.observe(el);
+});
+
+/* SKILL BAR ANIMATION */
+const skillObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      const fill=entry.target;
+      fill.style.width=fill.dataset.level;
+      skillObserver.unobserve(fill);
+    }
+  });
+},{threshold:.3});
+
+document.querySelectorAll(".skill-fill").forEach(el=>{
+  skillObserver.observe(el);
+});
+
+/* BACK TO TOP */
+const backTop=document.getElementById("backTop");
+
+window.addEventListener("scroll",()=>{
+  backTop.classList.toggle("show",window.scrollY>500);
+},{passive:true});
+
+backTop.addEventListener("click",()=>{
+  window.scrollTo({top:0,behavior:"smooth"});
+});
+</script>
+
+<!-- ================= END PORTFOLIO UPGRADE ================= -->
+
+<!-- ============ KIRAN JADHAV - CINEMATIC UPGRADE ============ -->
+
+<style>
+/* CINEMATIC BACKGROUND */
+body{
+  position:relative;
+  overflow-x:hidden;
+}
+
+#kj-atmosphere{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+  overflow:hidden;
+  opacity:.55;
+}
+
+.kj-orb{
+  position:absolute;
+  width:340px;
+  height:340px;
+  border-radius:50%;
+  filter:blur(85px);
+  opacity:.16;
+  animation:kjFloat 13s ease-in-out infinite alternate;
+}
+
+.kj-orb.one{
+  background:#a2a276;
+  top:8%;
+  left:-150px;
+}
+
+.kj-orb.two{
+  background:#c5a77c;
+  right:-160px;
+  top:45%;
+  animation-delay:-5s;
+}
+
+.kj-orb.three{
+  background:#a9a99a;
+  left:35%;
+  bottom:-180px;
+  animation-delay:-8s;
+}
+
+@keyframes kjFloat{
+  from{transform:translate3d(0,0,0) scale(1)}
+  to{transform:translate3d(70px,-55px,0) scale(1.25)}
+}
+
+/* CUSTOM CURSOR */
+#kj-cursor,
+#kj-cursor-ring{
+  position:fixed;
+  top:0;
+  left:0;
+  pointer-events:none;
+  z-index:999999;
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+}
+
+#kj-cursor{
+  width:7px;
+  height:7px;
+  background:#85875c;
+}
+
+#kj-cursor-ring{
+  width:35px;
+  height:35px;
+  border:1px solid #85875c;
+  transition:width .25s,height .25s,background .25s;
+}
+
+#kj-cursor-ring.hover{
+  width:58px;
+  height:58px;
+  background:#85875c20;
+}
+
+@media(pointer:coarse){
+  #kj-cursor,
+  #kj-cursor-ring{
+    display:none;
+  }
+}
+
+/* CINEMATIC HERO LIGHT */
+.kj-hero-light{
+  position:absolute;
+  width:400px;
+  height:400px;
+  border-radius:50%;
+  background:radial-gradient(circle,#9b9d6b25,transparent 70%);
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+  z-index:0;
+}
+
+/* 3D FLOATING LABELS */
+.kj-floating-label{
+  position:absolute;
+  padding:12px 17px;
+  border:1px solid #85875c45;
+  background:#ffffffb8;
+  backdrop-filter:blur(14px);
+  border-radius:12px;
+  font-size:11px;
+  letter-spacing:1px;
+  box-shadow:0 12px 35px #0000000b;
+  animation:kjLabelFloat 5s ease-in-out infinite;
+}
+
+.kj-floating-label.left{
+  left:3%;
+  top:25%;
+}
+
+.kj-floating-label.right{
+  right:3%;
+  bottom:22%;
+  animation-delay:-2s;
+}
+
+@keyframes kjLabelFloat{
+  0%,100%{transform:translateY(0) rotate(-2deg)}
+  50%{transform:translateY(-15px) rotate(2deg)}
+}
+
+/* PREMIUM GLASS PANEL */
+.kj-glass{
+  background:rgba(255,255,255,.46);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  border:1px solid rgba(133,135,92,.18);
+  box-shadow:0 20px 60px rgba(0,0,0,.045);
+}
+
+/* PROJECT 3D TILT */
+.project-extra{
+  transform-style:preserve-3d;
+  will-change:transform;
+}
+
+.project-extra h3,
+.project-extra p,
+.project-extra .project-tags{
+  transform:translateZ(18px);
+}
+
+/* NEW TECH STRIP */
+.kj-tech-strip{
+  padding:35px 8%;
+  overflow:hidden;
+  border-top:1px solid #85875c25;
+  border-bottom:1px solid #85875c25;
+  background:#ffffff55;
+}
+
+.kj-tech-track{
+  display:flex;
+  width:max-content;
+  gap:65px;
+  animation:kjMarquee 28s linear infinite;
+}
+
+.kj-tech-track span{
+  font-size:13px;
+  letter-spacing:3px;
+  color:#77786c;
+  font-weight:700;
+  white-space:nowrap;
+}
+
+@keyframes kjMarquee{
+  to{transform:translateX(-50%)}
+}
+
+/* COUNTERS */
+.kj-stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  padding:55px 8%;
+  background:#25271f;
+  color:#fff;
+}
+
+.kj-stat{
+  text-align:center;
+  padding:15px;
+}
+
+.kj-stat strong{
+  display:block;
+  font-size:clamp(32px,5vw,55px);
+  letter-spacing:-2px;
+  color:#d6d1b4;
+}
+
+.kj-stat span{
+  display:block;
+  font-size:11px;
+  letter-spacing:2px;
+  color:#bcbcaf;
+  margin-top:8px;
+}
+
+/* SOCIAL FLOAT */
+.kj-social-float{
+  position:fixed;
+  left:18px;
+  bottom:25px;
+  z-index:900;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.kj-social-float a{
+  width:39px;
+  height:39px;
+  display:grid;
+  place-items:center;
+  text-decoration:none;
+  border-radius:50%;
+  color:#fff;
+  background:#25271f;
+  font-size:13px;
+  transition:.3s;
+}
+
+.kj-social-float a:hover{
+  background:#85875c;
+  transform:translateY(-4px);
+}
+
+/* BACKGROUND GRAIN */
+.kj-grain{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:1000;
+  opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+}
+
+/* SECTION DIVIDER */
+.kj-divider{
+  width:100%;
+  height:1px;
+  background:linear-gradient(90deg,transparent,#85875c65,transparent);
+  margin:10px 0;
+}
+
+/* MOBILE */
+@media(max-width:760px){
+  .kj-floating-label{
+    font-size:9px;
+    padding:9px 11px;
+  }
+
+  .kj-floating-label.left{left:2%;top:12%}
+  .kj-floating-label.right{right:2%;bottom:12%}
+
+  .kj-stats{
+    padding:35px 5%;
+    gap:5px;
+  }
+
+  .kj-stat span{
+    font-size:9px;
+    letter-spacing:1px;
+  }
+
+  .kj-tech-strip{
+    padding:25px 5%;
+  }
+
+  .kj-social-float{
+    left:auto;
+    right:14px;
+    bottom:85px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .kj-orb,
+  .kj-floating-label,
+  .kj-tech-track{
+    animation:none!important;
+  }
+  html{scroll-behavior:auto}
+}
+</style>
+
+<!-- ATMOSPHERE -->
+<div id="kj-atmosphere" aria-hidden="true">
+  <div class="kj-orb one"></div>
+  <div class="kj-orb two"></div>
+  <div class="kj-orb three"></div>
+</div>
+
+<div class="kj-grain" aria-hidden="true"></div>
+<div id="kj-cursor"></div>
+<div id="kj-cursor-ring"></div>
+
+<!-- TECH MARQUEE -->
+<div class="kj-tech-strip">
+  <div class="kj-tech-track">
+    <span>HTML5</span>
+    <span>CSS3</span>
+    <span>JAVASCRIPT</span>
+    <span>ARTIFICIAL INTELLIGENCE</span>
+    <span>UI / UX</span>
+    <span>RESPONSIVE DESIGN</span>
+    <span>WEB DEVELOPMENT</span>
+    <span>HTML5</span>
+    <span>CSS3</span>
+    <span>JAVASCRIPT</span>
+    <span>ARTIFICIAL INTELLIGENCE</span>
+    <span>UI / UX</span>
+    <span>RESPONSIVE DESIGN</span>
+    <span>WEB DEVELOPMENT</span>
+  </div>
+</div>
+
+<!-- STATS -->
+<section class="kj-stats">
+  <div class="kj-stat">
+    <strong data-count="4">0</strong>
+    <span>PROJECT CONCEPTS</span>
+  </div>
+  <div class="kj-stat">
+    <strong data-count="6">0</strong>
+    <span>SKILL AREAS</span>
+  </div>
+  <div class="kj-stat">
+    <strong data-count="1">0</strong>
+    <span>CREATIVE MINDSET</span>
+  </div>
+</section>
+
+<div class="kj-divider"></div>
+
+<!-- FLOATING SOCIAL LINKS -->
+<div class="kj-social-float">
+  <a href="https://www.instagram.com/kiiiiiruuuuuu/"
+     target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+  <a href="#contact" aria-label="Contact">✉</a>
+  <a href="#" id="kj-top-link" aria-label="Back to top">↑</a>
+</div>
+
+<script>
+(() => {
+  /* CUSTOM CURSOR */
+  const cursor=document.getElementById("kj-cursor");
+  const ring=document.getElementById("kj-cursor-ring");
+
+  if(window.matchMedia("(pointer:fine)").matches){
+    let mouseX=0,mouseY=0,ringX=0,ringY=0;
+
+    window.addEventListener("mousemove",e=>{
+      mouseX=e.clientX;
+      mouseY=e.clientY;
+      cursor.style.left=mouseX+"px";
+      cursor.style.top=mouseY+"px";
+    });
+
+    function animateRing(){
+      ringX+=(mouseX-ringX)*.16;
+      ringY+=(mouseY-ringY)*.16;
+      ring.style.left=ringX+"px";
+      ring.style.top=ringY+"px";
+      requestAnimationFrame(animateRing);
+    }
+    animateRing();
+
+    document.querySelectorAll("a,button,.project-extra").forEach(el=>{
+      el.addEventListener("mouseenter",()=>ring.classList.add("hover"));
+      el.addEventListener("mouseleave",()=>ring.classList.remove("hover"));
+    });
+  }
+
+  /* 3D PROJECT TILT */
+  if(window.matchMedia("(pointer:fine)").matches){
+    document.querySelectorAll(".project-extra").forEach(card=>{
+      card.addEventListener("mousemove",e=>{
+        const rect=card.getBoundingClientRect();
+        const x=(e.clientX-rect.left)/rect.width-.5;
+        const y=(e.clientY-rect.top)/rect.height-.5;
+
+        card.style.transform=
+          `perspective(900px) rotateX(${-y*7}deg) rotateY(${x*7}deg) translateY(-5px)`;
+      });
+
+      card.addEventListener("mouseleave",()=>{
+        card.style.transform=
+          "perspective(900px) rotateX(0) rotateY(0) translateY(0)";
+      });
+    });
+  }
+
+  /* COUNTER ANIMATION */
+  const counters=document.querySelectorAll("[data-count]");
+
+  const countObserver=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting)return;
+
+      const el=entry.target;
+      const target=Number(el.dataset.count);
+      const duration=1200;
+      const start=performance.now();
+
+      function update(now){
+        const progress=Math.min((now-start)/duration,1);
+        const eased=1-Math.pow(1-progress,3);
+        el.textContent=Math.round(target*eased);
+
+        if(progress<1)requestAnimationFrame(update);
+      }
+
+      requestAnimationFrame(update);
+      countObserver.unobserve(el);
+    });
+  },{threshold:.5});
+
+  counters.forEach(el=>countObserver.observe(el));
+
+  /* BACK TO TOP */
+  document.getElementById("kj-top-link")
+    .addEventListener("click",e=>{
+      e.preventDefault();
+      window.scrollTo({top:0,behavior:"smooth"});
+    });
+
+})();
+</script>
+
+<!-- ============ END CINEMATIC UPGRADE ============ -->
+
+<!-- ===== KIRAN JADHAV: INTERACTIVE PORTFOLIO V2 ===== -->
+
+<style>
+.kj-workspace{
+  padding:95px 8%;
+  background:#f5f3eb;
+  color:#25271f;
+}
+
+.kj-workspace-head{
+  max-width:760px;
+  margin-bottom:38px;
+}
+
+.kj-workspace-head .eyebrow{
+  color:#85875c;
+  letter-spacing:4px;
+  font-size:11px;
+  font-weight:700;
+}
+
+.kj-workspace-head h2{
+  font-size:clamp(36px,6vw,65px);
+  letter-spacing:-3px;
+  line-height:1.05;
+  margin:15px 0;
+}
+
+.kj-workspace-head p{
+  color:#77786c;
+  line-height:1.8;
+}
+
+.kj-filter-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:30px;
+}
+
+.kj-filter{
+  border:1px solid #d9d8cd;
+  background:transparent;
+  color:#55564d;
+  border-radius:40px;
+  padding:11px 19px;
+  cursor:pointer;
+  font-size:12px;
+  transition:.3s;
+}
+
+.kj-filter.active,
+.kj-filter:hover{
+  background:#25271f;
+  color:white;
+  border-color:#25271f;
+}
+
+.kj-project-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:20px;
+}
+
+.kj-case-card{
+  position:relative;
+  padding:30px;
+  border-radius:20px;
+  background:white;
+  border:1px solid #e6e4da;
+  min-height:300px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  transition:.35s;
+}
+
+.kj-case-card:hover{
+  transform:translateY(-7px);
+  box-shadow:0 22px 50px #25271f12;
+}
+
+.kj-case-card.hidden{
+  display:none;
+}
+
+.kj-case-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.kj-case-number{
+  color:#85875c;
+  font-size:11px;
+  letter-spacing:3px;
+}
+
+.kj-case-icon{
+  width:47px;
+  height:47px;
+  display:grid;
+  place-items:center;
+  border-radius:15px;
+  background:#f0efe6;
+  font-size:23px;
+}
+
+.kj-case-card h3{
+  font-size:31px;
+  letter-spacing:-1px;
+  margin:28px 0 10px;
+}
+
+.kj-case-card p{
+  color:#77786c;
+  line-height:1.8;
+  font-size:14px;
+}
+
+.kj-case-bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-top:25px;
+}
+
+.kj-case-category{
+  font-size:10px;
+  letter-spacing:2px;
+  color:#85875c;
+  font-weight:700;
+}
+
+.kj-case-open{
+  border:0;
+  background:#25271f;
+  color:white;
+  padding:12px 17px;
+  border-radius:30px;
+  cursor:pointer;
+  font-size:12px;
+  transition:.3s;
+}
+
+.kj-case-open:hover{
+  background:#85875c;
+  transform:translateY(-2px);
+}
+
+/* PROJECT MODAL */
+#kj-project-modal{
+  position:fixed;
+  inset:0;
+  z-index:999999;
+  background:#141510d9;
+  backdrop-filter:blur(12px);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+#kj-project-modal.open{
+  display:flex;
+}
+
+.kj-modal-panel{
+  width:min(650px,100%);
+  max-height:85vh;
+  overflow:auto;
+  background:#f5f3eb;
+  color:#25271f;
+  border-radius:22px;
+  padding:35px;
+  position:relative;
+  animation:kjModalIn .3s ease;
+}
+
+@keyframes kjModalIn{
+  from{opacity:0;transform:translateY(25px) scale(.97)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+.kj-modal-close{
+  position:absolute;
+  right:20px;
+  top:20px;
+  border:0;
+  background:#e5e3d8;
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  font-size:20px;
+  cursor:pointer;
+}
+
+.kj-modal-panel small{
+  color:#85875c;
+  letter-spacing:3px;
+}
+
+.kj-modal-panel h2{
+  font-size:clamp(32px,6vw,48px);
+  letter-spacing:-2px;
+  margin:25px 0 15px;
+}
+
+.kj-modal-panel p{
+  color:#77786c;
+  line-height:1.9;
+}
+
+.kj-modal-info{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:28px;
+}
+
+.kj-modal-info div{
+  padding:17px;
+  border:1px solid #deddd1;
+  border-radius:12px;
+}
+
+.kj-modal-info span{
+  display:block;
+  color:#85875c;
+  font-size:10px;
+  letter-spacing:2px;
+  margin-bottom:8px;
+}
+
+.kj-modal-info strong{
+  font-size:13px;
+}
+
+/* PROCESS */
+.kj-process{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:15px;
+}
+
+.kj-process-card{
+  padding:25px;
+  border:1px solid #deddd1;
+  border-radius:16px;
+  background:#fff;
+  transition:.3s;
+}
+
+.kj-process-card:hover{
+  transform:translateY(-6px);
+  border-color:#85875c;
+}
+
+.kj-process-card span{
+  color:#85875c;
+  font-size:12px;
+  letter-spacing:2px;
+}
+
+.kj-process-card h3{
+  margin:24px 0 12px;
+  font-size:20px;
+}
+
+.kj-process-card p{
+  color:#77786c;
+  font-size:13px;
+  line-height:1.8;
+}
+
+/* NOW BUILDING */
+.kj-now{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:35px;
+  align-items:center;
+  padding:45px;
+  border-radius:22px;
+  background:#25271f;
+  color:#fff;
+}
+
+.kj-now-label{
+  color:#d1cda9;
+  letter-spacing:3px;
+  font-size:11px;
+}
+
+.kj-now h2{
+  font-size:clamp(32px,5vw,53px);
+  line-height:1.1;
+  letter-spacing:-2px;
+  margin:20px 0;
+}
+
+.kj-now p{
+  color:#c4c4b8;
+  line-height:1.8;
+}
+
+.kj-now-list{
+  display:grid;
+  gap:12px;
+}
+
+.kj-now-item{
+  padding:17px;
+  border:1px solid #ffffff25;
+  border-radius:13px;
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  font-size:13px;
+}
+
+.kj-now-item span:last-child{
+  color:#d1cda9;
+  font-size:11px;
+}
+
+/* FOOTER */
+.kj-premium-footer{
+  padding:65px 8% 30px;
+  background:#1d1f19;
+  color:white;
+}
+
+.kj-footer-top{
+  display:flex;
+  justify-content:space-between;
+  gap:35px;
+  flex-wrap:wrap;
+  padding-bottom:40px;
+}
+
+.kj-footer-brand{
+  font-size:27px;
+  font-weight:700;
+  letter-spacing:-1px;
+}
+
+.kj-footer-brand span{
+  color:#b5b48a;
+}
+
+.kj-footer-note{
+  color:#aaa99e;
+  font-size:13px;
+  line-height:1.8;
+  max-width:330px;
+  margin-top:12px;
+}
+
+.kj-footer-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
+  align-items:flex-start;
+}
+
+.kj-footer-links a{
+  text-decoration:none;
+  color:#d1d0c5;
+  font-size:12px;
+  transition:.3s;
+}
+
+.kj-footer-links a:hover{
+  color:#d1cda9;
+}
+
+.kj-footer-bottom{
+  border-top:1px solid #ffffff20;
+  padding-top:25px;
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  flex-wrap:wrap;
+  color:#929287;
+  font-size:11px;
+}
+
+/* RESPONSIVE */
+@media(max-width:760px){
+  .kj-workspace{
+    padding:70px 6%;
+  }
+
+  .kj-project-grid{
+    grid-template-columns:1fr;
+  }
+
+  .kj-process{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .kj-now{
+    grid-template-columns:1fr;
+    padding:27px;
+  }
+
+  .kj-modal-panel{
+    padding:28px 22px;
+  }
+
+  .kj-premium-footer{
+    padding:50px 6% 25px;
+  }
+}
+
+@media(max-width:420px){
+  .kj-process{
+    grid-template-columns:1fr;
+  }
+
+  .kj-modal-info{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+
+<!-- INTERACTIVE PROJECT SHOWCASE -->
+<section class="kj-workspace" id="project-lab">
+
+  <div class="kj-workspace-head">
+    <span class="eyebrow">THE PROJECT LAB / 05</span>
+    <h2>Building beyond the ordinary.</h2>
+    <p>
+      Explore the digital concepts, experiments and product ideas
+      that shape my journey as a developer.
+    </p>
+  </div>
+
+  <div class="kj-filter-row">
+    <button class="kj-filter active" data-filter="all">All Projects</button>
+    <button class="kj-filter" data-filter="ai">AI & Technology</button>
+    <button class="kj-filter" data-filter="web">Web Development</button>
+    <button class="kj-filter" data-filter="product">Product Concepts</button>
+  </div>
+
+  <div class="kj-project-grid">
+
+    <article class="kj-case-card" data-category="ai">
+      <div>
+        <div class="kj-case-top">
+          <span class="kj-case-number">PROJECT / 001</span>
+          <div class="kj-case-icon">✳</div>
+        </div>
+        <h3>AVA AI</h3>
+        <p>An AI assistant concept exploring intelligent conversations, voice interaction and coding workflows.</p>
+      </div>
+      <div class="kj-case-bottom">
+        <span class="kj-case-category">AI TECHNOLOGY</span>
+        <button class="kj-case-open"
+          data-project="ava">Explore ↗</button>
+      </div>
+    </article>
+
+    <article class="kj-case-card" data-category="web">
+      <div>
+        <div class="kj-case-top">
+          <span class="kj-case-number">PROJECT / 002</span>
+          <div class="kj-case-icon">◇</div>
+        </div>
+        <h3>KIRUU SHOP</h3>
+        <p>A modern e-commerce concept focused on product presentation, shopping experience and responsive design.</p>
+      </div>
+      <div class="kj-case-bottom">
+        <span class="kj-case-category">WEB DEVELOPMENT</span>
+        <button class="kj-case-open"
+          data-project="shop">Explore ↗</button>
+      </div>
+    </article>
+
+    <article class="kj-case-card" data-category="product">
+      <div>
+        <div class="kj-case-top">
+          <span class="kj-case-number">PROJECT / 003</span>
+          <div class="kj-case-icon">◎</div>
+        </div>
+        <h3>KIRUU PAY</h3>
+        <p>A fintech product concept exploring accessible payment experiences and simple mobile interfaces.</p>
+      </div>
+      <div class="kj-case-bottom">
+        <span class="kj-case-category">PRODUCT CONCEPT</span>
+        <button class="kj-case-open"
+          data-project="pay">Explore ↗</button>
+      </div>
+    </article>
+
+    <article class="kj-case-card" data-category="web">
+      <div>
+        <div class="kj-case-top">
+          <span class="kj-case-number">PROJECT / 004</span>
+          <div class="kj-case-icon">✦</div>
+        </div>
+        <h3>AAPS HUB</h3>
+        <p>A centralized application hub concept for discovering and organizing useful digital tools.</p>
+      </div>
+      <div class="kj-case-bottom">
+        <span class="kj-case-category">WEB PLATFORM</span>
+        <button class="kj-case-open"
+          data-project="hub">Explore ↗</button>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- PROJECT DETAILS POPUP -->
+<div id="kj-project-modal" role="dialog"
+  aria-modal="true" aria-labelledby="kj-modal-title">
+
+  <div class="kj-modal-panel">
+    <button class="kj-modal-close"
+      id="kj-modal-close" aria-label="Close">×</button>
+
+    <small id="kj-modal-category">PROJECT DETAILS</small>
+    <h2 id="kj-modal-title">Project Name</h2>
+    <p id="kj-modal-description"></p>
+
+    <div class="kj-modal-info">
+      <div>
+        <span>TYPE</span>
+        <strong id="kj-modal-type"></strong>
+      </div>
+      <div>
+        <span>FOCUS</span>
+        <strong id="kj-modal-focus"></strong>
+      </div>
+      <div>
+        <span>STATUS</span>
+        <strong id="kj-modal-status"></strong>
+      </div>
+      <div>
+        <span>CREATOR</span>
+        <strong>Kiran Jadhav</strong>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DEVELOPMENT PROCESS -->
+<section class="kj-workspace" id="my-process">
+  <div class="kj-workspace-head">
+    <span class="eyebrow">MY APPROACH / 06</span>
+    <h2>How an idea becomes reality.</h2>
+    <p>A simple process for turning a thought into a working digital experience.</p>
+  </div>
+
+  <div class="kj-process">
+    <article class="kj-process-card">
+      <span>STEP 01</span>
+      <h3>Discover</h3>
+      <p>Understand the idea, the problem and the experience that needs to be created.</p>
+    </article>
+
+    <article class="kj-process-card">
+      <span>STEP 02</span>
+      <h3>Design</h3>
+      <p>Explore visual direction, layouts and a consistent design language.</p>
+    </article>
+
+    <article class="kj-process-card">
+      <span>STEP 03</span>
+      <h3>Develop</h3>
+      <p>Build the interface and bring the planned interactions to life.</p>
+    </article>
+
+    <article class="kj-process-card">
+      <span>STEP 04</span>
+      <h3>Improve</h3>
+      <p>Test the experience, find improvements and refine the final result.</p>
+    </article>
+  </div>
+</section>
+
+<!-- CURRENTLY BUILDING -->
+<section class="kj-workspace" id="currently-building">
+  <div class="kj-now">
+    <div>
+      <span class="kj-now-label">BEHIND THE SCREEN / 07</span>
+      <h2>Always exploring what's next.</h2>
+      <p>
+        I enjoy experimenting with new technologies and turning
+        creative ideas into useful digital products.
+        The journey is still in progress.
+      </p>
+    </div>
+
+    <div class="kj-now-list">
+      <div class="kj-now-item">
+        <span>AVA AI</span>
+        <span>AI EXPERIMENT</span>
+      </div>
+      <div class="kj-now-item">
+        <span>KIRUU SHOP</span>
+        <span>WEB PROJECT</span>
+      </div>
+      <div class="kj-now-item">
+        <span>KIRUU PAY</span>
+        <span>PRODUCT CONCEPT</span>
+      </div>
+      <div class="kj-now-item">
+        <span>AAPS HUB</span>
+        <span>WEB PLATFORM</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PREMIUM FOOTER -->
+<footer class="kj-premium-footer">
+  <div class="kj-footer-top">
+    <div>
+      <div class="kj-footer-brand">KIRAN <span>JADHAV.</span></div>
+      <p class="kj-footer-note">
+        Exploring technology. Building digital experiences.
+        Learning something new every day.
+      </p>
+    </div>
+
+    <nav class="kj-footer-links" aria-label="Footer navigation">
+      <a href="#featured-work">Work</a>
+      <a href="#technical-skills">Skills</a>
+      <a href="#journey">Journey</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+      <a href="https://www.instagram.com/kiiiiiruuuuuu/"
+         target="_blank" rel="noopener">Instagram ↗</a>
+    </nav>
+  </div>
+
+  <div class="kj-footer-bottom">
+    <span>© <span id="kj-year"></span> Kiran Jadhav. All rights reserved.</span>
+    <span>Designed with curiosity & built with passion.</span>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const projects = {
+    ava:{
+      title:"AVA AI",
+      category:"AI & TECHNOLOGY",
+      description:"AVA AI is a personal AI assistant concept focused on natural conversations, Hindi-friendly voice interaction, coding assistance and creative workflows. The vision is to make AI tools easier and more accessible.",
+      type:"AI Assistant",
+      focus:"Voice, Chat & Coding",
+      status:"In Development"
+    },
+    shop:{
+      title:"KIRUU SHOP",
+      category:"WEB DEVELOPMENT",
+      description:"KIRUU SHOP is an e-commerce platform concept designed around product discovery, responsive layouts and a smooth shopping experience. The goal is to create a modern storefront with useful shopping features.",
+      type:"E-commerce Website",
+      focus:"Shopping & UI Design",
+      status:"In Development"
+    },
+    pay:{
+      title:"KIRUU PAY",
+      category:"FINTECH PRODUCT",
+      description:"KIRUU PAY is a digital payment product concept exploring simple payment interfaces and accessible financial technology. Real payment functionality requires appropriate regulated partners and secure backend infrastructure.",
+      type:"Fintech Concept",
+      focus:"Payments & Mobile UI",
+      status:"Concept / Development"
+    },
+    hub:{
+      title:"AAPS HUB",
+      category:"WEB PLATFORM",
+      description:"AAPS HUB is a digital platform concept designed to organize useful applications in one place, with an emphasis on accessible navigation and a clean interface.",
+      type:"Application Hub",
+      focus:"Web Platform & Dashboard",
+      status:"In Development"
+    }
+  };
+
+  const modal=document.getElementById("kj-project-modal");
+
+  function closeModal(){
+    modal.classList.remove("open");
+    document.body.style.overflow="";
+  }
+
+  document.querySelectorAll("[data-project]").forEach(button=>{
+    button.addEventListener("click",()=>{
+      const item=projects[button.dataset.project];
+      if(!item)return;
+
+      document.getElementById("kj-modal-title").textContent=item.title;
+      document.getElementById("kj-modal-category").textContent=item.category;
+      document.getElementById("kj-modal-description").textContent=item.description;
+      document.getElementById("kj-modal-type").textContent=item.type;
+      document.getElementById("kj-modal-focus").textContent=item.focus;
+      document.getElementById("kj-modal-status").textContent=item.status;
+
+      modal.classList.add("open");
+      document.body.style.overflow="hidden";
+    });
+  });
+
+  document.getElementById("kj-modal-close")
+    .addEventListener("click",closeModal);
+
+  modal.addEventListener("click",event=>{
+    if(event.target===modal)closeModal();
+  });
+
+  document.addEventListener("keydown",event=>{
+    if(event.key==="Escape")closeModal();
+  });
+
+  /* PROJECT FILTERS */
+  const filters=document.querySelectorAll(".kj-filter");
+  const cards=document.querySelectorAll(".kj-case-card");
+
+  filters.forEach(filter=>{
+    filter.addEventListener("click",()=>{
+      filters.forEach(btn=>btn.classList.remove("active"));
+      filter.classList.add("active");
+
+      const category=filter.dataset.filter;
+
+      cards.forEach(card=>{
+        const matches=
+          category==="all" ||
+          card.dataset.category===category;
+
+        card.classList.toggle("hidden",!matches);
+      });
+    });
+  });
+
+  /* AUTOMATIC COPYRIGHT YEAR */
+  document.getElementById("kj-year").textContent=
+    new Date().getFullYear();
+
+})();
+</script>
+
+<!-- ===== END KIRAN JADHAV INTERACTIVE PORTFOLIO V2 ===== -->
+
+<!-- ===== KIRAN JADHAV: INTERACTIVE EXPERIENCE V3 ===== -->
+
+<style>
+/* IDENTITY SECTION */
+.kj-identity{
+  padding:100px 8%;
+  background:#eeede4;
+  color:#25271f;
+}
+
+.kj-identity-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
+}
+
+.kj-profile-visual{
+  min-height:470px;
+  border-radius:24px;
+  background:linear-gradient(145deg,#d9d7c8,#a6a68a);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.kj-profile-circle{
+  width:260px;
+  height:260px;
+  border-radius:50%;
+  border:1px solid #ffffff90;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(145deg,#f3f0df,#c6c4a8);
+  box-shadow:0 30px 80px #25271f25;
+  color:#555742;
+  font-size:85px;
+  font-weight:700;
+  letter-spacing:-9px;
+}
+
+.kj-profile-caption{
+  position:absolute;
+  bottom:25px;
+  left:25px;
+  padding:13px 17px;
+  border:1px solid #ffffff80;
+  background:#ffffff80;
+  backdrop-filter:blur(12px);
+  border-radius:12px;
+  font-size:11px;
+  letter-spacing:2px;
+}
+
+.kj-identity-copy small{
+  color:#85875c;
+  font-size:11px;
+  letter-spacing:4px;
+  font-weight:700;
+}
+
+.kj-identity-copy h2{
+  font-size:clamp(40px,6vw,67px);
+  letter-spacing:-3px;
+  line-height:1.05;
+  margin:20px 0;
+}
+
+.kj-identity-copy p{
+  color:#77786c;
+  line-height:1.9;
+  font-size:15px;
+}
+
+.kj-identity-points{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+  margin-top:30px;
+}
+
+.kj-identity-point{
+  border-top:1px solid #c9c8b9;
+  padding-top:14px;
+}
+
+.kj-identity-point strong{
+  display:block;
+  font-size:13px;
+}
+
+.kj-identity-point span{
+  color:#85875c;
+  font-size:11px;
+  display:block;
+  margin-top:6px;
+}
+
+/* AVAILABILITY */
+.kj-availability{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 15px;
+  border:1px solid #85875c50;
+  border-radius:30px;
+  margin-top:25px;
+  font-size:11px;
+  color:#555742;
+}
+
+.kj-live-dot{
+  width:8px;
+  height:8px;
+  background:#6b9869;
+  border-radius:50%;
+  box-shadow:0 0 0 5px #6b986925;
+  animation:kjPulse 1.8s infinite;
+}
+
+@keyframes kjPulse{
+  50%{box-shadow:0 0 0 9px #6b986900}
+}
+
+/* COMMAND PALETTE */
+#kj-command-overlay{
+  position:fixed;
+  inset:0;
+  z-index:9999999;
+  background:#151610b8;
+  backdrop-filter:blur(10px);
+  display:none;
+  justify-content:center;
+  align-items:flex-start;
+  padding:15vh 18px 20px;
+}
+
+#kj-command-overlay.open{
+  display:flex;
+}
+
+.kj-command-box{
+  width:min(570px,100%);
+  background:#f5f3eb;
+  border:1px solid #ffffff60;
+  border-radius:18px;
+  padding:17px;
+  box-shadow:0 35px 100px #0005;
+  animation:kjCommandIn .2s ease;
+}
+
+@keyframes kjCommandIn{
+  from{opacity:0;transform:translateY(-12px) scale(.98)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+.kj-command-search{
+  width:100%;
+  padding:17px;
+  border:1px solid #deddd1;
+  border-radius:12px;
+  background:#fff;
+  outline:none;
+  color:#25271f;
+  font-size:14px;
+  box-sizing:border-box;
+}
+
+.kj-command-title{
+  color:#85875c;
+  font-size:10px;
+  letter-spacing:3px;
+  margin:22px 8px 10px;
+}
+
+.kj-command-list{
+  display:grid;
+  gap:6px;
+}
+
+.kj-command-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  width:100%;
+  padding:14px;
+  border:0;
+  background:transparent;
+  border-radius:10px;
+  color:#25271f;
+  text-align:left;
+  cursor:pointer;
+  font-size:13px;
+}
+
+.kj-command-item:hover{
+  background:#e8e6da;
+}
+
+.kj-command-item span:last-child{
+  color:#85875c;
+  font-size:11px;
+}
+
+/* FAQ */
+.kj-faq-section{
+  padding:100px 8%;
+  background:#f5f3eb;
+}
+
+.kj-faq-layout{
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:60px;
+}
+
+.kj-faq-heading h2{
+  font-size:clamp(35px,5vw,57px);
+  letter-spacing:-2px;
+  line-height:1.1;
+  margin:15px 0;
+}
+
+.kj-faq-heading p{
+  color:#77786c;
+  line-height:1.8;
+}
+
+.kj-faq-list{
+  border-top:1px solid #d7d6cb;
+}
+
+.kj-faq-item{
+  border-bottom:1px solid #d7d6cb;
+}
+
+.kj-faq-question{
+  width:100%;
+  padding:22px 0;
+  border:0;
+  background:none;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  text-align:left;
+  font-size:15px;
+  color:#25271f;
+  cursor:pointer;
+}
+
+.kj-faq-question span:last-child{
+  color:#85875c;
+  font-size:22px;
+  transition:transform .3s;
+}
+
+.kj-faq-answer{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .35s ease;
+}
+
+.kj-faq-answer p{
+  color:#77786c;
+  font-size:13px;
+  line-height:1.9;
+  padding:0 25px 20px 0;
+}
+
+.kj-faq-item.open .kj-faq-answer{
+  max-height:220px;
+}
+
+.kj-faq-item.open .kj-faq-question span:last-child{
+  transform:rotate(45deg);
+}
+
+/* QUICK NAV */
+#kj-quick-nav{
+  position:fixed;
+  right:22px;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:800;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.kj-nav-dot{
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  border:1px solid #85875c;
+  background:transparent;
+  cursor:pointer;
+  position:relative;
+  transition:.3s;
+}
+
+.kj-nav-dot.active{
+  background:#85875c;
+  transform:scale(1.35);
+}
+
+.kj-nav-dot:after{
+  content:attr(data-label);
+  position:absolute;
+  right:20px;
+  top:-7px;
+  padding:5px 9px;
+  background:#25271f;
+  color:white;
+  font-size:10px;
+  border-radius:5px;
+  opacity:0;
+  pointer-events:none;
+  white-space:nowrap;
+  transition:.2s;
+}
+
+.kj-nav-dot:hover:after{
+  opacity:1;
+}
+
+/* TOAST */
+#kj-toast{
+  position:fixed;
+  bottom:25px;
+  left:50%;
+  transform:translate(-50%,20px);
+  background:#25271f;
+  color:white;
+  padding:13px 20px;
+  border-radius:30px;
+  font-size:12px;
+  z-index:99999999;
+  opacity:0;
+  pointer-events:none;
+  transition:.3s;
+  white-space:nowrap;
+}
+
+#kj-toast.show{
+  opacity:1;
+  transform:translate(-50%,0);
+}
+
+/* COMMAND HINT */
+.kj-command-hint{
+  position:fixed;
+  bottom:25px;
+  left:25px;
+  z-index:700;
+  padding:10px 14px;
+  background:#25271f;
+  color:#fff;
+  border-radius:9px;
+  font-size:10px;
+  letter-spacing:1px;
+  cursor:pointer;
+  border:0;
+  box-shadow:0 8px 30px #0002;
+}
+
+/* RESPONSIVE */
+@media(max-width:760px){
+  .kj-identity,
+  .kj-faq-section{
+    padding:70px 6%;
+  }
+
+  .kj-identity-grid,
+  .kj-faq-layout{
+    grid-template-columns:1fr;
+    gap:35px;
+  }
+
+  .kj-profile-visual{
+    min-height:340px;
+  }
+
+  .kj-profile-circle{
+    width:200px;
+    height:200px;
+    font-size:65px;
+  }
+
+  #kj-quick-nav{
+    display:none;
+  }
+
+  .kj-command-hint{
+    bottom:18px;
+    left:15px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .kj-live-dot{animation:none}
+  *{scroll-behavior:auto!important}
+}
+</style>
+
+<!-- IDENTITY -->
+<section class="kj-identity" id="identity">
+  <div class="kj-identity-grid">
+
+    <div class="kj-profile-visual">
+      <div class="kj-profile-circle">KJ</div>
+      <div class="kj-profile-caption">
+        KIRAN JADHAV / INDIA
+      </div>
+    </div>
+
+    <div class="kj-identity-copy">
+      <small>THE PERSON BEHIND THE PROJECTS</small>
+
+      <h2>Not just coding. Creating possibilities.</h2>
+
+      <p>
+        I'm Kiran Jadhav, a technology enthusiast and aspiring
+        software developer from India. I enjoy exploring web
+        development, AI-powered experiences and digital product ideas.
+      </p>
+
+      <div class="kj-identity-points">
+        <div class="kj-identity-point">
+          <strong>Web Development</strong>
+          <span>Building digital experiences</span>
+        </div>
+
+        <div class="kj-identity-point">
+          <strong>Artificial Intelligence</strong>
+          <span>Exploring intelligent tools</span>
+        </div>
+
+        <div class="kj-identity-point">
+          <strong>Product Ideas</strong>
+          <span>Turning concepts into projects</span>
+        </div>
+
+        <div class="kj-identity-point">
+          <strong>Continuous Learning</strong>
+          <span>Growing through experimentation</span>
+        </div>
+      </div>
+
+      <div class="kj-availability">
+        <span class="kj-live-dot"></span>
+        OPEN TO CONNECT & COLLABORATE
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="kj-faq-section" id="faq">
+  <div class="kj-faq-layout">
+
+    <div class="kj-faq-heading">
+      <small style="color:#85875c;letter-spacing:4px">
+        QUICK ANSWERS / 08
+      </small>
+      <h2>A little more about my work.</h2>
+      <p>
+        Some quick answers about my projects, interests and
+        approach to building digital products.
+      </p>
+    </div>
+
+    <div class="kj-faq-list">
+
+      <div class="kj-faq-item">
+        <button class="kj-faq-question">
+          <span>Who is Kiran Jadhav?</span>
+          <span>+</span>
+        </button>
+        <div class="kj-faq-answer">
+          <p>
+            Kiran Jadhav is a technology enthusiast and aspiring
+            software developer interested in web development,
+            artificial intelligence and digital products.
+          </p>
+        </div>
+      </div>
+
+      <div class="kj-faq-item">
+        <button class="kj-faq-question">
+          <span>What projects are you exploring?</span>
+          <span>+</span>
+        </button>
+        <div class="kj-faq-answer">
+          <p>
+            My current project concepts include AVA AI,
+            KIRUU SHOP, KIRUU PAY and AAPS HUB.
+          </p>
+        </div>
+      </div>
+
+      <div class="kj-faq-item">
+        <button class="kj-faq-question">
+          <span>Which technologies interest you?</span>
+          <span>+</span>
+        </button>
+        <div class="kj-faq-answer">
+          <p>
+            I'm interested in HTML, CSS, JavaScript,
+            responsive web design, AI integrations and
+            modern application development.
+          </p>
+        </div>
+      </div>
+
+      <div class="kj-faq-item">
+        <button class="kj-faq-question">
+          <span>Can I collaborate with you?</span>
+          <span>+</span>
+        </button>
+        <div class="kj-faq-answer">
+          <p>
+            Yes. You can connect with me through Instagram
+            to discuss ideas, projects and potential collaborations.
+          </p>
+        </div>
+      </div>
+
+      <div class="kj-faq-item">
+        <button class="kj-faq-question">
+          <span>Where can I see your updates?</span>
+          <span>+</span>
+        </button>
+        <div class="kj-faq-answer">
+          <p>
+            Follow my Instagram profile for updates and
+            new creative experiments.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- COMMAND PALETTE -->
+<div id="kj-command-overlay">
+  <div class="kj-command-box">
+
+    <input
+      type="text"
+      id="kj-command-input"
+      class="kj-command-search"
+      placeholder="Search sections or actions..."
+      autocomplete="off"
+    >
+
+    <div class="kj-command-title">QUICK NAVIGATION</div>
+
+    <div class="kj-command-list" id="kj-command-list">
+
+      <button class="kj-command-item" data-target="identity">
+        <span>About Kiran</span>
+        <span>01</span>
+      </button>
+
+      <button class="kj-command-item" data-target="featured-work">
+        <span>Featured Work</span>
+        <span>02</span>
+      </button>
+
+      <button class="kj-command-item" data-target="project-lab">
+        <span>Project Lab</span>
+        <span>03</span>
+      </button>
+
+      <button class="kj-command-item" data-target="technical-skills">
+        <span>Skills</span>
+        <span>04</span>
+      </button>
+
+      <button class="kj-command-item" data-target="journey">
+        <span>My Journey</span>
+        <span>05</span>
+      </button>
+
+      <button class="kj-command-item" data-target="services">
+        <span>Services</span>
+        <span>06</span>
+      </button>
+
+      <button class="kj-command-item" data-target="faq">
+        <span>FAQ</span>
+        <span>07</span>
+      </button>
+
+      <button class="kj-command-item" data-target="contact">
+        <span>Contact</span>
+        <span>08</span>
+      </button>
+
+    </div>
+  </div>
+</div>
+
+<!-- QUICK NAV DOTS -->
+<div id="kj-quick-nav">
+  <button class="kj-nav-dot" data-target="identity" data-label="About"></button>
+  <button class="kj-nav-dot" data-target="featured-work" data-label="Work"></button>
+  <button class="kj-nav-dot" data-target="technical-skills" data-label="Skills"></button>
+  <button class="kj-nav-dot" data-target="journey" data-label="Journey"></button>
+  <button class="kj-nav-dot" data-target="services" data-label="Services"></button>
+  <button class="kj-nav-dot" data-target="faq" data-label="FAQ"></button>
+  <button class="kj-nav-dot" data-target="contact" data-label="Contact"></button>
+</div>
+
+<button class="kj-command-hint" id="kj-open-command">
+  ⌘ QUICK NAVIGATION
+</button>
+
+<div id="kj-toast" role="status" aria-live="polite">
+  Navigation opened
+</div>
+
+<script>
+(() => {
+
+  /* FAQ ACCORDION */
+  document.querySelectorAll(".kj-faq-question")
+    .forEach(button=>{
+      button.addEventListener("click",()=>{
+        const item=button.closest(".kj-faq-item");
+        const wasOpen=item.classList.contains("open");
+
+        document.querySelectorAll(".kj-faq-item")
+          .forEach(other=>other.classList.remove("open"));
+
+        if(!wasOpen)item.classList.add("open");
+      });
+    });
+
+  /* COMMAND PALETTE */
+  const overlay=document.getElementById("kj-command-overlay");
+  const search=document.getElementById("kj-command-input");
+  const commands=[...document.querySelectorAll(".kj-command-item")];
+
+  function openCommand(){
+    overlay.classList.add("open");
+    search.value="";
+    filterCommands("");
+    setTimeout(()=>search.focus(),100);
+  }
+
+  function closeCommand(){
+    overlay.classList.remove("open");
+  }
+
+  function filterCommands(value){
+    const term=value.toLowerCase();
+
+    commands.forEach(button=>{
+      button.style.display=
+        button.textContent.toLowerCase().includes(term)
+        ?"flex":"none";
+    });
+  }
+
+  document.getElementById("kj-open-command")
+    .addEventListener("click",openCommand);
+
+  search.addEventListener("input",()=>{
+    filterCommands(search.value);
+  });
+
+  commands.forEach(button=>{
+    button.addEventListener("click",()=>{
+      const target=document.getElementById(button.dataset.target);
+      closeCommand();
+
+      if(target){
+        target.scrollIntoView({
+          behavior:"smooth",
+          block:"start"
+        });
+      }
+    });
+  });
+
+  overlay.addEventListener("click",event=>{
+    if(event.target===overlay)closeCommand();
+  });
+
+  document.addEventListener("keydown",event=>{
+    if((event.ctrlKey||event.metaKey)&&event.key.toLowerCase()==="k"){
+      event.preventDefault();
+      openCommand();
+    }
+
+    if(event.key==="Escape")closeCommand();
+  });
+
+  /* QUICK NAV DOTS */
+  const navDots=[...document.querySelectorAll(".kj-nav-dot")];
+
+  navDots.forEach(dot=>{
+    dot.addEventListener("click",()=>{
+      document.getElementById(dot.dataset.target)
+        ?.scrollIntoView({behavior:"smooth"});
+    });
+  });
+
+  const sectionObserver=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        navDots.forEach(dot=>{
+          dot.classList.toggle(
+            "active",
+            dot.dataset.target===entry.target.id
+          );
+        });
+      }
+    });
+  },{
+    rootMargin:"-35% 0px -50% 0px"
+  });
+
+  navDots.forEach(dot=>{
+    const section=document.getElementById(dot.dataset.target);
+    if(section)sectionObserver.observe(section);
+  });
+
+})();
+</script>
+
+<!-- ===== END INTERACTIVE EXPERIENCE V3 ===== -->
+
+<!-- ===== KIRAN JADHAV: KARNATAKA IDENTITY UPGRADE ===== -->
+
+<style>
+.kj-location-card{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:17px 20px;
+  margin-top:22px;
+  border:1px solid #85875c45;
+  border-radius:15px;
+  background:rgba(255,255,255,.65);
+  width:fit-content;
+  max-width:100%;
+  backdrop-filter:blur(12px);
+}
+
+.kj-location-icon{
+  width:43px;
+  height:43px;
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  background:#85875c20;
+  font-size:22px;
+}
+
+.kj-location-card strong{
+  display:block;
+  font-size:13px;
+  color:#25271f;
+}
+
+.kj-location-card small{
+  display:block;
+  margin-top:5px;
+  font-size:10px;
+  letter-spacing:1.5px;
+  color:#85875c;
+}
+
+.kj-hero-intro{
+  padding:85px 8%;
+  background:#25271f;
+  color:#fff;
+  position:relative;
+  overflow:hidden;
+}
+
+.kj-hero-intro:before{
+  content:"";
+  position:absolute;
+  width:450px;
+  height:450px;
+  right:-120px;
+  top:-180px;
+  border-radius:50%;
+  background:radial-gradient(circle,#a4a47745,transparent 70%);
+}
+
+.kj-hero-inner{
+  position:relative;
+  z-index:1;
+  max-width:1050px;
+}
+
+.kj-hero-eyebrow{
+  color:#d1cda9;
+  font-size:11px;
+  letter-spacing:4px;
+}
+
+.kj-hero-intro h2{
+  font-size:clamp(48px,9vw,100px);
+  line-height:.98;
+  letter-spacing:-5px;
+  margin:30px 0;
+}
+
+.kj-hero-intro h2 span{
+  color:#c9c49f;
+}
+
+.kj-hero-intro p{
+  color:#c7c7bb;
+  line-height:1.9;
+  max-width:590px;
+  font-size:15px;
+}
+
+.kj-hero-actions{
+  display:flex;
+  gap:13px;
+  flex-wrap:wrap;
+  margin-top:30px;
+}
+
+.kj-hero-actions a{
+  text-decoration:none;
+  padding:14px 22px;
+  border-radius:40px;
+  font-size:12px;
+  font-weight:700;
+  transition:.3s;
+}
+
+.kj-hero-primary{
+  background:#d1cda9;
+  color:#25271f;
+}
+
+.kj-hero-secondary{
+  color:#fff;
+  border:1px solid #ffffff50;
+}
+
+.kj-hero-actions a:hover{
+  transform:translateY(-4px);
+}
+
+.kj-photo-placeholder{
+  margin-top:35px;
+  padding:16px 20px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  width:fit-content;
+  border:1px solid #ffffff25;
+  border-radius:13px;
+  color:#d2d1c4;
+  font-size:12px;
+}
+
+.kj-photo-placeholder span{
+  font-size:22px;
+}
+
+@media(max-width:600px){
+  .kj-hero-intro{padding:65px 6%}
+  .kj-hero-intro h2{letter-spacing:-3px}
+  .kj-location-card{width:100%;box-sizing:border-box}
+}
+</style>
+
+<!-- CINEMATIC INTRO -->
+<section class="kj-hero-intro" id="kiran-intro">
+  <div class="kj-hero-inner">
+    <span class="kj-hero-eyebrow">
+      SOFTWARE DEVELOPER · KARNATAKA, INDIA
+    </span>
+
+    <h2>
+      Hello, I'm<br/>
+      <span>Kiran Jadhav.</span>
+    </h2>
+
+    <p>
+      A technology enthusiast from Karnataka, India,
+      exploring software development, artificial intelligence
+      and creative digital experiences.
+      I believe every great product begins with an idea.
+    </p>
+
+    <div class="kj-hero-actions">
+      <a href="#project-lab" class="kj-hero-primary">
+        Explore My Work ↗
+      </a>
+
+      <a href="#contact" class="kj-hero-secondary">
+        Let's Connect
+      </a>
+    </div>
+
+    <div class="kj-photo-placeholder">
+      <span>◎</span>
+      <div>
+        <strong>Personal Profile Photo</strong><br/>
+        <small>PHOTO SLOT — AWAITING YOUR IMAGE</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(() => {
+  /* LOCATION CARD */
+  const identity=document.querySelector(".kj-identity-copy");
+
+  if(identity && !document.querySelector(".kj-location-card")){
+    const card=document.createElement("div");
+    card.className="kj-location-card";
+
+    card.innerHTML=`
+      <div class="kj-location-icon">📍</div>
+      <div>
+        <strong>Karnataka, India</strong>
+        <small>BASED IN INDIA · BUILDING WORLDWIDE</small>
+      </div>
+    `;
+
+    identity.appendChild(card);
+  }
+
+  /* UPDATE IDENTITY LABEL */
+  document.querySelectorAll(".kj-profile-caption")
+    .forEach(el=>{
+      el.textContent="KIRAN JADHAV / KARNATAKA, INDIA";
+    });
+})();
+</script>
+
+<!-- ===== END KARNATAKA IDENTITY UPGRADE ===== -->
+
+<!-- KIRAN JADHAV — PROFILE PHOTO STUDIO -->
+<style>
+#kj-photo-studio{
+  max-width:1100px;margin:55px auto;padding:34px;
+  border:1px solid rgba(120,130,90,.22);
+  border-radius:26px;background:linear-gradient(135deg,#f4f2e9,#e9eadf);
+  color:#24271d;display:grid;grid-template-columns:1fr 1fr;
+  gap:35px;align-items:center;overflow:hidden;
+}
+#kj-photo-studio .kjps-tag{
+  font-size:10px;letter-spacing:3px;font-weight:800;
+  color:#78805c;text-transform:uppercase;
+}
+#kj-photo-studio h2{
+  font-size:clamp(28px,5vw,45px);line-height:1.05;
+  margin:14px 0;
+}
+#kj-photo-studio p{
+  color:#666b5b;line-height:1.8;font-size:14px;
+}
+.kjps-preview{
+  min-height:300px;border:1px dashed #9ba184;border-radius:22px;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;background:#e1e3d6;
+}
+.kjps-preview img{
+  width:100%;height:100%;position:absolute;inset:0;
+  object-fit:cover;display:none;
+}
+.kjps-placeholder{text-align:center;padding:30px;color:#697052}
+.kjps-placeholder strong{display:block;font-size:48px;margin-bottom:12px}
+.kjps-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.kjps-btn{
+  border:0;border-radius:50px;padding:13px 19px;
+  font-size:12px;font-weight:800;cursor:pointer;
+  background:#303a25;color:white;
+}
+.kjps-btn.secondary{background:transparent;color:#303a25;border:1px solid #9ba184}
+.kjps-note{font-size:11px!important;margin-top:14px}
+#kjps-file{display:none}
+@media(max-width:700px){
+  #kj-photo-studio{grid-template-columns:1fr;padding:22px;margin:35px 12px}
+  .kjps-preview{min-height:270px}
+}
+</style>
+
+<section id="kj-photo-studio">
+  <div>
+    <div class="kjps-tag">PERSONAL IDENTITY / 01</div>
+    <h2>Your face.<br>Your identity.</h2>
+    <p>
+      A professional portfolio deserves a real portrait.
+      Select your own photo from your device and preview
+      how it looks in your personal profile.
+    </p>
+    <div class="kjps-actions">
+      <label for="kjps-file" class="kjps-btn">＋ Choose my photo</label>
+      <button type="button" class="kjps-btn secondary" id="kjps-reset">Reset</button>
+    </div>
+    <input id="kjps-file" type="file" accept="image/*">
+    <p class="kjps-note">PRIVATE PREVIEW · Your selected photo stays in this browser session. It is not uploaded to a server.</p>
+  </div>
+
+  <div class="kjps-preview" id="kjps-preview">
+    <div class="kjps-placeholder" id="kjps-placeholder">
+      <strong>KJ</strong>
+      <b>KIRAN JADHAV</b>
+      <p>Karnataka, India</p>
+      <small>Your portrait preview will appear here</small>
+    </div>
+    <img id="kjps-image" alt="Your selected profile photo preview">
+  </div>
+</section>
+
+<script>
+(()=>{
+  const file=document.getElementById('kjps-file');
+  const img=document.getElementById('kjps-image');
+  const placeholder=document.getElementById('kjps-placeholder');
+  const reset=document.getElementById('kjps-reset');
+  let currentURL=null;
+
+  file.addEventListener('change',()=>{
+    const selected=file.files && file.files[0];
+    if(!selected)return;
+
+    if(!selected.type.startsWith('image/')){
+      alert('Please select an image file.');
+      file.value='';
+      return;
+    }
+
+    if(currentURL)URL.revokeObjectURL(currentURL);
+    currentURL=URL.createObjectURL(selected);
+    img.src=currentURL;
+    img.style.display='block';
+    placeholder.style.display='none';
+  });
+
+  reset.addEventListener('click',()=>{
+    if(currentURL)URL.revokeObjectURL(currentURL);
+    currentURL=null;
+    img.removeAttribute('src');
+    img.style.display='none';
+    placeholder.style.display='block';
+    file.value='';
+  });
+})();
+</script>
+
+<!-- KIRAN JADHAV — INTERACTIVE DEVELOPER TERMINAL -->
+<style>
+#kj-terminal{
+  max-width:1100px;margin:65px auto;padding:25px 16px;
+}
+#kj-terminal .kjt-heading{text-align:center;margin-bottom:28px}
+#kj-terminal .kjt-heading small{
+  letter-spacing:4px;color:#858b6a;font-size:10px;font-weight:800;
+}
+#kj-terminal .kjt-heading h2{
+  font-size:clamp(27px,5vw,42px);margin:12px 0;
+}
+.kjt-window{
+  background:#111510;color:#d9e6d1;border-radius:19px;
+  overflow:hidden;border:1px solid #333c2d;
+  box-shadow:0 25px 65px rgba(0,0,0,.2);
+}
+.kjt-topbar{
+  padding:15px 18px;background:#20271d;
+  display:flex;align-items:center;gap:8px;
+}
+.kjt-dot{width:10px;height:10px;border-radius:50%}
+.kjt-dot:nth-child(1){background:#e66c62}
+.kjt-dot:nth-child(2){background:#e7bd57}
+.kjt-dot:nth-child(3){background:#79b878}
+.kjt-title{margin-left:10px;font-size:11px;color:#aab49e}
+.kjt-screen{
+  padding:22px;min-height:260px;max-height:380px;
+  overflow-y:auto;font-family:monospace;font-size:13px;
+  line-height:1.9;overflow-wrap:anywhere;
+}
+.kjt-line{white-space:pre-wrap;margin-bottom:5px}
+.kjt-green{color:#a9d78a}
+.kjt-muted{color:#8c9980}
+.kjt-inputrow{
+  display:flex;align-items:center;gap:9px;
+  padding:14px 20px;border-top:1px solid #333c2d;
+}
+.kjt-prompt{color:#a9d78a;font-family:monospace}
+#kjt-input{
+  background:transparent;border:0;outline:0;
+  color:#fff;flex:1;min-width:0;font-family:monospace;
+  font-size:14px;
+}
+.kjt-help{
+  color:#89927e;font-size:11px;text-align:center;
+  margin-top:15px;
+}
+</style>
+
+<section id="kj-terminal">
+  <div class="kjt-heading">
+    <small>BEHIND THE INTERFACE</small>
+    <h2>Developer Terminal<span style="color:#89936c">.</span></h2>
+    <p>Explore my digital profile through commands.</p>
+  </div>
+
+  <div class="kjt-window">
+    <div class="kjt-topbar">
+      <span class="kjt-dot"></span>
+      <span class="kjt-dot"></span>
+      <span class="kjt-dot"></span>
+      <span class="kjt-title">kiran@portfolio — terminal</span>
+    </div>
+
+    <div class="kjt-screen" id="kjt-screen">
+      <div class="kjt-line kjt-green">KIRAN JADHAV / DEVELOPER TERMINAL</div>
+      <div class="kjt-line kjt-muted">Interactive profile interface initialized.</div>
+      <div class="kjt-line">Type <span class="kjt-green">help</span> to explore available commands.</div>
+    </div>
+
+    <div class="kjt-inputrow">
+      <span class="kjt-prompt">kiran@portfolio:~$</span>
+      <input id="kjt-input" type="text" placeholder="Type a command..." autocomplete="off">
+    </div>
+  </div>
+  <div class="kjt-help">TRY: help · about · skills · projects · location · contact · clear</div>
+</section>
+
+<script>
+(()=>{
+  const screen=document.getElementById('kjt-screen');
+  const input=document.getElementById('kjt-input');
+
+  const commands={
+    help:[
+      'AVAILABLE COMMANDS:',
+      'about     — About Kiran Jadhav',
+      'skills    — Technical interests',
+      'projects  — Explore project concepts',
+      'location  — Current base',
+      'contact   — Contact information',
+      'clear     — Clear terminal'
+    ],
+    about:[
+      'NAME: Kiran Jadhav',
+      'ROLE: Software Developer / Aspiring Developer',
+      'INTEREST: Web development, AI and digital products',
+      'LOCATION: Karnataka, India',
+      'MISSION: Build useful digital experiences.'
+    ],
+    skills:[
+      'TECHNICAL INTERESTS:',
+      '01. HTML / CSS',
+      '02. JavaScript',
+      '03. Responsive Web Design',
+      '04. GitHub & Deployment',
+      '05. AI-powered applications',
+      'Note: Interests are not verified proficiency ratings.'
+    ],
+    projects:[
+      'PROJECT SHOWCASE:',
+      '01. AVA AI — AI assistant concept',
+      '02. KIRUU SHOP — E-commerce concept',
+      '03. KIRUU PAY — Digital payment app concept',
+      '04. AAPS HUB — App discovery platform concept',
+      'Some projects are concepts or in development.'
+    ],
+    location:[
+      'BASE: Karnataka, India',
+      'COUNTRY: India',
+      'IDENTITY: Independent developer'
+    ],
+    contact:[
+      'CONTACT CHANNEL:',
+      'Instagram: @kiiiiiruuuuuu',
+      'Opening Instagram profile...'
+    ]
+  };
+
+  function printLine(text,cls=''){
+    const line=document.createElement('div');
+    line.className='kjt-line '+cls;
+    line.textContent=text;
+    screen.appendChild(line);
+    screen.scrollTop=screen.scrollHeight;
+  }
+
+  function runCommand(raw){
+    const command=raw.trim().toLowerCase();
+    if(!command)return;
+
+    printLine('kiran@portfolio:~$ '+raw,'kjt-green');
+
+    if(command==='clear'){
+      screen.innerHTML='';
+      return;
+    }
+
+    if(commands[command]){
+      commands[command].forEach((line,i)=>
+        printLine(line,i===0?'kjt-green':'')
+      );
+
+      if(command==='contact'){
+        const link=document.createElement('a');
+        link.href='https://www.instagram.com/kiiiiiruuuuuu/';
+        link.target='_blank';
+        link.rel='noopener noreferrer';
+        link.textContent='Open Instagram profile ↗';
+        link.style.cssText='display:inline-block;color:#a9d78a;margin:8px 0;font-size:13px';
+        screen.appendChild(link);
+      }
+    }else{
+      printLine('Command not found: '+command,'kjt-muted');
+      printLine('Type "help" to see available commands.');
+    }
+    screen.scrollTop=screen.scrollHeight;
+  }
+
+  input.addEventListener('keydown',event=>{
+    if(event.key==='Enter'){
+      runCommand(input.value);
+      input.value='';
+    }
+  });
+})();
+</script>
+
+<!-- =====================================================
+ KIRAN JADHAV — PROJECT UNIVERSE V4
+ Premium Interactive Project Showcase
+===================================================== -->
+
+<style>
+#kj-universe{
+  --ku-bg:#10130f;
+  --ku-card:#191e17;
+  --ku-text:#f0f0e8;
+  --ku-muted:#a1a694;
+  --ku-accent:#b7c28b;
+  --ku-border:rgba(190,205,155,.15);
+  position:relative;
+  padding:100px 22px;
+  margin:65px auto;
+  background:var(--ku-bg);
+  color:var(--ku-text);
+  border-radius:30px;
+  overflow:hidden;
+  isolation:isolate;
+}
+#kj-universe *{box-sizing:border-box}
+#kj-universe:before{
+  content:"";
+  position:absolute;
+  width:550px;height:550px;
+  top:-220px;right:-150px;
+  background:radial-gradient(circle,rgba(163,190,112,.12),transparent 70%);
+  pointer-events:none;
+  z-index:-1;
+}
+#kj-universe:after{
+  content:"";
+  position:absolute;
+  width:500px;height:500px;
+  bottom:-300px;left:-200px;
+  background:radial-gradient(circle,rgba(115,140,95,.10),transparent 70%);
+  pointer-events:none;
+  z-index:-1;
+}
+.ku-container{
+  max-width:1150px;margin:auto;position:relative;z-index:1;
+}
+.ku-topline{
+  display:flex;justify-content:space-between;
+  align-items:center;gap:15px;flex-wrap:wrap;
+  margin-bottom:25px;
+}
+.ku-eyebrow{
+  color:var(--ku-accent);
+  letter-spacing:4px;font-size:10px;font-weight:800;
+}
+.ku-index{
+  color:#818b71;font-family:monospace;font-size:11px;
+}
+.ku-heading{
+  max-width:780px;margin-bottom:45px;
+}
+.ku-heading h2{
+  font-size:clamp(38px,7vw,75px);
+  letter-spacing:-3px;line-height:.98;
+  margin:15px 0 22px;font-weight:850;
+}
+.ku-heading h2 span{color:var(--ku-accent)}
+.ku-heading p{
+  color:var(--ku-muted);font-size:14px;
+  line-height:1.9;max-width:580px;
+}
+.ku-filterbar{
+  display:flex;gap:9px;flex-wrap:wrap;
+  margin-bottom:28px;
+}
+.ku-filter{
+  border:1px solid var(--ku-border);
+  background:transparent;color:#b8bda9;
+  border-radius:30px;padding:11px 18px;
+  cursor:pointer;font-size:11px;
+  font-weight:700;transition:.25s;
+}
+.ku-filter:hover,.ku-filter.active{
+  background:var(--ku-accent);
+  border-color:var(--ku-accent);
+  color:#151a11;
+}
+.ku-grid{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:19px;
+}
+.ku-card{
+  position:relative;
+  background:var(--ku-card);
+  border:1px solid var(--ku-border);
+  border-radius:23px;
+  overflow:hidden;
+  min-height:350px;
+  cursor:pointer;
+  transition:transform .35s,border-color .35s,box-shadow .35s;
+  transform-style:preserve-3d;
+}
+.ku-card:hover{
+  border-color:rgba(190,205,155,.55);
+  box-shadow:0 25px 60px rgba(0,0,0,.24);
+}
+.ku-card[hidden]{display:none}
+.ku-art{
+  height:190px;
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  background:
+    radial-gradient(circle at 50% 50%,rgba(188,205,146,.18),transparent 60%),
+    linear-gradient(135deg,#242d20,#111710);
+}
+.ku-art:before,.ku-art:after{
+  content:"";position:absolute;border:1px solid rgba(194,211,155,.19);
+  border-radius:50%;width:170px;height:170px;
+  transition:transform .7s;
+}
+.ku-art:after{width:230px;height:230px}
+.ku-card:hover .ku-art:before{transform:rotate(45deg) scale(1.12)}
+.ku-card:hover .ku-art:after{transform:rotate(-30deg) scale(1.08)}
+.ku-symbol{
+  position:relative;z-index:1;
+  font-size:54px;font-weight:900;
+  color:#d7e0bb;
+  text-shadow:0 0 35px rgba(192,214,147,.4);
+  letter-spacing:-4px;
+}
+.ku-number{
+  position:absolute;top:17px;left:19px;
+  color:#a9b495;font:11px monospace;
+  z-index:2;
+}
+.ku-status{
+  position:absolute;top:16px;right:17px;
+  border:1px solid rgba(190,205,155,.24);
+  color:#c4d2a0;background:rgba(15,20,13,.65);
+  padding:7px 10px;border-radius:30px;
+  font-size:9px;letter-spacing:1px;
+  z-index:2;
+}
+.ku-content{padding:23px}
+.ku-card-head{
+  display:flex;justify-content:space-between;
+  align-items:center;gap:12px;
+}
+.ku-card h3{
+  font-size:24px;letter-spacing:-.6px;margin:0;
+}
+.ku-arrow{
+  width:35px;height:35px;border-radius:50%;
+  border:1px solid var(--ku-border);
+  display:grid;place-items:center;
+  color:var(--ku-accent);font-size:18px;
+  transition:.25s;
+}
+.ku-card:hover .ku-arrow{
+  background:var(--ku-accent);color:#111;
+  transform:rotate(45deg);
+}
+.ku-description{
+  color:var(--ku-muted);
+  font-size:12px;line-height:1.8;margin:14px 0 18px;
+}
+.ku-tags{display:flex;gap:7px;flex-wrap:wrap}
+.ku-tag{
+  font-size:9px;color:#c4cbb5;
+  border:1px solid var(--ku-border);
+  border-radius:5px;padding:6px 9px;
+  letter-spacing:.4px;
+}
+.ku-bottom{
+  margin-top:40px;padding-top:25px;
+  border-top:1px solid var(--ku-border);
+  display:flex;justify-content:space-between;
+  align-items:center;gap:20px;flex-wrap:wrap;
+}
+.ku-bottom p{
+  color:#929b84;font-size:11px;line-height:1.8;
+}
+.ku-bottom strong{color:#d4dfb9}
+.ku-explore{
+  border:1px solid var(--ku-accent);
+  border-radius:40px;padding:13px 20px;
+  background:transparent;color:var(--ku-accent);
+  cursor:pointer;font-size:11px;font-weight:800;
+  transition:.25s;
+}
+.ku-explore:hover{background:var(--ku-accent);color:#12170f}
+
+/* PROJECT DETAIL MODAL */
+#ku-modal{
+  position:fixed;inset:0;z-index:999999;
+  display:none;align-items:center;justify-content:center;
+  padding:18px;background:rgba(0,0,0,.78);
+  backdrop-filter:blur(13px);
+}
+#ku-modal.open{display:flex}
+.ku-modal-box{
+  width:min(650px,100%);
+  max-height:88vh;overflow-y:auto;
+  border:1px solid rgba(190,205,155,.25);
+  border-radius:24px;background:#171c15;
+  padding:30px;color:#f1f1e9;
+  animation:ku-modal-in .3s ease;
+}
+@keyframes ku-modal-in{
+  from{opacity:0;transform:translateY(20px) scale(.97)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+.ku-modal-top{
+  display:flex;justify-content:space-between;
+  align-items:center;margin-bottom:25px;
+}
+.ku-modal-label{
+  color:var(--ku-accent);font-size:10px;
+  letter-spacing:3px;font-weight:800;
+}
+#ku-close{
+  width:37px;height:37px;border-radius:50%;
+  background:#2a3323;border:1px solid var(--ku-border);
+  color:white;cursor:pointer;font-size:19px;
+}
+#ku-modal-title{
+  font-size:clamp(30px,6vw,48px);
+  margin:0 0 16px;letter-spacing:-2px;
+}
+#ku-modal-description{
+  color:#aab19d;font-size:14px;line-height:1.9;
+}
+.ku-modal-details{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:12px;margin-top:25px;
+}
+.ku-detail{
+  border:1px solid var(--ku-border);
+  background:#20271d;border-radius:13px;padding:15px;
+}
+.ku-detail small{
+  color:#909c7d;font-size:9px;letter-spacing:2px;
+}
+.ku-detail strong{
+  display:block;margin-top:8px;font-size:13px;
+}
+.ku-modal-note{
+  color:#89937d;font-size:11px;line-height:1.8;
+  margin-top:22px;
+}
+@media(max-width:700px){
+  #kj-universe{padding:70px 15px;border-radius:22px}
+  .ku-grid{grid-template-columns:1fr}
+  .ku-card{min-height:330px}
+  .ku-heading h2{letter-spacing:-2px}
+  .ku-modal-box{padding:23px}
+}
+@media(prefers-reduced-motion:reduce){
+  #kj-universe *,#ku-modal *{
+    animation:none!important;transition:none!important;
+  }
+}
+</style>
+
+<section id="kj-universe">
+  <div class="ku-container">
+
+    <div class="ku-topline">
+      <span class="ku-eyebrow">SELECTED DIGITAL WORKS</span>
+      <span class="ku-index">PORTFOLIO / 004</span>
+    </div>
+
+    <div class="ku-heading">
+      <h2>Ideas into<br><span>digital reality.</span></h2>
+      <p>
+        A collection of product concepts and digital experiences
+        I'm exploring and building. Every project represents a
+        different direction in technology, design and creativity.
+      </p>
+    </div>
+
+    <div class="ku-filterbar" role="group" aria-label="Filter projects">
+      <button class="ku-filter active" data-filter="all">ALL WORKS</button>
+      <button class="ku-filter" data-filter="ai">ARTIFICIAL INTELLIGENCE</button>
+      <button class="ku-filter" data-filter="web">WEB PLATFORMS</button>
+      <button class="ku-filter" data-filter="fintech">FINTECH</button>
+    </div>
+
+    <div class="ku-grid">
+
+      <article class="ku-card" data-category="ai"
+        data-name="AVA AI"
+        data-description="AVA AI is a personal AI assistant concept focused on conversational experiences, coding assistance and creative workflows. The goal is to explore a friendly interface with AI capabilities and Hindi-friendly interaction."
+        data-type="AI Assistant Concept"
+        data-status="In Development"
+        data-stack="Web Interface · AI APIs · Voice">
+        <div class="ku-art">
+          <span class="ku-number">PROJECT / 01</span>
+          <span class="ku-status">IN DEVELOPMENT</span>
+          <div class="ku-symbol">AVA</div>
+        </div>
+        <div class="ku-content">
+          <div class="ku-card-head">
+            <h3>AVA AI</h3><span class="ku-arrow">↗</span>
+          </div>
+          <p class="ku-description">
+            An AI assistant concept exploring intelligent conversations,
+            coding support and voice interaction.
+          </p>
+          <div class="ku-tags">
+            <span class="ku-tag">ARTIFICIAL INTELLIGENCE</span>
+            <span class="ku-tag">VOICE</span>
+            <span class="ku-tag">WEB</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="ku-card" data-category="web"
+        data-name="KIRUU SHOP"
+        data-description="KIRUU SHOP is an e-commerce platform concept with a focus on product discovery, shopping experiences and a polished mobile-first storefront."
+        data-type="E-commerce Platform"
+        data-status="In Development"
+        data-stack="HTML · CSS · JavaScript · Web">
+        <div class="ku-art">
+          <span class="ku-number">PROJECT / 02</span>
+          <span class="ku-status">IN DEVELOPMENT</span>
+          <div class="ku-symbol">KS.</div>
+        </div>
+        <div class="ku-content">
+          <div class="ku-card-head">
+            <h3>KIRUU SHOP</h3><span class="ku-arrow">↗</span>
+          </div>
+          <p class="ku-description">
+            A modern shopping platform concept designed around
+            a responsive storefront and product discovery.
+          </p>
+          <div class="ku-tags">
+            <span class="ku-tag">E-COMMERCE</span>
+            <span class="ku-tag">JAVASCRIPT</span>
+            <span class="ku-tag">WEB DESIGN</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="ku-card" data-category="fintech"
+        data-name="KIRUU PAY"
+        data-description="KIRUU PAY is a digital payment application concept exploring payment interfaces, transaction flows and secure backend integration. It is not a live regulated payment service."
+        data-type="Fintech Application Concept"
+        data-status="Concept / Development"
+        data-stack="Capacitor · APIs · Backend Integration">
+        <div class="ku-art">
+          <span class="ku-number">PROJECT / 03</span>
+          <span class="ku-status">CONCEPT</span>
+          <div class="ku-symbol">KP.</div>
+        </div>
+        <div class="ku-content">
+          <div class="ku-card-head">
+            <h3>KIRUU PAY</h3><span class="ku-arrow">↗</span>
+          </div>
+          <p class="ku-description">
+            A digital payment app concept exploring transaction
+            experiences and application architecture.
+          </p>
+          <div class="ku-tags">
+            <span class="ku-tag">FINTECH</span>
+            <span class="ku-tag">CAPACITOR</span>
+            <span class="ku-tag">API</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="ku-card" data-category="web"
+        data-name="AAPS HUB"
+        data-description="AAPS HUB is an application discovery platform concept focused on presenting digital tools and apps through an organized browsing experience."
+        data-type="Application Discovery Platform"
+        data-status="Development"
+        data-stack="HTML · CSS · JavaScript · Deployment">
+        <div class="ku-art">
+          <span class="ku-number">PROJECT / 04</span>
+          <span class="ku-status">DEVELOPMENT</span>
+          <div class="ku-symbol">AH.</div>
+        </div>
+        <div class="ku-content">
+          <div class="ku-card-head">
+            <h3>AAPS HUB</h3><span class="ku-arrow">↗</span>
+          </div>
+          <p class="ku-description">
+            An application hub concept for discovering and
+            exploring useful digital products.
+          </p>
+          <div class="ku-tags">
+            <span class="ku-tag">WEB PLATFORM</span>
+            <span class="ku-tag">UI DESIGN</span>
+            <span class="ku-tag">DEPLOYMENT</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="ku-bottom">
+      <p>
+        <strong>BUILT WITH CURIOSITY.</strong><br>
+        Concepts, experiments and ongoing development.
+      </p>
+      <button class="ku-explore" id="ku-show-all">
+        EXPLORE ALL PROJECTS ↗
+      </button>
+    </div>
+  </div>
+</section>
+
+<div id="ku-modal" aria-hidden="true">
+  <div class="ku-modal-box" role="dialog"
+    aria-modal="true" aria-labelledby="ku-modal-title">
+    <div class="ku-modal-top">
+      <span class="ku-modal-label">PROJECT DETAILS / KJ</span>
+      <button id="ku-close" aria-label="Close project details">×</button>
+    </div>
+    <h2 id="ku-modal-title">PROJECT</h2>
+    <p id="ku-modal-description"></p>
+
+    <div class="ku-modal-details">
+      <div class="ku-detail">
+        <small>PROJECT TYPE</small>
+        <strong id="ku-modal-type"></strong>
+      </div>
+      <div class="ku-detail">
+        <small>STATUS</small>
+        <strong id="ku-modal-status"></strong>
+      </div>
+      <div class="ku-detail" style="grid-column:1/-1">
+        <small>TECHNOLOGY / STACK</small>
+        <strong id="ku-modal-stack"></strong>
+      </div>
+    </div>
+
+    <p class="ku-modal-note">
+      This portfolio entry describes a project concept or development
+      activity. Live product availability is not implied.
+    </p>
+  </div>
+</div>
+
+<script>
+(()=>{
+  const root=document.getElementById('kj-universe');
+  const modal=document.getElementById('ku-modal');
+  if(!root||!modal)return;
+
+  const cards=[...root.querySelectorAll('.ku-card')];
+  const filters=[...root.querySelectorAll('.ku-filter')];
+  const close=document.getElementById('ku-close');
+  let lastFocused=null;
+
+  filters.forEach(button=>{
+    button.addEventListener('click',()=>{
+      filters.forEach(item=>item.classList.remove('active'));
+      button.classList.add('active');
+
+      const filter=button.dataset.filter;
+      cards.forEach(card=>{
+        card.hidden=filter!=='all' &&
+          card.dataset.category!==filter;
+      });
+    });
+  });
+
+  function openProject(card){
+    lastFocused=card;
+    document.getElementById('ku-modal-title').textContent=card.dataset.name;
+    document.getElementById('ku-modal-description').textContent=card.dataset.description;
+    document.getElementById('ku-modal-type').textContent=card.dataset.type;
+    document.getElementById('ku-modal-status').textContent=card.dataset.status;
+    document.getElementById('ku-modal-stack').textContent=card.dataset.stack;
+
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+    close.focus();
+  }
+
+  function closeProject(){
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden','true');
+    document.body.style.overflow='';
+    if(lastFocused)lastFocused.focus();
+  }
+
+  cards.forEach(card=>{
+    card.setAttribute('tabindex','0');
+    card.setAttribute('role','button');
+    card.setAttribute('aria-label','View '+card.dataset.name+' details');
+    card.addEventListener('click',()=>openProject(card));
+    card.addEventListener('keydown',event=>{
+      if(event.key==='Enter'||event.key===' '){
+        event.preventDefault();
+        openProject(card);
+      }
+    });
+  });
+
+  close.addEventListener('click',closeProject);
+
+  modal.addEventListener('click',event=>{
+    if(event.target===modal)closeProject();
+  });
+
+  document.addEventListener('keydown',event=>{
+    if(event.key==='Escape'&&modal.classList.contains('open')){
+      closeProject();
+    }
+  });
+
+  document.getElementById('ku-show-all').addEventListener('click',()=>{
+    filters.forEach(item=>item.classList.remove('active'));
+    filters[0].classList.add('active');
+    cards.forEach(card=>card.hidden=false);
+    root.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+
+  // Subtle 3D movement on pointer-capable devices.
+  if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+    cards.forEach(card=>{
+      card.addEventListener('mousemove',event=>{
+        if(modal.classList.contains('open'))return;
+        const rect=card.getBoundingClientRect();
+        const x=(event.clientX-rect.left)/rect.width;
+        const y=(event.clientY-rect.top)/rect.height;
+        card.style.transform=
+          `perspective(900px) rotateX(${(0.5-y)*5}deg) rotateY(${(x-0.5)*5}deg) translateY(-3px)`;
+      });
+      card.addEventListener('mouseleave',()=>{
+        card.style.transform='';
+      });
+    });
+  }
+})();
+</script>
+
+<!-- =====================================================
+ KIRAN JADHAV — CINEMATIC EXPERIENCE V5
+ PRELOADER + PREMIUM NAVIGATION + MOBILE MENU
+===================================================== -->
+
+<style>
+/* ===== PRELOADER ===== */
+#kj-v5-loader{
+  position:fixed;inset:0;z-index:9999999;
+  background:#10130e;color:#f3f3e9;
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;
+  transition:opacity .8s ease,visibility .8s ease;
+}
+#kj-v5-loader.kj-v5-loaded{
+  opacity:0;visibility:hidden;pointer-events:none;
+}
+.kj-v5-loader-content{
+  width:min(430px,85%);
+  text-align:center;
+}
+.kj-v5-logo{
+  width:105px;height:105px;margin:auto auto 30px;
+  border:1px solid rgba(190,210,150,.5);
+  border-radius:30px;display:grid;place-items:center;
+  font-size:39px;font-weight:900;letter-spacing:-4px;
+  color:#c7d6a0;
+  background:linear-gradient(145deg,#293322,#131810);
+  box-shadow:0 0 65px rgba(160,190,110,.12);
+  animation:kjv5-pulse 2s ease-in-out infinite;
+}
+@keyframes kjv5-pulse{
+  0%,100%{transform:scale(1);box-shadow:0 0 25px rgba(160,190,110,.08)}
+  50%{transform:scale(1.07);box-shadow:0 0 65px rgba(160,190,110,.25)}
+}
+.kj-v5-loader-name{
+  font-size:12px;letter-spacing:5px;font-weight:800;
+}
+.kj-v5-loader-sub{
+  color:#89947a;font-size:9px;letter-spacing:3px;
+  margin-top:12px;
+}
+.kj-v5-loader-track{
+  width:100%;height:2px;background:#2b3324;
+  margin-top:35px;overflow:hidden;
+}
+#kj-v5-loader-progress{
+  width:0%;height:100%;background:#c7d6a0;
+  transition:width .15s linear;
+}
+.kj-v5-loader-bottom{
+  display:flex;justify-content:space-between;
+  margin-top:12px;font:10px monospace;color:#9ca78b;
+}
+
+/* ===== PAGE INTRO ===== */
+.kj-v5-page-enter{
+  animation:kjv5-page-enter 1s ease both;
+}
+@keyframes kjv5-page-enter{
+  from{opacity:0;transform:translateY(15px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* ===== SCROLL PROGRESS ===== */
+#kj-v5-scroll{
+  position:fixed;top:0;left:0;height:3px;
+  width:0%;z-index:999998;
+  background:#aebd83;
+  box-shadow:0 0 12px rgba(174,189,131,.5);
+}
+
+/* ===== FLOATING NAVIGATION ===== */
+#kj-v5-nav{
+  position:fixed;top:18px;left:50%;
+  transform:translateX(-50%);
+  width:min(1150px,calc(100% - 32px));
+  z-index:999990;
+  background:rgba(18,22,16,.84);
+  border:1px solid rgba(190,205,155,.16);
+  border-radius:18px;
+  backdrop-filter:blur(22px);
+  -webkit-backdrop-filter:blur(22px);
+  color:#f0f1e8;
+  transition:background .3s,box-shadow .3s;
+}
+#kj-v5-nav.kj-v5-scrolled{
+  background:rgba(15,19,13,.96);
+  box-shadow:0 12px 40px rgba(0,0,0,.2);
+}
+.kj-v5-nav-inner{
+  display:flex;align-items:center;
+  justify-content:space-between;
+  min-height:68px;padding:0 22px;
+}
+.kj-v5-brand{
+  display:flex;align-items:center;gap:12px;
+  text-decoration:none;color:#f0f1e8;
+}
+.kj-v5-brand-mark{
+  width:38px;height:38px;border-radius:12px;
+  background:#b7c48f;color:#151a10;
+  display:grid;place-items:center;
+  font-size:16px;font-weight:950;
+  letter-spacing:-2px;
+}
+.kj-v5-brand-text strong{
+  display:block;font-size:12px;letter-spacing:1.5px;
+}
+.kj-v5-brand-text small{
+  display:block;font-size:8px;
+  color:#9ca78b;letter-spacing:2px;margin-top:3px;
+}
+.kj-v5-links{
+  display:flex;align-items:center;gap:5px;
+}
+.kj-v5-links a{
+  text-decoration:none;color:#b6beaa;
+  font-size:10px;font-weight:700;
+  letter-spacing:.5px;padding:12px 13px;
+  border-radius:9px;transition:.25s;
+}
+.kj-v5-links a:hover,
+.kj-v5-links a.kj-v5-active{
+  background:rgba(183,196,143,.12);
+  color:#d3e0ae;
+}
+.kj-v5-contact{
+  text-decoration:none;background:#b7c48f;
+  color:#151a10!important;border-radius:30px!important;
+  padding:12px 18px!important;font-weight:900!important;
+}
+.kj-v5-menu-btn{
+  display:none;width:42px;height:42px;
+  border:1px solid rgba(190,205,155,.22);
+  border-radius:12px;background:transparent;
+  color:white;cursor:pointer;
+  align-items:center;justify-content:center;
+  flex-direction:column;gap:5px;
+}
+.kj-v5-menu-btn span{
+  width:18px;height:2px;background:#d3dfb4;
+  border-radius:5px;transition:.3s;
+}
+.kj-v5-menu-btn.active span:first-child{
+  transform:translateY(3.5px) rotate(45deg);
+}
+.kj-v5-menu-btn.active span:last-child{
+  transform:translateY(-3.5px) rotate(-45deg);
+}
+
+/* ===== MOBILE MENU ===== */
+#kj-v5-mobile{
+  display:none;
+  position:absolute;top:calc(100% + 10px);
+  left:0;right:0;
+  background:#171d14;
+  border:1px solid rgba(190,205,155,.2);
+  border-radius:18px;padding:13px;
+  box-shadow:0 25px 55px rgba(0,0,0,.3);
+}
+#kj-v5-mobile.open{
+  display:flex;flex-direction:column;
+  animation:kjv5-menu-in .25s ease;
+}
+@keyframes kjv5-menu-in{
+  from{opacity:0;transform:translateY(-8px)}
+  to{opacity:1;transform:translateY(0)}
+}
+#kj-v5-mobile a{
+  padding:15px 13px;
+  text-decoration:none;color:#d8dfcd;
+  border-bottom:1px solid rgba(190,205,155,.09);
+  font-size:12px;font-weight:700;
+}
+#kj-v5-mobile a:last-child{border-bottom:0}
+#kj-v5-mobile a:hover{color:#c5d69a}
+
+/* ===== BACK TO TOP ===== */
+#kj-v5-top{
+  position:fixed;right:22px;bottom:22px;
+  width:47px;height:47px;border-radius:15px;
+  border:1px solid rgba(190,205,155,.25);
+  background:#1b2417;color:#d6e2b4;
+  font-size:19px;cursor:pointer;
+  z-index:999980;opacity:0;visibility:hidden;
+  transform:translateY(12px);
+  transition:.3s;
+}
+#kj-v5-top.visible{
+  opacity:1;visibility:visible;transform:translateY(0);
+}
+#kj-v5-top:hover{
+  background:#b7c48f;color:#141910;
+}
+
+@media(max-width:850px){
+  .kj-v5-links{display:none}
+  .kj-v5-menu-btn{display:flex}
+  .kj-v5-nav-inner{min-height:63px;padding:0 14px}
+  #kj-v5-nav{top:10px;width:calc(100% - 20px)}
+}
+@media(prefers-reduced-motion:reduce){
+  #kj-v5-loader *,
+  #kj-v5-nav *,
+  #kj-v5-mobile *,
+  #kj-v5-top{
+    animation:none!important;transition:none!important;
+  }
+}
+</style>
+
+<!-- LOADER -->
+<div id="kj-v5-loader" aria-label="Loading portfolio">
+  <div class="kj-v5-loader-content">
+    <div class="kj-v5-logo">KJ</div>
+    <div class="kj-v5-loader-name">KIRAN JADHAV</div>
+    <div class="kj-v5-loader-sub">SOFTWARE DEVELOPER · KARNATAKA</div>
+    <div class="kj-v5-loader-track">
+      <div id="kj-v5-loader-progress"></div>
+    </div>
+    <div class="kj-v5-loader-bottom">
+      <span>INITIALIZING EXPERIENCE</span>
+      <span id="kj-v5-loader-number">00%</span>
+    </div>
+  </div>
+</div>
+
+<div id="kj-v5-scroll"></div>
+
+<!-- PREMIUM NAVIGATION -->
+<nav id="kj-v5-nav" aria-label="Main navigation">
+  <div class="kj-v5-nav-inner">
+
+    <a href="#top" class="kj-v5-brand">
+      <span class="kj-v5-brand-mark">KJ</span>
+      <span class="kj-v5-brand-text">
+        <strong>KIRAN JADHAV</strong>
+        <small>DEVELOPER · INDIA</small>
+      </span>
+    </a>
+
+    <div class="kj-v5-links">
+      <a href="#top">HOME</a>
+      <a href="#identity">ABOUT</a>
+      <a href="#kj-universe">PROJECTS</a>
+      <a href="#technical-skills">SKILLS</a>
+      <a href="#journey">JOURNEY</a>
+      <a href="#contact" class="kj-v5-contact">LET'S TALK ↗</a>
+    </div>
+
+    <button class="kj-v5-menu-btn"
+      id="kj-v5-menu-btn"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="kj-v5-mobile">
+      <span></span><span></span>
+    </button>
+  </div>
+
+  <div id="kj-v5-mobile">
+    <a href="#top">01 — HOME</a>
+    <a href="#identity">02 — ABOUT ME</a>
+    <a href="#kj-universe">03 — PROJECTS</a>
+    <a href="#technical-skills">04 — SKILLS</a>
+    <a href="#journey">05 — MY JOURNEY</a>
+    <a href="#services">06 — SERVICES</a>
+    <a href="#contact">07 — CONTACT ↗</a>
+  </div>
+</nav>
+
+<button id="kj-v5-top" aria-label="Back to top">↑</button>
+
+<script>
+(()=>{
+  const loader=document.getElementById('kj-v5-loader');
+  const progress=document.getElementById('kj-v5-loader-progress');
+  const number=document.getElementById('kj-v5-loader-number');
+  const nav=document.getElementById('kj-v5-nav');
+  const menuBtn=document.getElementById('kj-v5-menu-btn');
+  const mobile=document.getElementById('kj-v5-mobile');
+  const topBtn=document.getElementById('kj-v5-top');
+  const scrollBar=document.getElementById('kj-v5-scroll');
+
+  if(!loader||loader.dataset.initialized)return;
+  loader.dataset.initialized='true';
+
+  let amount=0;
+  let finished=false;
+
+  function finishLoader(){
+    if(finished)return;
+    finished=true;
+    amount=100;
+    progress.style.width='100%';
+    number.textContent='100%';
+
+    setTimeout(()=>{
+      loader.classList.add('kj-v5-loaded');
+      document.body.classList.add('kj-v5-page-enter');
+    },250);
+  }
+
+  const interval=setInterval(()=>{
+    amount=Math.min(amount+Math.ceil(Math.random()*12),94);
+    progress.style.width=amount+'%';
+    number.textContent=String(amount).padStart(2,'0')+'%';
+    if(amount>=94)clearInterval(interval);
+  },100);
+
+  window.addEventListener('load',()=>{
+    clearInterval(interval);
+    finishLoader();
+  },{once:true});
+
+  // Safety timeout if a remote asset is slow.
+  setTimeout(()=>{
+    clearInterval(interval);
+    finishLoader();
+  },4500);
+
+  function updateScroll(){
+    const total=document.documentElement.scrollHeight-window.innerHeight;
+    const percent=total>0?(window.scrollY/total)*100:0;
+    scrollBar.style.width=Math.min(percent,100)+'%';
+
+    nav.classList.toggle('kj-v5-scrolled',window.scrollY>35);
+    topBtn.classList.toggle('visible',window.scrollY>500);
+  }
+
+  window.addEventListener('scroll',updateScroll,{passive:true});
+  updateScroll();
+
+  function closeMenu(){
+    mobile.classList.remove('open');
+    menuBtn.classList.remove('active');
+    menuBtn.setAttribute('aria-expanded','false');
+    menuBtn.setAttribute('aria-label','Open navigation menu');
+  }
+
+  menuBtn.addEventListener('click',()=>{
+    const isOpen=mobile.classList.toggle('open');
+    menuBtn.classList.toggle('active',isOpen);
+    menuBtn.setAttribute('aria-expanded',String(isOpen));
+    menuBtn.setAttribute(
+      'aria-label',
+      isOpen?'Close navigation menu':'Open navigation menu'
+    );
+  });
+
+  mobile.querySelectorAll('a').forEach(link=>{
+    link.addEventListener('click',closeMenu);
+  });
+
+  document.addEventListener('click',event=>{
+    if(!nav.contains(event.target))closeMenu();
+  });
+
+  document.addEventListener('keydown',event=>{
+    if(event.key==='Escape')closeMenu();
+  });
+
+  topBtn.addEventListener('click',()=>{
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+
+  // Active navigation based on existing section IDs.
+  const navLinks=[...nav.querySelectorAll('a[href^="#"]')];
+  const sections=navLinks
+    .map(link=>document.querySelector(link.getAttribute('href')))
+    .filter(Boolean);
+
+  if('IntersectionObserver' in window){
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(!entry.isIntersecting)return;
+        navLinks.forEach(link=>{
+          link.classList.toggle(
+            'kj-v5-active',
+            link.getAttribute('href')==='#'+entry.target.id
+          );
+        });
+      });
+    },{rootMargin:'-25% 0px -65% 0px'});
+
+    sections.forEach(section=>observer.observe(section));
+  }
+
+})();
+</script>
+
+<!-- ==========================================================
+ KIRAN JADHAV — ADVANCED SKILLS COMMAND CENTER V6
+ 3D TECHNOLOGY ORBIT + SKILL DASHBOARD + INTERACTIONS
+========================================================== -->
+
+<style>
+#kj-skills-v6{
+  --v6-bg:#10140f;
+  --v6-panel:#191f17;
+  --v6-line:rgba(192,207,157,.16);
+  --v6-green:#c0d19a;
+  --v6-text:#f0f2e9;
+  --v6-muted:#9ca792;
+  position:relative;
+  overflow:hidden;
+  margin:70px auto;
+  padding:100px 22px;
+  border-radius:30px;
+  background:var(--v6-bg);
+  color:var(--v6-text);
+  isolation:isolate;
+}
+#kj-skills-v6 *{box-sizing:border-box}
+#kj-skills-v6:before{
+  content:"";
+  position:absolute;
+  width:650px;height:650px;
+  left:-300px;top:-200px;
+  background:radial-gradient(circle,rgba(159,190,115,.12),transparent 70%);
+  z-index:-1;pointer-events:none;
+}
+#kj-skills-v6:after{
+  content:"";
+  position:absolute;
+  width:650px;height:650px;
+  right:-300px;bottom:-300px;
+  background:radial-gradient(circle,rgba(115,145,98,.1),transparent 70%);
+  z-index:-1;pointer-events:none;
+}
+.v6-container{
+  max-width:1150px;margin:auto;position:relative;
+}
+.v6-top{
+  display:flex;justify-content:space-between;
+  align-items:center;gap:15px;flex-wrap:wrap;
+}
+.v6-label{
+  color:var(--v6-green);font-size:10px;
+  letter-spacing:4px;font-weight:900;
+}
+.v6-code{
+  color:#818d72;font:11px monospace;
+}
+.v6-heading{
+  margin:25px 0 55px;max-width:760px;
+}
+.v6-heading h2{
+  font-size:clamp(38px,7vw,76px);
+  line-height:.98;letter-spacing:-3px;margin:0 0 22px;
+}
+.v6-heading h2 span{color:var(--v6-green)}
+.v6-heading p{
+  color:var(--v6-muted);font-size:14px;
+  line-height:1.9;max-width:610px;
+}
+.v6-main{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:25px;align-items:stretch;
+}
+
+/* ORBIT */
+.v6-orbit-panel{
+  min-height:480px;
+  position:relative;overflow:hidden;
+  border:1px solid var(--v6-line);
+  background:linear-gradient(145deg,#1b2418,#121710);
+  border-radius:25px;
+  display:flex;align-items:center;justify-content:center;
+}
+.v6-orbit-title{
+  position:absolute;top:23px;left:24px;
+  font-size:10px;letter-spacing:3px;color:#a9b791;
+}
+.v6-orbit{
+  position:relative;width:300px;height:300px;
+  display:flex;align-items:center;justify-content:center;
+  transform-style:preserve-3d;
+}
+.v6-ring{
+  position:absolute;border:1px solid rgba(193,210,151,.22);
+  border-radius:50%;
+  animation:v6-rotate 18s linear infinite;
+}
+.v6-ring.r1{width:160px;height:160px}
+.v6-ring.r2{width:235px;height:235px;animation-duration:26s}
+.v6-ring.r3{width:295px;height:295px;animation-duration:35s}
+.v6-ring.r2:after,.v6-ring.r3:after{
+  content:"";position:absolute;width:8px;height:8px;
+  background:var(--v6-green);border-radius:50%;
+  top:50%;left:-4px;
+  box-shadow:0 0 18px var(--v6-green);
+}
+@keyframes v6-rotate{to{transform:rotate(360deg)}}
+.v6-core{
+  width:105px;height:105px;border-radius:30px;
+  display:grid;place-items:center;
+  font-size:35px;font-weight:950;letter-spacing:-4px;
+  color:#e3edce;
+  background:linear-gradient(145deg,#34432b,#171e13);
+  border:1px solid rgba(192,209,154,.5);
+  box-shadow:0 0 65px rgba(175,207,128,.2);
+  z-index:3;
+}
+.v6-orbit-chip{
+  position:absolute;z-index:4;
+  padding:9px 13px;
+  border:1px solid rgba(192,209,154,.3);
+  background:#202a1b;
+  border-radius:10px;
+  color:#d8e3c1;
+  font-size:10px;font-weight:800;
+  box-shadow:0 8px 25px rgba(0,0,0,.2);
+  animation:v6-float 4s ease-in-out infinite;
+}
+.v6-orbit-chip:nth-of-type(5){top:10%;left:40%}
+.v6-orbit-chip:nth-of-type(6){top:43%;right:-3%;animation-delay:-1s}
+.v6-orbit-chip:nth-of-type(7){bottom:10%;left:34%;animation-delay:-2s}
+.v6-orbit-chip:nth-of-type(8){top:45%;left:-4%;animation-delay:-3s}
+@keyframes v6-float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-9px)}
+}
+.v6-orbit-caption{
+  position:absolute;bottom:22px;
+  color:#8d997c;font-size:10px;
+  letter-spacing:2px;text-align:center;
+  width:100%;
+}
+
+/* RIGHT DASHBOARD */
+.v6-dashboard{
+  border:1px solid var(--v6-line);
+  background:var(--v6-panel);
+  border-radius:25px;padding:25px;
+}
+.v6-dashboard-top{
+  display:flex;justify-content:space-between;
+  gap:12px;align-items:center;margin-bottom:25px;
+}
+.v6-dashboard-top h3{font-size:18px;margin:0}
+.v6-live{
+  color:#c4d89e;font-size:9px;
+  letter-spacing:2px;display:flex;align-items:center;gap:7px;
+}
+.v6-live:before{
+  content:"";width:7px;height:7px;
+  border-radius:50%;background:#a8d17a;
+  box-shadow:0 0 10px #a8d17a;
+}
+.v6-categories{
+  display:flex;gap:7px;flex-wrap:wrap;margin-bottom:23px;
+}
+.v6-cat{
+  border:1px solid var(--v6-line);
+  border-radius:20px;padding:8px 12px;
+  color:#aeb9a0;background:transparent;
+  font-size:10px;cursor:pointer;transition:.2s;
+}
+.v6-cat.active,.v6-cat:hover{
+  background:var(--v6-green);
+  border-color:var(--v6-green);color:#172013;
+}
+.v6-skill-list{
+  display:flex;flex-direction:column;gap:19px;
+}
+.v6-skill[hidden]{display:none}
+.v6-skill-head{
+  display:flex;justify-content:space-between;
+  gap:10px;margin-bottom:9px;
+}
+.v6-skill-name{font-size:12px;font-weight:750}
+.v6-skill-type{font-size:9px;color:#89967d}
+.v6-skill-track{
+  height:5px;background:#303a2b;
+  border-radius:20px;overflow:hidden;
+}
+.v6-skill-fill{
+  height:100%;width:0;
+  border-radius:20px;
+  background:linear-gradient(90deg,#879c68,#d1dfa9);
+  transition:width 1.5s cubic-bezier(.2,.7,.2,1);
+}
+.v6-skill-foot{
+  display:flex;justify-content:space-between;
+  font-size:9px;color:#829078;margin-top:7px;
+}
+.v6-note{
+  color:#89947e;font-size:10px;line-height:1.7;
+  margin-top:22px;padding-top:17px;
+  border-top:1px solid var(--v6-line);
+}
+
+/* BOTTOM STATS */
+.v6-stats{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:13px;margin-top:24px;
+}
+.v6-stat{
+  padding:22px 16px;border:1px solid var(--v6-line);
+  background:rgba(27,34,24,.8);
+  border-radius:16px;
+}
+.v6-stat strong{
+  display:block;font-size:27px;
+  letter-spacing:-1px;color:var(--v6-green);
+}
+.v6-stat span{
+  display:block;color:#9ba58d;
+  font-size:9px;letter-spacing:1px;
+  margin-top:7px;
+}
+
+/* MODAL */
+#v6-skill-modal{
+  display:none;position:fixed;inset:0;
+  z-index:9999998;background:rgba(0,0,0,.8);
+  backdrop-filter:blur(12px);
+  align-items:center;justify-content:center;padding:18px;
+}
+#v6-skill-modal.open{display:flex}
+.v6-modal-box{
+  width:min(480px,100%);
+  background:#1b2118;color:#f0f2e9;
+  border:1px solid var(--v6-line);
+  border-radius:22px;padding:28px;
+  animation:v6-modal-in .3s ease;
+}
+@keyframes v6-modal-in{
+  from{opacity:0;transform:translateY(15px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.v6-modal-head{
+  display:flex;justify-content:space-between;
+  align-items:center;margin-bottom:20px;
+}
+.v6-modal-head small{
+  color:var(--v6-green);letter-spacing:3px;font-size:9px;
+}
+#v6-modal-close{
+  width:36px;height:36px;border-radius:50%;
+  background:#303b29;border:0;color:white;
+  font-size:20px;cursor:pointer;
+}
+#v6-modal-name{font-size:30px;margin:0 0 15px}
+#v6-modal-desc{
+  color:#a9b49e;font-size:13px;line-height:1.9;
+}
+.v6-modal-foot{
+  border-top:1px solid var(--v6-line);
+  margin-top:22px;padding-top:17px;
+  color:#a8b78d;font-size:10px;line-height:1.8;
+}
+.v6-skill{cursor:pointer}
+.v6-skill:focus-visible{
+  outline:2px solid var(--v6-green);
+  outline-offset:5px;border-radius:5px;
+}
+
+@media(max-width:850px){
+  .v6-main{grid-template-columns:1fr}
+  .v6-orbit-panel{min-height:420px}
+}
+@media(max-width:550px){
+  #kj-skills-v6{padding:70px 14px;border-radius:22px}
+  .v6-heading h2{letter-spacing:-2px}
+  .v6-orbit{transform:scale(.86)}
+  .v6-orbit-panel{min-height:370px}
+  .v6-dashboard{padding:19px}
+  .v6-stats{grid-template-columns:repeat(2,1fr)}
+}
+@media(prefers-reduced-motion:reduce){
+  #kj-skills-v6 *,#v6-skill-modal *{
+    animation:none!important;transition:none!important;
+  }
+}
+</style>
+
+<section id="kj-skills-v6">
+  <div class="v6-container">
+
+    <div class="v6-top">
+      <span class="v6-label">TECHNOLOGY / CAPABILITIES</span>
+      <span class="v6-code">KJ-SYSTEM / V06.0</span>
+    </div>
+
+    <div class="v6-heading">
+      <h2>My technology<br><span>universe.</span></h2>
+      <p>
+        Exploring the tools and technologies behind modern
+        digital products. From frontend experiences to AI,
+        application development and deployment.
+      </p>
+    </div>
+
+    <div class="v6-main">
+
+      <!-- TECHNOLOGY ORBIT -->
+      <div class="v6-orbit-panel">
+        <div class="v6-orbit-title">01 / TECHNOLOGY ORBIT</div>
+
+        <div class="v6-orbit">
+          <div class="v6-ring r1"></div>
+          <div class="v6-ring r2"></div>
+          <div class="v6-ring r3"></div>
+
+          <div class="v6-core">KJ</div>
+
+          <span class="v6-orbit-chip">HTML</span>
+          <span class="v6-orbit-chip">CSS</span>
+          <span class="v6-orbit-chip">AI</span>
+          <span class="v6-orbit-chip">JS</span>
+        </div>
+
+        <div class="v6-orbit-caption">
+          BUILD · EXPLORE · CREATE · IMPROVE
+        </div>
+      </div>
+
+      <!-- SKILL DASHBOARD -->
+      <div class="v6-dashboard">
+
+        <div class="v6-dashboard-top">
+          <h3>Technical Interests</h3>
+          <span class="v6-live">EXPLORING</span>
+        </div>
+
+        <div class="v6-categories">
+          <button class="v6-cat active" data-v6-filter="all">ALL</button>
+          <button class="v6-cat" data-v6-filter="frontend">FRONTEND</button>
+          <button class="v6-cat" data-v6-filter="backend">BACKEND</button>
+          <button class="v6-cat" data-v6-filter="tools">TOOLS</button>
+        </div>
+
+        <div class="v6-skill-list">
+
+          <div class="v6-skill" tabindex="0"
+            data-v6-category="frontend"
+            data-v6-name="HTML5"
+            data-v6-desc="Exploring semantic HTML, accessible page structures and the foundations of modern websites.">
+            <div class="v6-skill-head">
+              <span class="v6-skill-name">HTML5</span>
+              <span class="v6-skill-type">FRONTEND</span>
+            </div>
+            <div class="v6-skill-track">
+              <div class="v6-skill-fill" data-width="75%"></div>
+            </div>
+            <div class="v6-skill-foot">
+              <span>Learning & building</span><span>INTEREST</span>
+            </div>
+          </div>
+
+          <div class="v6-skill" tabindex="0"
+            data-v6-category="frontend"
+            data-v6-name="CSS3"
+            data-v6-desc="Working with layouts, responsive design, animations, visual effects and interface styling.">
+            <div class="v6-skill-head">
+              <span class="v6-skill-name">CSS3</span>
+              <span class="v6-skill-type">FRONTEND</span>
+            </div>
+            <div class="v6-skill-track">
+              <div class="v6-skill-fill" data-width="70%"></div>
+            </div>
+            <div class="v6-skill-foot">
+              <span>Learning & building</span><span>INTEREST</span>
+            </div>
+          </div>
+
+          <div class="v6-skill" tabindex="0"
+            data-v6-category="frontend"
+            data-v6-name="JavaScript"
+            data-v6-desc="Exploring interactive interfaces, browser APIs, application logic and frontend functionality.">
+            <div class="v6-skill-head">
+              <span class="v6-skill-name">JavaScript</span>
+              <span class="v6-skill-type">FRONTEND</span>
+            </div>
+            <div class="v6-skill-track">
+              <div class="v6-skill-fill" data-width="55%"></div>
+            </div>
+            <div class="v6-skill-foot">
+              <span>Learning & building</span><span>INTEREST</span>
+            </div>
+          </div>
+
+          <div class="v6-skill" tabindex="0"
+            data-v6-category="backend"
+            data-v6-name="API Integration"
+            data-v6-desc="Exploring API connections, requests, responses and integrating external services into applications.">
+            <div class="v6-skill-head">
+              <span class="v6-skill-name">API Integration</span>
+              <span class="v6-skill-type">BACKEND</span>
+            </div>
+            <div class="v6-skill-track">
+              <div class="v6-skill-fill" data-width="48%"></div>
+            </div>
+            <div class="v6-skill-foot">
+              <span>Learning & building</span><span>INTEREST</span>
+            </div>
+          </div>
+
+          <div class="v6-skill" tabindex="0"
+            data-v6-category="backend"
+            data-v6-name="AI Applications"
+            data-v6-desc="Exploring AI-powered application experiences, model APIs, assistant interfaces and conversational workflows.">
+            <div class="v6-skill-head">
+              <span class="v6-skill-name">AI Applications</span>
+              <span class="v6-skill-type">AI / BACKEND</span>
+            </div>
+            <div class="v6-skill-track">
+              <div class="v6-skill-fill" data-width="50%"></div>
+            </div>
+            <div class="v6-skill-foot">
+              <span>Learning & building</span><span>INTEREST</span>
+            </div>
+          </div>
+
+          <div class="v6-skill" tabindex="0"
+            data-v6-category="tools"
+            data-v6-name="GitHub"
+            data-v6-desc="Exploring repositories, source-code management, version control and project collaboration workflows.">
+            <div class="v6-skill-head">
+              <span class="v6-skill-name">GitHub</span>
+              <span class="v6-skill-type">TOOLS</span>
+            </div>
+            <div class="v6-skill-track">
+              <div class="v6-skill-fill" data-width="65%"></div>
+            </div>
+            <div class="v6-skill-foot">
+              <span>Learning & building</span><span>INTEREST</span>
+            </div>
+          </div>
+
+          <div class="v6-skill" tabindex="0"
+            data-v6-category="tools"
+            data-v6-name="Deployment"
+            data-v6-desc="Exploring web hosting, deployment workflows, project configuration and publishing web applications.">
+            <div class="v6-skill-head">
+              <span class="v6-skill-name">Deployment</span>
+              <span class="v6-skill-type">TOOLS</span>
+            </div>
+            <div class="v6-skill-track">
+              <div class="v6-skill-fill" data-width="60%"></div>
+            </div>
+            <div class="v6-skill-foot">
+              <span>Learning & building</span><span>INTEREST</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="v6-note">
+          These percentages are illustrative visual indicators,
+          not independently assessed proficiency scores.
+          Select a technology to explore its focus area.
+        </div>
+      </div>
+    </div>
+
+    <!-- DASHBOARD STATS -->
+    <div class="v6-stats">
+      <div class="v6-stat">
+        <strong>04</strong>
+        <span>PROJECT CONCEPTS</span>
+      </div>
+      <div class="v6-stat">
+        <strong>07</strong>
+        <span>TECH AREAS</span>
+      </div>
+      <div class="v6-stat">
+        <strong>01</strong>
+        <span>CREATIVE MINDSET</span>
+      </div>
+      <div class="v6-stat">
+        <strong>∞</strong>
+        <span>ROOM TO LEARN</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILL DETAILS MODAL -->
+<div id="v6-skill-modal" aria-hidden="true">
+  <div class="v6-modal-box" role="dialog"
+    aria-modal="true" aria-labelledby="v6-modal-name">
+
+    <div class="v6-modal-head">
+      <small>TECHNOLOGY PROFILE / KJ</small>
+      <button id="v6-modal-close" aria-label="Close">×</button>
+    </div>
+
+    <h3 id="v6-modal-name">Technology</h3>
+    <p id="v6-modal-desc"></p>
+
+    <div class="v6-modal-foot">
+      CONTINUOUS LEARNING · PRACTICAL EXPLORATION · PROJECT BUILDING
+    </div>
+  </div>
+</div>
+
+<script>
+(()=>{
+  const root=document.getElementById('kj-skills-v6');
+  const modal=document.getElementById('v6-skill-modal');
+  if(!root||!modal||root.dataset.v6ready)return;
+  root.dataset.v6ready='true';
+
+  const filters=[...root.querySelectorAll('.v6-cat')];
+  const skills=[...root.querySelectorAll('.v6-skill')];
+  const fills=[...root.querySelectorAll('.v6-skill-fill')];
+
+  // Animated skill bars when section becomes visible.
+  function animateBars(){
+    fills.forEach(fill=>{
+      fill.style.width=fill.dataset.width||'0%';
+    });
+  }
+
+  if('IntersectionObserver' in window){
+    const observer=new IntersectionObserver(entries=>{
+      if(entries.some(entry=>entry.isIntersecting)){
+        animateBars();
+        observer.disconnect();
+      }
+    },{threshold:.15});
+    observer.observe(root);
+  }else{
+    animateBars();
+  }
+
+  // Category filtering.
+  filters.forEach(button=>{
+    button.addEventListener('click',()=>{
+      filters.forEach(item=>item.classList.remove('active'));
+      button.classList.add('active');
+
+      const category=button.dataset.v6Filter;
+      skills.forEach(skill=>{
+        skill.hidden=category!=='all' &&
+          skill.dataset.v6Category!==category;
+      });
+    });
+  });
+
+  // Skill detail popup.
+  const close=document.getElementById('v6-modal-close');
+  let lastSkill=null;
+
+  function openSkill(skill){
+    lastSkill=skill;
+    document.getElementById('v6-modal-name').textContent=
+      skill.dataset.v6Name;
+    document.getElementById('v6-modal-desc').textContent=
+      skill.dataset.v6Desc;
+
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+    close.focus();
+  }
+
+  function closeSkill(){
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden','true');
+    document.body.style.overflow='';
+    if(lastSkill)lastSkill.focus();
+  }
+
+  skills.forEach(skill=>{
+    skill.addEventListener('click',()=>openSkill(skill));
+    skill.addEventListener('keydown',event=>{
+      if(event.key==='Enter'||event.key===' '){
+        event.preventDefault();
+        openSkill(skill);
+      }
+    });
+  });
+
+  close.addEventListener('click',closeSkill);
+
+  modal.addEventListener('click',event=>{
+    if(event.target===modal)closeSkill();
+  });
+
+  document.addEventListener('keydown',event=>{
+    if(event.key==='Escape'&&modal.classList.contains('open')){
+      closeSkill();
+    }
+  });
+
+})();
+</script>
+
+<!-- =========================================================
+ KIRAN JADHAV — V7 PERSONAL IDENTITY EXPERIENCE
+ CINEMATIC ABOUT + CAREER TIMELINE + PERSONAL JOURNEY
+========================================================= -->
+
+<style>
+#kj-identity-v7{
+ --v7-bg:#11150f;
+ --v7-card:#1b2118;
+ --v7-accent:#c2d39b;
+ --v7-text:#f1f1e8;
+ --v7-muted:#a0aa94;
+ --v7-line:rgba(190,208,151,.18);
+ position:relative;
+ overflow:hidden;
+ margin:70px auto;
+ padding:105px 22px;
+ border-radius:30px;
+ background:var(--v7-bg);
+ color:var(--v7-text);
+ isolation:isolate;
+}
+#kj-identity-v7 *{box-sizing:border-box}
+#kj-identity-v7:before{
+ content:"";
+ position:absolute;
+ width:700px;height:700px;
+ top:-350px;right:-250px;
+ background:radial-gradient(circle,rgba(172,199,120,.12),transparent 68%);
+ z-index:-1;
+}
+.v7-container{max-width:1150px;margin:auto}
+.v7-eyebrow{
+ color:var(--v7-accent);
+ font-size:10px;letter-spacing:4px;font-weight:900;
+}
+.v7-header{
+ display:flex;justify-content:space-between;
+ align-items:center;gap:20px;flex-wrap:wrap;
+}
+.v7-reference{
+ color:#87927a;font:11px monospace;
+}
+.v7-hero{
+ display:grid;grid-template-columns:1.05fr .95fr;
+ gap:65px;align-items:center;margin-top:65px;
+}
+.v7-hero-copy h2{
+ font-size:clamp(42px,7vw,85px);
+ line-height:.94;letter-spacing:-4px;
+ margin:20px 0 25px;
+}
+.v7-hero-copy h2 span{color:var(--v7-accent)}
+.v7-hero-copy p{
+ color:var(--v7-muted);font-size:14px;
+ line-height:2;max-width:550px;
+}
+.v7-location{
+ display:inline-flex;align-items:center;gap:10px;
+ border:1px solid var(--v7-line);
+ background:rgba(194,211,155,.06);
+ border-radius:30px;padding:11px 16px;
+ color:#d3dfb8;font-size:10px;
+ letter-spacing:1px;margin-top:18px;
+}
+.v7-location-dot{
+ width:7px;height:7px;border-radius:50%;
+ background:#b9d58c;box-shadow:0 0 12px #b9d58c;
+}
+.v7-actions{
+ display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;
+}
+.v7-action{
+ border-radius:40px;padding:14px 21px;
+ font-size:11px;font-weight:900;text-decoration:none;
+ transition:.25s;
+}
+.v7-action.primary{
+ background:var(--v7-accent);color:#141910;
+}
+.v7-action.secondary{
+ border:1px solid var(--v7-line);color:#d7e0c5;
+}
+.v7-action:hover{transform:translateY(-3px)}
+
+/* PORTRAIT */
+.v7-portrait{
+ min-height:490px;position:relative;
+ display:flex;align-items:center;justify-content:center;
+ border:1px solid var(--v7-line);
+ border-radius:26px;overflow:hidden;
+ background:
+ radial-gradient(circle at 50% 40%,rgba(177,202,126,.16),transparent 55%),
+ linear-gradient(145deg,#273222,#131a12);
+}
+.v7-portrait:before,.v7-portrait:after{
+ content:"";position:absolute;
+ border:1px solid rgba(195,214,154,.2);
+ border-radius:50%;width:340px;height:340px;
+}
+.v7-portrait:after{width:440px;height:440px}
+.v7-portrait-inner{
+ position:relative;z-index:2;text-align:center;
+}
+.v7-monogram{
+ width:175px;height:175px;margin:auto;
+ border-radius:45px;
+ display:grid;place-items:center;
+ font-size:75px;font-weight:950;
+ letter-spacing:-9px;color:#e2edce;
+ border:1px solid rgba(196,216,156,.5);
+ background:linear-gradient(145deg,#3a4b30,#192117);
+ box-shadow:0 0 80px rgba(171,205,120,.2);
+}
+.v7-portrait-inner h3{
+ margin:24px 0 7px;font-size:20px;letter-spacing:2px;
+}
+.v7-portrait-inner p{
+ color:#9daa8d;font-size:10px;letter-spacing:3px;
+}
+.v7-portrait-caption{
+ position:absolute;bottom:22px;left:23px;right:23px;
+ display:flex;justify-content:space-between;
+ color:#9ba78a;font:9px monospace;
+ letter-spacing:1px;
+}
+
+/* INTRO BLOCK */
+.v7-divider{
+ height:1px;background:var(--v7-line);margin:90px 0;
+}
+.v7-story-grid{
+ display:grid;grid-template-columns:.7fr 1.3fr;
+ gap:55px;
+}
+.v7-story-label{
+ font-size:10px;color:var(--v7-accent);
+ letter-spacing:3px;font-weight:900;
+}
+.v7-story-heading{
+ font-size:clamp(28px,4vw,45px);
+ line-height:1.15;letter-spacing:-1.5px;
+ margin:17px 0;
+}
+.v7-story-text{
+ color:var(--v7-muted);font-size:14px;
+ line-height:2;
+}
+.v7-story-text p{margin:0 0 18px}
+.v7-highlight{
+ color:#e2e9d2;
+ border-left:2px solid var(--v7-accent);
+ padding:16px 20px;
+ background:rgba(192,211,154,.06);
+ border-radius:0 12px 12px 0;
+ margin-top:25px;font-size:13px;line-height:1.9;
+}
+
+/* VALUES */
+.v7-values{
+ display:grid;grid-template-columns:repeat(3,1fr);
+ gap:15px;margin-top:55px;
+}
+.v7-value{
+ border:1px solid var(--v7-line);
+ background:var(--v7-card);
+ padding:25px;border-radius:18px;
+ transition:.3s;
+}
+.v7-value:hover{
+ transform:translateY(-7px);
+ border-color:rgba(192,211,154,.55);
+}
+.v7-value-icon{
+ font-size:24px;color:var(--v7-accent);
+ margin-bottom:18px;
+}
+.v7-value h3{font-size:16px;margin:0 0 10px}
+.v7-value p{
+ color:var(--v7-muted);font-size:11px;line-height:1.9;
+ margin:0;
+}
+
+/* TIMELINE */
+.v7-timeline-section{margin-top:95px}
+.v7-timeline-heading{
+ display:flex;justify-content:space-between;
+ gap:20px;align-items:end;flex-wrap:wrap;
+ margin-bottom:45px;
+}
+.v7-timeline-heading h2{
+ font-size:clamp(32px,5vw,55px);
+ letter-spacing:-2px;margin:14px 0 0;
+}
+.v7-timeline-heading h2 span{color:var(--v7-accent)}
+.v7-timeline-heading p{
+ color:var(--v7-muted);font-size:11px;
+ max-width:300px;line-height:1.8;
+}
+.v7-timeline{
+ position:relative;max-width:820px;margin:auto;
+ padding-left:35px;
+}
+.v7-timeline:before{
+ content:"";position:absolute;
+ left:7px;top:8px;bottom:15px;width:1px;
+ background:linear-gradient(to bottom,var(--v7-accent),rgba(190,208,151,.05));
+}
+.v7-event{
+ position:relative;margin-bottom:30px;
+ padding:24px 26px;border-radius:16px;
+ border:1px solid var(--v7-line);
+ background:var(--v7-card);
+ transition:.3s;
+}
+.v7-event:hover{
+ border-color:rgba(192,211,154,.5);
+ transform:translateX(5px);
+}
+.v7-event:before{
+ content:"";position:absolute;
+ left:-34px;top:28px;width:9px;height:9px;
+ border-radius:50%;background:var(--v7-accent);
+ box-shadow:0 0 15px rgba(192,211,154,.5);
+}
+.v7-event-top{
+ display:flex;justify-content:space-between;
+ gap:15px;flex-wrap:wrap;
+}
+.v7-event-top span{
+ color:var(--v7-accent);font:10px monospace;
+ letter-spacing:1px;
+}
+.v7-event h3{font-size:18px;margin:14px 0 8px}
+.v7-event p{
+ color:var(--v7-muted);font-size:12px;
+ line-height:1.8;margin:0;
+}
+
+/* END CTA */
+.v7-end{
+ margin-top:80px;padding:45px;
+ text-align:center;border-radius:23px;
+ border:1px solid var(--v7-line);
+ background:linear-gradient(135deg,#20291b,#151a13);
+}
+.v7-end small{
+ color:var(--v7-accent);font-size:9px;
+ letter-spacing:4px;font-weight:900;
+}
+.v7-end h2{
+ font-size:clamp(30px,5vw,50px);
+ letter-spacing:-2px;margin:16px 0;
+}
+.v7-end p{
+ color:var(--v7-muted);font-size:12px;line-height:1.9;
+}
+.v7-end a{
+ display:inline-block;margin-top:18px;
+ background:var(--v7-accent);color:#151a11;
+ text-decoration:none;padding:14px 23px;
+ border-radius:40px;font-size:11px;font-weight:900;
+}
+
+/* REVEAL */
+#kj-identity-v7 .v7-reveal{
+ opacity:0;transform:translateY(25px);
+ transition:opacity .8s ease,transform .8s ease;
+}
+#kj-identity-v7 .v7-reveal.v7-visible{
+ opacity:1;transform:translateY(0);
+}
+
+@media(max-width:800px){
+ .v7-hero{grid-template-columns:1fr;gap:35px}
+ .v7-portrait{min-height:390px}
+ .v7-story-grid{grid-template-columns:1fr;gap:20px}
+ .v7-values{grid-template-columns:1fr}
+ .v7-divider{margin:65px 0}
+ .v7-timeline-section{margin-top:70px}
+}
+@media(max-width:550px){
+ #kj-identity-v7{padding:75px 15px;border-radius:22px}
+ .v7-hero-copy h2{letter-spacing:-2px}
+ .v7-portrait{min-height:350px}
+ .v7-monogram{width:140px;height:140px;font-size:60px}
+ .v7-timeline{padding-left:27px}
+ .v7-event{padding:20px}
+ .v7-event:before{left:-27px}
+ .v7-timeline:before{left:7px}
+ .v7-end{padding:30px 18px}
+}
+@media(prefers-reduced-motion:reduce){
+ #kj-identity-v7 .v7-reveal{
+  opacity:1;transform:none;transition:none;
+ }
+}
+</style>
+
+<section id="kj-identity-v7">
+ <div class="v7-container">
+
+  <div class="v7-header">
+   <span class="v7-eyebrow">THE PERSON BEHIND THE CODE</span>
+   <span class="v7-reference">IDENTITY / KJ-007</span>
+  </div>
+
+  <!-- PERSONAL HERO -->
+  <div class="v7-hero">
+
+   <div class="v7-hero-copy v7-reveal">
+    <span class="v7-eyebrow">HELLO, WORLD. I'M</span>
+
+    <h2>Kiran<br><span>Jadhav.</span></h2>
+
+    <p>
+     A technology enthusiast exploring software development,
+     digital products, artificial intelligence and creative
+     web experiences. I enjoy turning ideas into working
+     interfaces and learning through building.
+    </p>
+
+    <div class="v7-location">
+     <span class="v7-location-dot"></span>
+     KARNATAKA, INDIA
+    </div>
+
+    <div class="v7-actions">
+     <a href="#kj-universe" class="v7-action primary">
+      EXPLORE MY WORK ↗
+     </a>
+     <a href="#contact" class="v7-action secondary">
+      GET IN TOUCH
+     </a>
+    </div>
+   </div>
+
+   <!-- REAL PHOTO SLOT CAN BE ADDED LATER -->
+   <div class="v7-portrait v7-reveal">
+    <div class="v7-portrait-inner">
+     <div class="v7-monogram">KJ</div>
+     <h3>KIRAN JADHAV</h3>
+     <p>DEVELOPER · CREATOR · EXPLORER</p>
+    </div>
+    <div class="v7-portrait-caption">
+     <span>PROFILE / 001</span>
+     <span>KARNATAKA, IN</span>
+    </div>
+   </div>
+
+  </div>
+
+  <div class="v7-divider"></div>
+
+  <!-- PERSONAL STORY -->
+  <div class="v7-story-grid v7-reveal">
+
+   <div>
+    <span class="v7-story-label">01 / MY STORY</span>
+    <h2 class="v7-story-heading">
+     More than just<br>writing code.
+    </h2>
+   </div>
+
+   <div class="v7-story-text">
+    <p>
+     My journey is driven by curiosity about technology
+     and a desire to create things that people can use.
+     I explore web development, application interfaces
+     and emerging AI experiences.
+    </p>
+
+    <p>
+     I enjoy experimenting with ideas, understanding how
+     digital systems work and improving my projects step
+     by step. Every build gives me something new to learn.
+    </p>
+
+    <p>
+     My current focus is developing stronger technical
+     foundations while creating projects under the KIRUU
+     identity.
+    </p>
+
+    <div class="v7-highlight">
+     "I believe progress comes from building, experimenting
+     and never stopping the learning process."
+    </div>
+   </div>
+
+  </div>
+
+  <!-- VALUES -->
+  <div class="v7-values">
+
+   <article class="v7-value v7-reveal">
+    <div class="v7-value-icon">✳</div>
+    <h3>Curiosity First</h3>
+    <p>
+     Always exploring new ideas, tools and possibilities
+     in the world of technology.
+    </p>
+   </article>
+
+   <article class="v7-value v7-reveal">
+    <div class="v7-value-icon">⌘</div>
+    <h3>Build to Learn</h3>
+    <p>
+     Turning concepts into experiments and improving
+     through practical development.
+    </p>
+   </article>
+
+   <article class="v7-value v7-reveal">
+    <div class="v7-value-icon">◇</div>
+    <h3>Think Different</h3>
+    <p>
+     Looking beyond ordinary interfaces to create
+     thoughtful digital experiences.
+    </p>
+   </article>
+
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="v7-timeline-section">
+
+   <div class="v7-timeline-heading v7-reveal">
+    <div>
+     <span class="v7-eyebrow">02 / THE JOURNEY</span>
+     <h2>Always <span>evolving.</span></h2>
+    </div>
+    <p>
+     A snapshot of my current development direction.
+     These are project and learning milestones, not
+     verified employment history.
+    </p>
+   </div>
+
+   <div class="v7-timeline">
+
+    <article class="v7-event v7-reveal">
+     <div class="v7-event-top">
+      <span>FOUNDATION</span>
+      <span>01 / LEARNING</span>
+     </div>
+     <h3>Discovering Web Development</h3>
+     <p>
+      Exploring website structure, HTML, CSS, responsive
+      interfaces and the fundamentals of JavaScript.
+     </p>
+    </article>
+
+    <article class="v7-event v7-reveal">
+     <div class="v7-event-top">
+      <span>CREATION</span>
+      <span>02 / PROJECTS</span>
+     </div>
+     <h3>Building Digital Platforms</h3>
+     <p>
+      Exploring projects such as KIRUU SHOP and AAPS HUB,
+      focusing on modern storefronts and app discovery.
+     </p>
+    </article>
+
+    <article class="v7-event v7-reveal">
+     <div class="v7-event-top">
+      <span>EXPLORATION</span>
+      <span>03 / AI</span>
+     </div>
+     <h3>Exploring AI Experiences</h3>
+     <p>
+      Developing the AVA AI concept and learning about
+      assistant interfaces, voice experiences and AI APIs.
+     </p>
+    </article>
+
+    <article class="v7-event v7-reveal">
+     <div class="v7-event-top">
+      <span>PRODUCT THINKING</span>
+      <span>04 / FINTECH</span>
+     </div>
+     <h3>Exploring Application Development</h3>
+     <p>
+      Working through the KIRUU PAY concept and exploring
+      mobile application architecture and backend integration.
+     </p>
+    </article>
+
+    <article class="v7-event v7-reveal">
+     <div class="v7-event-top">
+      <span>WHAT'S NEXT</span>
+      <span>05 / FUTURE</span>
+     </div>
+     <h3>Growing Through Every Build</h3>
+     <p>
+      Continuing to improve technical skills, refine
+      digital products and explore new technologies.
+     </p>
+    </article>
+
+   </div>
+  </div>
+
+  <!-- FINAL CTA -->
+  <div class="v7-end v7-reveal">
+   <small>THE NEXT CHAPTER STARTS HERE</small>
+   <h2>Let's create something<br>meaningful.</h2>
+   <p>
+    Have an idea, project or opportunity?
+    Let's connect and explore what's possible.
+   </p>
+   <a href="https://www.instagram.com/kiiiiiruuuuuu/"
+      target="_blank" rel="noopener noreferrer">
+      CONNECT WITH KIRAN ↗
+   </a>
+  </div>
+
+ </div>
+</section>
+
+<script>
+(()=>{
+ const root=document.getElementById('kj-identity-v7');
+ if(!root||root.dataset.v7init)return;
+ root.dataset.v7init='true';
+
+ const elements=root.querySelectorAll('.v7-reveal');
+
+ if(!('IntersectionObserver' in window) ||
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+   elements.forEach(el=>el.classList.add('v7-visible'));
+   return;
+ }
+
+ const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+   if(entry.isIntersecting){
+    entry.target.classList.add('v7-visible');
+    observer.unobserve(entry.target);
+   }
+  });
+ },{threshold:.12});
+
+ elements.forEach((el,index)=>{
+  el.style.transitionDelay=(index%3)*90+'ms';
+  observer.observe(el);
+ });
+})();
+</script>
+
 <body>
 <header class="site-header">
  <a class="brand" href="#home"><span class="brand-mark">KJ</span><span>KIRAN JADHAV<small>INDEPENDENT DEVELOPER</small></span></a>
