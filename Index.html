@@ -1,0 +1,280 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f3f0e8">
+<title>Kiran Jadhav | Software Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f3f0e8;--ink:#20231d;--muted:#77796e;--olive:#a0a37c;--line:rgba(32,35,29,.16)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Manrope,Arial,sans-serif}
+a{color:inherit}
+.site-header{height:82px;padding:0 6%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);position:sticky;top:0;background:#f3f0e8ed;backdrop-filter:blur(15px);z-index:20}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-size:11px;font-weight:800;letter-spacing:2px}
+.brand-mark{width:39px;height:39px;border:1px solid;border-radius:50%;display:grid;place-items:center;font:16px Georgia}
+.brand small{display:block;font:8px 'DM Mono';color:var(--muted);margin-top:5px}
+.nav{display:flex;align-items:center;gap:35px}
+.nav a{text-decoration:none;font-size:11px;font-weight:700}
+.nav a:hover{color:#85885f}
+.nav .nav-contact{border:1px solid;padding:12px 17px;border-radius:30px}
+.menu-toggle{display:none}
+.wrap{width:min(1160px,88%);margin:auto}
+.hero{min-height:690px;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;position:relative;padding:65px 0 100px}
+.eyebrow,.kicker,.mono{font:9px 'DM Mono';letter-spacing:2px;color:var(--muted)}
+.status{display:inline-block;width:7px;height:7px;background:#8a9b63;border-radius:50%;margin-right:10px}
+h1{font-size:clamp(55px,7vw,94px);line-height:.98;letter-spacing:-7px;font-weight:600;margin:30px 0}
+h1 em,h2 em{font-family:Georgia,serif;font-weight:400}
+.period{color:#999b73}
+.hero-intro{max-width:450px;color:#67695f;font-size:14px;line-height:1.9}
+.actions{display:flex;align-items:center;gap:28px;margin-top:35px}
+.button{display:inline-flex;gap:30px;padding:16px 20px;background:var(--ink);color:var(--paper);text-decoration:none;font-size:11px;font-weight:700;transition:.25s}
+.button:hover{transform:translateY(-4px)}
+.text-link{font-size:11px;font-weight:700;text-decoration:none;border-bottom:1px solid;padding-bottom:7px}
+.hero-meta{display:flex;gap:35px;margin-top:75px;font:9px 'DM Mono';color:var(--muted);letter-spacing:1px}
+.hero-visual{height:500px;display:grid;place-items:center;position:relative}
+.portrait{width:min(340px,85%);height:420px;background:linear-gradient(145deg,#d7d7c8,#969b82);display:grid;place-items:center;position:relative;transform:rotate(2deg);box-shadow:18px 20px 0 #20231d10}
+.portrait-inner{text-align:center;color:#33392f}
+.portrait-circle{width:150px;height:150px;border-radius:50%;background:linear-gradient(145deg,#e4c5a8,#8d634d);margin:auto auto 20px;position:relative;overflow:hidden}
+.portrait-circle:before{content:"";position:absolute;width:100px;height:125px;border-radius:48% 48% 42% 42%;background:#292d28;top:-20px;left:25px}
+.portrait-circle:after{content:"";position:absolute;width:70px;height:85px;border-radius:50%;background:#b77f60;top:43px;left:40px}
+.portrait-inner strong{display:block;font-size:18px;letter-spacing:3px}
+.portrait-inner small{display:block;font:9px 'DM Mono';margin-top:9px}
+.portrait-note{position:absolute;left:0;bottom:8px;font:11px/1.7 'DM Mono'}
+.hero-bottom{position:absolute;bottom:25px;left:0;right:0;display:flex;justify-content:space-between;font:9px 'DM Mono';color:var(--muted)}
+.intro-band{background:#e6e4d9;padding:55px 6%;display:flex;justify-content:space-between;align-items:end}
+.intro-band p{font-size:27px;line-height:1.35;letter-spacing:-1px;margin:0}
+.intro-band strong{font:italic 27px Georgia}
+.section{padding:120px 0}
+.section-heading{display:grid;grid-template-columns:1fr 2fr;margin-bottom:65px}
+.section-heading h2,.contact h2{font-size:clamp(43px,5.5vw,70px);line-height:1.03;letter-spacing:-4px;font-weight:600;margin:0}
+.about-grid{display:grid;grid-template-columns:1fr 2fr;gap:60px}
+.about-aside{border-top:1px solid var(--line);padding-top:20px}
+.quote{font:90px/.7 Georgia;color:var(--olive)}
+.about-aside p{font:19px/1.5 Georgia}
+.about-content{max-width:680px}
+.about-content p{font-size:13px;line-height:2;color:#73756a}
+.about-content .lead{font-size:20px;line-height:1.6;color:var(--ink)}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px;padding-top:22px;border-top:1px solid var(--line)}
+.facts span{display:block;font:8px 'DM Mono';color:var(--muted);margin-bottom:10px}
+.facts strong{font-size:11px}
+.work{background:#e8e6dc}
+.work-heading{grid-template-columns:1fr 1.5fr 1fr;gap:20px}
+.work-heading p{font-size:12px;line-height:1.8;color:var(--muted)}
+.projects{display:grid;grid-template-columns:1fr 1fr;gap:60px 28px}
+.project-top{display:flex;justify-content:space-between;font:8px 'DM Mono';color:var(--muted);margin-bottom:14px}
+.project-art{height:300px;display:grid;place-items:center;position:relative;overflow:hidden}
+.ava-art{background:#20251f;color:#e9e8df}
+.ava-orb{width:210px;height:210px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#e6e2c8,#a0a37c 38%,#444b39 70%);box-shadow:0 0 100px #8b916c66}
+.ava-title{position:absolute;font-size:53px;font-weight:800;letter-spacing:-5px}
+.ava-title i{font:italic 25px Georgia;color:#b5b994}
+.shop-art{background:#d0c7b6}
+.shop-window{width:72%;background:#f2eee4;padding:25px;transform:rotate(-3deg);box-shadow:15px 17px 0 #6c685c22}
+.shop-window h3{margin:0;font-size:20px}
+.shop-window h3 em{font-family:Georgia;font-weight:400}
+.shop-items{display:flex;gap:10px;margin-top:25px}
+.shop-items i{height:100px;flex:1;background:linear-gradient(145deg,#aaa58f,#ded9ca)}
+.shop-items i:nth-child(2){background:linear-gradient(145deg,#62675c,#b9b7a7)}
+.shop-items i:nth-child(3){background:linear-gradient(145deg,#a67f64,#d4bca2)}
+.pay-art{background:#d6d8ca}
+.pay-card{width:220px;height:240px;background:#272e27;color:#e7e8dc;border-radius:12px;padding:20px;transform:rotate(7deg);box-shadow:20px 20px 30px #3b423b33;display:flex;flex-direction:column}
+.pay-card strong{font:25px/1.1 Georgia;margin-top:40px}
+.pay-card small{font:9px 'DM Mono';margin-top:12px}
+.pay-card .chip{margin-top:auto;letter-spacing:3px}
+.hub-art{background:#c8c9b8}
+.hub-grid{display:grid;grid-template-columns:repeat(3,42px);gap:9px;position:absolute;left:17%;top:20%;transform:rotate(-8deg)}
+.hub-grid span{height:42px;display:grid;place-items:center;background:#e9e8dc;border:1px solid #a5a795}
+.hub-title{font-size:62px;line-height:.8;font-weight:800;letter-spacing:-6px;margin-left:80px}
+.hub-title em{font:italic 48px Georgia}
+.project-info{display:flex;justify-content:space-between;gap:20px;padding:22px 0 13px}
+.project-info h3{font-size:19px;margin:0 0 8px}
+.project-info p{font-size:11px;line-height:1.8;color:var(--muted);max-width:430px;margin:0}
+.project-arrow{font-size:24px}
+.tags{display:flex;gap:8px}
+.tags span{border:1px solid #c3c3b5;padding:7px 9px;font:7px 'DM Mono';color:var(--muted)}
+.skills-grid{display:grid;grid-template-columns:1fr 2fr;gap:60px}
+.skills-note{font:18px/1.6 Georgia;color:#686b60;max-width:240px}
+.skill-group{border-top:1px solid var(--line);padding:22px 0}
+.skill-group>span{font:8px 'DM Mono';color:var(--muted)}
+.pills{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
+.pills b{font-size:11px;border:1px solid #d0d0c4;padding:11px 14px;border-radius:30px}
+.principles{background:#dedfd3}
+.principles-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:90px}
+.principles-grid h2{font-size:60px;letter-spacing:-4px;font-weight:600}
+.principle{display:grid;grid-template-columns:45px 1fr;gap:12px;border-top:1px solid #bfc1b2;padding:20px 0}
+.principle>span{font:9px 'DM Mono';color:var(--muted)}
+.principle h3{font-size:15px;margin:0 0 7px}
+.principle p{grid-column:2;font-size:11px;color:var(--muted);line-height:1.8;margin:0}
+.journey-row{display:grid;grid-template-columns:1fr 2fr 1fr;gap:25px;padding:26px 0;border-top:1px solid var(--line)}
+.journey-year{font:9px 'DM Mono';color:var(--muted)}
+.journey-row h3{font-size:15px;margin:0 0 9px}
+.journey-row p{font-size:11px;color:var(--muted);line-height:1.8;margin:0}
+.contact{background:#252a23;color:#f1efe6;padding:110px 0 40px}
+.contact .kicker{color:#a4a78a}
+.contact h2{font-size:clamp(48px,7vw,88px);margin:40px 0 22px}
+.contact h2 em{color:#b5b994}
+.contact p{font-size:12px;color:#b7b9ac;line-height:1.8}
+.contact-actions{display:flex;gap:30px;align-items:center;margin-top:35px}
+.contact .button{background:#e9e8dc;color:#252a23}
+.contact-social{font-size:11px;color:#e9e8dc;text-decoration:none;border-bottom:1px solid #7c806e;padding-bottom:8px}
+.contact-bottom{display:flex;justify-content:space-between;border-top:1px solid #ffffff2b;margin-top:100px;padding-top:18px;font:9px 'DM Mono';color:#a4a696}
+footer{height:78px;padding:0 6%;display:flex;align-items:center;justify-content:space-between;font:8px 'DM Mono';color:var(--muted)}
+footer a{text-decoration:none;font:28px Georgia;color:var(--ink)}
+footer a span{color:var(--olive)}
+.back-top{position:fixed;right:22px;bottom:22px;width:40px;height:40px;background:var(--ink);color:white;border:0;font-size:18px;opacity:0;pointer-events:none;transition:.2s;z-index:15}
+.back-top.show{opacity:1;pointer-events:auto}
+.reveal{opacity:0;transform:translateY(22px);transition:.7s}
+.reveal.visible{opacity:1;transform:none}
+@media(max-width:800px){
+ .site-header{height:72px;padding:0 21px}
+ .menu-toggle{display:flex;background:none;border:0;flex-direction:column;gap:6px;padding:10px}
+ .menu-toggle span{width:22px;height:1px;background:var(--ink)}
+ .nav{display:none;position:absolute;top:71px;left:0;right:0;background:var(--paper);padding:25px 22px 30px;flex-direction:column;align-items:flex-start;gap:23px}
+ .nav.open{display:flex}
+ .wrap{width:calc(100% - 42px)}
+ .hero{grid-template-columns:1fr;padding-top:55px;min-height:0;padding-bottom:85px}
+ .hero-visual{height:390px;margin-top:20px}
+ .portrait{height:330px;width:270px}
+ .hero-meta{margin-top:48px;gap:18px;font-size:8px}
+ .intro-band{padding:38px 22px;display:block}
+ .intro-band p{font-size:23px}
+ .section{padding:82px 0}
+ .section-heading,.work-heading{grid-template-columns:1fr;gap:20px;margin-bottom:42px}
+ .section-heading h2{font-size:48px}
+ .about-grid,.skills-grid,.principles-grid{grid-template-columns:1fr;gap:32px}
+ .about-aside{display:flex;gap:15px;align-items:center}
+ .facts{grid-template-columns:1fr;gap:17px}
+ .projects{grid-template-columns:1fr;gap:45px}
+ .project-art{height:260px}
+ .principles-grid h2{font-size:48px}
+ .journey-row{grid-template-columns:1fr 2fr;gap:12px}
+ .contact{padding-top:80px}
+ .contact h2{font-size:54px}
+ .contact-bottom{margin-top:75px}
+ footer{padding:0 21px}
+ footer span:last-child{display:none}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
+</style>
+</head>
+
+<body>
+<header class="site-header">
+ <a class="brand" href="#home"><span class="brand-mark">KJ</span><span>KIRAN JADHAV<small>INDEPENDENT DEVELOPER</small></span></a>
+ <button class="menu-toggle" aria-label="Toggle navigation"><span></span><span></span></button>
+ <nav class="nav">
+  <a href="#about">About</a><a href="#work">Work</a><a href="#skills">Skills</a><a href="#journey">Journey</a><a class="nav-contact" href="#contact">Let's talk ↗</a>
+ </nav>
+</header>
+
+<main>
+<section class="hero wrap" id="home">
+ <div>
+  <div class="eyebrow"><i class="status"></i>AVAILABLE FOR CREATIVE COLLABORATIONS</div>
+  <h1>Building digital<br><em>things</em> that matter<span class="period">.</span></h1>
+  <p class="hero-intro">I'm Kiran Jadhav — a self-driven software developer exploring the space between thoughtful design, useful technology and ambitious ideas.</p>
+  <div class="actions"><a class="button" href="#work">Explore my work <span>↘</span></a><a class="text-link" href="#contact">Get in touch ↗</a></div>
+  <div class="hero-meta"><span>BASED IN INDIA</span><span>DESIGN · CODE · BUILD</span></div>
+ </div>
+ <div class="hero-visual">
+  <div class="portrait"><div class="portrait-inner"><div class="portrait-circle"></div><strong>KIRAN JADHAV</strong><small>SOFTWARE DEVELOPER</small></div></div>
+  <div class="portrait-note">Curious mind.<br>Builder's mindset.</div>
+ </div>
+ <div class="hero-bottom"><span>SCROLL TO EXPLORE</span><span>↓</span><span>01 — 06</span></div>
+</section>
+
+<div class="intro-band"><p>Ideas are everywhere.<br><strong>Making them real is the work.</strong></p><span class="mono">A NOTE ON HOW I BUILD / 01</span></div>
+
+<section class="section wrap" id="about">
+ <div class="section-heading"><span class="kicker">01 / ABOUT</span><h2>A little about<br><em>the person</em> behind it.</h2></div>
+ <div class="about-grid">
+  <div class="about-aside"><span class="quote">“</span><p>Stay curious.<br>Keep creating.<br>Never stop learning.</p></div>
+  <div class="about-content">
+   <p class="lead">I enjoy turning ideas into practical digital experiences — from clean websites to experiments with AI and app concepts.</p>
+   <p>My journey is driven by curiosity and hands-on learning. I like understanding how things work, trying new tools, solving problems and improving every version I ship. I believe good digital products should feel clear, useful and memorable.</p>
+   <div class="facts"><div><span>FOCUS</span><strong>Web & Product Development</strong></div><div><span>INTERESTS</span><strong>AI · UI/UX · Technology</strong></div><div><span>LOCATION</span><strong>India</strong></div></div>
+  </div>
+ </div>
+</section>
+
+<section class="work" id="work"><div class="section wrap">
+ <div class="section-heading work-heading"><span class="kicker">02 / SELECTED WORK</span><h2>Projects built<br>with <em>purpose.</em></h2><p>A selection of concepts and products from my ongoing learning and building journey.</p></div>
+ <div class="projects">
+  <article class="project"><div class="project-top"><span>01 — AI ASSISTANT</span><span>CONCEPT / DEVELOPMENT</span></div><div class="project-art ava-art"><div class="ava-orb"></div><div class="ava-title">AVA <i>AI</i></div></div><div class="project-info"><div><h3>AVA AI</h3><p>An AI assistant concept focused on conversational interaction, helpful responses and a friendly user experience.</p></div><span class="project-arrow">↗</span></div><div class="tags"><span>AI</span><span>VOICE</span><span>WEB EXPERIENCE</span></div></article>
+  <article class="project"><div class="project-top"><span>02 — E-COMMERCE</span><span>WEB PRODUCT</span></div><div class="project-art shop-art"><div class="shop-window"><h3>KIRUU <em>SHOP</em></h3><div class="shop-items"><i></i><i></i><i></i></div><small>A STORE FOR WHAT'S NEXT.</small></div></div><div class="project-info"><div><h3>KIRUU SHOP</h3><p>A modern storefront concept with product discovery, cart interactions and a mobile-first layout.</p></div><span class="project-arrow">↗</span></div><div class="tags"><span>ECOMMERCE</span><span>UI DESIGN</span><span>RESPONSIVE</span></div></article>
+  <article class="project"><div class="project-top"><span>03 — FINTECH CONCEPT</span><span>PRODUCT EXPLORATION</span></div><div class="project-art pay-art"><div class="pay-card"><span>K</span><small>KIRUU PAY</small><strong>Pay simply.<br>Move freely.</strong><span class="chip">•••• 2048</span></div></div><div class="project-info"><div><h3>KIRUU PAY</h3><p>A digital payments product concept exploring simple flows, clean interfaces and accessible finance experiences.</p></div><span class="project-arrow">↗</span></div><div class="tags"><span>FINTECH</span><span>APP CONCEPT</span><span>UX</span></div></article>
+  <article class="project"><div class="project-top"><span>04 — APP DIRECTORY</span><span>WEB PLATFORM</span></div><div class="project-art hub-art"><div class="hub-grid"><span>✳</span><span>◈</span><span>⌘</span><span>✦</span><span>◉</span><span>↗</span><span>▣</span><span>✧</span><span>＋</span></div><div class="hub-title">AAPS<br><em>HUB</em></div></div><div class="project-info"><div><h3>AAPS HUB</h3><p>An app discovery hub concept designed to organise useful apps in one clean, accessible place.</p></div><span class="project-arrow">↗</span></div><div class="tags"><span>WEB APP</span><span>DIRECTORY</span><span>ADMIN UI</span></div></article>
+ </div>
+</div></section>
+
+<section class="section wrap" id="skills">
+ <div class="section-heading"><span class="kicker">03 / TOOLKIT</span><h2>Things I use<br>to <em>make things.</em></h2></div>
+ <div class="skills-grid"><p class="skills-note">A growing toolkit shaped by experimentation, practice and the needs of each project.</p><div>
+  <div class="skill-group"><span>01 / FRONTEND</span><div class="pills"><b>HTML</b><b>CSS</b><b>JavaScript</b><b>Responsive Design</b></div></div>
+  <div class="skill-group"><span>02 / DESIGN & EXPERIENCE</span><div class="pills"><b>UI Layout</b><b>Visual Design</b><b>Prototyping</b><b>Mobile-first UX</b></div></div>
+  <div class="skill-group"><span>03 / TOOLS & EXPLORATION</span><div class="pills"><b>GitHub</b><b>AI Tools</b><b>Web Deployment</b><b>API Integration</b></div></div>
+ </div></div>
+</section>
+
+<section class="principles"><div class="section wrap principles-grid">
+ <div><span class="kicker">04 / PRINCIPLES</span><h2>How I<br><em>approach work.</em></h2></div>
+ <div>
+  <div class="principle"><span>01</span><div><h3>Learn by building</h3><p>Turn curiosity into small experiments, then improve through real use.</p></div></div>
+  <div class="principle"><span>02</span><div><h3>Keep it useful</h3><p>Prioritise clarity, speed and a smooth experience over unnecessary complexity.</p></div></div>
+  <div class="principle"><span>03</span><div><h3>Stay in motion</h3><p>Every project is a chance to learn something new and raise the quality bar.</p></div></div>
+ </div>
+</div></section>
+
+<section class="section wrap" id="journey">
+ <div class="section-heading"><span class="kicker">05 / THE JOURNEY</span><h2>Always learning.<br><em>Always building.</em></h2></div>
+ <div class="journey-row"><div class="journey-year">NOW / 2026</div><div><h3>Independent development</h3><p>Building personal projects, exploring AI-powered experiences and strengthening my web development skills through hands-on work.</p></div><span class="journey-year">IN PROGRESS</span></div>
+ <div class="journey-row"><div class="journey-year">ONGOING</div><div><h3>Learning through projects</h3><p>Experimenting with interfaces, deployment workflows, product thinking and new technologies.</p></div><span class="journey-year">OPEN ENDED</span></div>
+</section>
+
+<section class="contact" id="contact"><div class="wrap">
+ <span class="kicker">06 / CONTACT</span>
+ <h2>Have an idea?<br>Let's make it <em>happen.</em></h2>
+ <p>For collaborations, project conversations or just to say hello — my inbox is open.</p>
+ <div class="contact-actions"><a class="button" href="mailto:hello@kiran-jadhav.dev">Email me ↗</a><a class="contact-social" href="https://www.instagram.com/kiiiiiruuuuuu/" target="_blank" rel="noreferrer">Instagram ↗</a></div>
+ <div class="contact-bottom"><span>INDIA</span><span>OPEN TO GOOD IDEAS</span></div>
+</div></section>
+</main>
+
+<footer><a href="#home">KJ<span>.</span></a><span>© 2026 KIRAN JADHAV</span><span>MADE WITH CURIOSITY ↗</span></footer>
+<button class="back-top" aria-label="Back to top">↑</button>
+
+<script>
+const menuButton=document.querySelector('.menu-toggle');
+const nav=document.querySelector('.nav');
+menuButton.addEventListener('click',()=>{
+ nav.classList.toggle('open');
+});
+nav.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>nav.classList.remove('open')));
+
+const revealItems=document.querySelectorAll('.section-heading,.about-grid,.project,.skills-grid,.principle,.journey-row');
+revealItems.forEach(item=>item.classList.add('reveal'));
+if('IntersectionObserver' in window){
+ const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+   if(entry.isIntersecting){
+    entry.target.classList.add('visible');
+    observer.unobserve(entry.target);
+   }
+  });
+ },{threshold:.12});
+ revealItems.forEach(item=>observer.observe(item));
+}else{
+ revealItems.forEach(item=>item.classList.add('visible'));
+}
+
+const backTop=document.querySelector('.back-top');
+window.addEventListener('scroll',()=>{
+ backTop.classList.toggle('show',window.scrollY>500);
+},{passive:true});
+backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+</script>
+</body>
+</html>
